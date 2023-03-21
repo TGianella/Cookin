@@ -4,6 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Associations as chef
+  has_many :given_masterclasses, class_name: "Masterclass", foreign_key: :chef_id
+  has_many :taught_recipes, class_name: 'Recipe', foreign_key: :chef_id
+
+  # Associations as guest
+  has_many :reservations, foreign_key: :guest_id
+  has_many :meetings, through: :reservations
+  has_many :attended_masterclasses, through: :meetings, source: :masterclass
+  has_many :learned_recipes, through: :attended_masterclasses, source: :recipes
+
+
   validates :first_name, length: { in: 3..25 },
                          format: { with: /\A[A-Za-z\-'éèêëôûüùïîâäç]+\z/ },
                          allow_blank: true
