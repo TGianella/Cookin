@@ -17,7 +17,7 @@ User.create(first_name: 'Alain',
             last_name: 'Chef',
             email: 'cookin_chef@yopmail.com',
             password: 'foobar',
-            is_chef: false,
+            is_chef: true,
             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
