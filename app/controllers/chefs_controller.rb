@@ -3,7 +3,9 @@ class ChefsController < ApplicationController
     @chefs = User.chefs
   end
 
-  def show; end
+  def show
+    @chef = User.find_from_param(params[:name])
+  end
 
   def new; end
 

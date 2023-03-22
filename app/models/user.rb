@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validate :time_validate
 
   def to_param
-    [first_name, last_name].join('_').downcase
+    [first_name, last_name].join(' ')
   end
 
   def full_name
