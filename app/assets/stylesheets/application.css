@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+   outline: red 1px solid;
+   }
