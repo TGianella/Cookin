@@ -29,6 +29,11 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def self.find_from_param(param)
+    first_name, last_name = param.split(' ')
+    where(first_name: first_name, last_name: last_name).first
+  end
+
   private
 
   def time_validate

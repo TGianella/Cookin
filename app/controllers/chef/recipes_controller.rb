@@ -1,7 +1,6 @@
 class Chef::RecipesController < ApplicationController
   def index
-    first_name, last_name = params[:chef_name].split(' ')
-    @chef = User.where(first_name: first_name, last_name: last_name).first
+    @chef = User.find_from_param(params[:chef_name])
     @recipes = @chef.taught_recipes
   end
 
