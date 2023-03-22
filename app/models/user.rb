@@ -21,6 +21,23 @@ class User < ApplicationRecord
                            allow_blank: true
   validate :time_validate
 
+  def to_param
+    [first_name, last_name].join(' ')
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def self.find_from_param(param)
+    first_name, last_name = param.split(' ')
+    where(first_name: first_name, last_name: last_name).first
+  end
+
+  def self.chefs
+    where(is_chef: true).to_a
+  end
+
   private
 
   def time_validate
@@ -31,9 +48,5 @@ class User < ApplicationRecord
     elsif birth_date < 120.years.ago
       errors.add(:birth_date, 'You should be under 120 years old.')
     end
-  end
-
-  def to_param
-    [first_name, last_name].join('_').downcase
   end
 end
