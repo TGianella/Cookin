@@ -1,3 +1,21 @@
 <div>
   <h1 class="font-bold text-4xl"><%= @recipe.title %></h1>
 </div>
+
+<div>
+  Chef : <%= @recipe.chef.first_name %> 
+</div>
+<div>
+  Description : <%= @recipe.content %> 
+</div>
+<div>
+  Durée : <%= @recipe.duration %> 
+</div>
+<div>
+  Difficulté : <%= @recipe.difficulty %> 
+</div>
+
+<% @recipe.masterclasses.each do |masterclass| %>
+  <%= link_to "#{masterclass.title}", masterclass_path(masterclass) %>
+<% end %>
+
