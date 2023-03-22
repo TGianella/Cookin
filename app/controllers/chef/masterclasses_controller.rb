@@ -1,22 +1,8 @@
 class Chef::MasterclassesController < ApplicationController
   def index
+    @chef = User.find_from_param(params[:chef_name])
+    @masterclasses = @chef.given_masterclasses
   end
 
-  def show
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
+  def show; end
 end

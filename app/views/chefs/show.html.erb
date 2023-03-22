@@ -1,4 +1,6 @@
 <div>
-  <h1 class="font-bold text-4xl">Chefs#show</h1>
-  <p>Find me in app/views/chefs/show.html.erb</p>
+  <h1 class="font-bold text-4xl"><%= @chef.full_name %></h1>
 </div>
+
+<div><%= link_to "Ses recettes", chef_recipes_path(@chef) %></div>
+<div><%= link_to "Ses masterclasses", chef_masterclasses_path(@chef) %></div>

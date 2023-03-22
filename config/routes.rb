@@ -3,18 +3,18 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :masterclasses, param: 'title', only: %i[show index] do
+  resources :masterclasses, param: 'title', only: %i[show index new create] do
     resources :meetings, only: %i[show index]
   end
-  resources :recipes, param: 'title', only: %i[show index]
+  resources :recipes, param: 'title', only: %i[show index new create]
   resources :chefs, param: 'name' do
     resources :recipes, param: 'title', only: %i[show index], controller: 'chef/recipes'
     resources :masterclasses, param: 'title', only: %i[show index], controller: 'chef/masterclasses'
   end
 
   namespace :chef do
-    resources :recipes, param: 'title', except: %i[show index]
-    resources :masterclasses, param: 'title', except: %i[show index]
+    resources :recipes, param: 'title', except: %i[show index new create]
+    resources :masterclasses, param: 'title', except: %i[show index new create]
     resources :meetings
     resources :reservations
   end

@@ -1,22 +1,14 @@
 class Chef::RecipesController < ApplicationController
   def index
+    @chef = User.find_from_param(params[:chef_name])
+    @recipes = @chef.taught_recipes
   end
 
-  def show
-  end
+  def show; end
 
-  def new
-  end
+  def edit; end
 
-  def create
-  end
+  def update; end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
+  def destroy; end
 end

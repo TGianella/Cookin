@@ -8,9 +8,7 @@ class Recipe < ApplicationRecord
   has_many :reservations, through: :meetings
   has_many :guests, through: :reservations, class_name: 'User'
 
-  private
-
   def to_param
-    title.gsub(' ', '_').downcase
+    title
   end
 end
