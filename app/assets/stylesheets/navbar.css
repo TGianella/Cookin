@@ -76,23 +76,62 @@
 }
 .profile_menu button img{
   border-radius: 50%;
+  width: 50px;
+  height: 50px;
   border: 2px var(--success) solid;
 }
 
 .collapse_profile{
-  background-color: blue;
   width: 245px ;
-  height: 350px;
+  height: fit-content;
   position: absolute;
   right: 2em;
-  top: 80px;
+  top: 90px;
+  border-top:1px solid rgb(235, 235, 235);
+  background-color: white;
+  box-shadow: 0px 5px 15px -5px rgba(204,204,204,0.75);
+  border-radius: .5em;
+
   display: none;
 }
 .collapse_profile--active{
   display: block;
+
 }
 
+.collapse_profile__wrapper{
+  display: flex;
+  flex-direction: column;
+}
 
+.collapse__login, .collapse__static_pages,.collapse__logged{
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5em;
+}
+.collapse__login,.collapse__logged{
+  border-bottom: 1px lightgray solid;
+
+}
+
+.collapse__login a, .collapse__static_pages a,.collapse__logged a{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding-left: 1em;
+}
+.collapse__login a:hover, .collapse__static_pages a:hover,.collapse__logged a:hover{
+  background-color: rgba(241, 241, 241, 0.685);
+}
+
+.collapse__login a:nth-child(1){
+  font-weight: bold;
+}
+.collapse__static_pages a:nth-last-child(1):hover{
+  border-radius: 0 0 .5em .5em ;
+  color: white;
+  background-color: rgba(211, 0, 0, 0.822);
+}
 
 
 @media screen and (max-width:1280px){
