@@ -25,6 +25,10 @@ class User < ApplicationRecord
     [first_name, last_name].join('_').downcase
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def time_validate
