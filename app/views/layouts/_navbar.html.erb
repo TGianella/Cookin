@@ -1,0 +1,47 @@
+<div class="navbar">
+  <div class="navbar__wrapper container">
+    <div class="logo">
+      <div class="logo__wrapper">
+        <img src="<%= image_path('logo_cookin.svg')%>" width="60px"alt="Logo du site cookin">
+        <a href="<%=root_path%>">Cookin</a>
+      </div>
+    </div>
+    <div class="search">
+      <div class="search__wrapper">
+        <div class="searchbar">
+          <input type="text" placeholder="Rechercher ...">
+        </div>
+      </div>
+    </div>
+    <div class="profile">
+      <div class="profile__wrapper">
+        <div class="masterclass_options">
+            <a href="#">Devenir chef</a>
+        </div>
+        <div class="profile_menu">
+          <button>
+            <img src="https://i.pravatar.cc/60" alt="Photo de profil et accès au menu déroulant">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="menu">
+  <div class="menu__wrapper">
+    <ul class="icon">
+      <li class="icon__button__wrapper">
+        <a href="#" class="icon__button">O</a>
+        <p>Recherche</p>
+      </li>
+      <li class="icon__button__wrapper">
+        <a href="#" class="icon__button"><img src="<%=image_path('logo_cookin.svg')%>" width="36px" alt=""></a>
+        <p>Mes cours</p>
+      </li>
+      <li class="icon__button__wrapper">
+        <a href="#" class="icon__button">O</a>
+        <p>Profil</p>
+      </li>
+    </ul>
+  </div>
+</div>

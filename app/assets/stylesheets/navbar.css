@@ -1,0 +1,133 @@
+.navbar {
+  width: 100%;
+  height: 80px;
+  border-top:1px solid rgb(235, 235, 235);
+  background-color: white;
+  box-shadow: 0px 5px 30px -5px rgba(204,204,204,0.75);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.navbar__wrapper{
+  display: flex;
+  align-items: center;
+}
+.logo__wrapper,.profile__wrapper{
+  height: 80px;
+}
+.logo{
+  flex: 1;
+}
+.logo__wrapper{
+  display: flex;
+  align-items: center;
+}
+.logo__wrapper a{
+  font-size: 1.7em;
+  line-height: 1em;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-left: .5em;
+}
+
+.search{
+  flex:1;
+}
+
+.search__wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.searchbar input{
+  border-radius: 42px;
+  box-shadow: 0 0 0 1px rgba(53, 72, 91, 0.07), 0 2px 2px rgba(0, 0, 0, 0.01),
+  0 4px 4px rgba(0, 0, 0, 0.02), 0 10px 8px rgba(0, 0, 0, 0.03),
+  0 15px 15px rgba(0, 0, 0, 0.03), 0 30px 30px rgba(0, 0, 0, 0.04),
+  0 70px 65px rgba(0, 0, 0, 0.05);
+}
+
+.profile{
+  flex:1;
+}
+
+.profile__wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.masterclass_options{
+  color: white;
+  background-color: var(--danger);
+  text-align: center;
+  padding: 0.5em 0.8em;
+  border-radius: 50px;
+  margin-right: 2.5em;
+}
+.masterclass_options a{
+  font-size: 1.7em;
+  line-height: 1em;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.profile_menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile_menu button img{
+  border-radius: 50%;
+}
+
+.menu{
+  display: none;
+}
+/* MENU SHOW WHEN SIZE IS EQUAL TO 768px AND NAVBAR IS HIDDEN*/
+@media screen and (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    border-top:1px solid rgb(235, 235, 235);
+    background-color: white;
+    box-shadow: 0px -5px 30px -5px rgba(204,204,204,0.75);
+
+  }
+  .menu__wrapper{
+    width: 100%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .icon{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .icon__button__wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+  }
+  .icon__button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    width: 36px;
+  }
+}
