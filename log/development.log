@@ -1300,3 +1300,102 @@ Processing by Chef::MasterclassesController#show as HTML
 Completed 200 OK in 9ms (Views: 9.0ms | Allocations: 21400)
 
 
+Started GET "/" for ::1 at 2023-03-22 13:42:59 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  [1m[36mMasterclass Load (0.2ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  ↳ app/views/masterclasses/index.html.erb:3
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 15.9ms | Allocations: 19519)
+  Rendered layout layouts/application.html.erb (Duration: 29.9ms | Allocations: 40242)
+Completed 200 OK in 36ms (Views: 30.9ms | ActiveRecord: 5.5ms | Allocations: 48965)
+
+
+Started GET "/" for ::1 at 2023-03-22 13:43:22 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  [1m[36mMasterclass Load (0.3ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  ↳ app/views/masterclasses/index.html.erb:5
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 726)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 7797)
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.3ms | Allocations: 8840)
+
+
+Started GET "/" for ::1 at 2023-03-22 13:43:46 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  [1m[36mMasterclass Load (0.2ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  ↳ app/views/masterclasses/index.html.erb:5
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 722)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 7793)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.2ms | Allocations: 8837)
+
+
+Started GET "/" for ::1 at 2023-03-22 13:44:13 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  [1m[36mMasterclass Load (0.2ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  ↳ app/views/masterclasses/index.html.erb:6
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 746)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 7819)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.2ms | Allocations: 8863)
+
+
+Started GET "/" for ::1 at 2023-03-22 13:44:25 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  [1m[36mMasterclass Load (0.3ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  ↳ app/views/masterclasses/index.html.erb:6
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 740)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 7821)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.3ms | Allocations: 8865)
+
+
+Started GET "/" for ::1 at 2023-03-22 13:44:56 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  [1m[36mMasterclass Load (0.4ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  ↳ app/views/masterclasses/index.html.erb:8
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 746)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 7815)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.4ms | Allocations: 8859)
+
+
+Started GET "/" for ::1 at 2023-03-22 13:45:35 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  [1m[36mMasterclass Load (0.2ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  ↳ app/views/masterclasses/index.html.erb:8
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 550)
+  Rendered layout layouts/application.html.erb (Duration: 36.9ms | Allocations: 11330)
+Completed 200 OK in 38ms (Views: 37.3ms | ActiveRecord: 0.2ms | Allocations: 11658)
+
+
+Started GET "/" for ::1 at 2023-03-22 13:46:41 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  [1m[36mMasterclass Load (0.2ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  ↳ app/views/masterclasses/index.html.erb:8
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 745)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 7823)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.2ms | Allocations: 8866)
+
+
+Started GET "/" for ::1 at 2023-03-22 13:46:59 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  [1m[36mMasterclass Load (0.2ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  ↳ app/views/masterclasses/index.html.erb:7
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 740)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 7890)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.2ms | Allocations: 8935)
+
+
