@@ -34,6 +34,10 @@ class User < ApplicationRecord
     where(first_name: first_name, last_name: last_name).first
   end
 
+  def self.chefs
+    where(is_chef: true).to_a
+  end
+
   private
 
   def time_validate

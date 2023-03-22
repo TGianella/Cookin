@@ -1,5 +1,7 @@
 class ChefsController < ApplicationController
-  def index; end
+  def index
+    @chefs = User.chefs
+  end
 
   def show; end
 
