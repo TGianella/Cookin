@@ -1,0 +1,2 @@
+module Chef::MasterclassesHelper
+end

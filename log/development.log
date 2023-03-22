@@ -800,3 +800,503 @@ Migrating to CreateReservations (20230321164824)
   [1m[36mRecipe Load (1.0ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "masterclasses_recipes" ON "recipes"."id" = "masterclasses_recipes"."recipe_id" INNER JOIN "masterclasses" ON "masterclasses_recipes"."masterclass_id" = "masterclasses"."id" INNER JOIN "meetings" ON "masterclasses"."id" = "meetings"."masterclass_id" INNER JOIN "reservations" ON "meetings"."id" = "reservations"."meeting_id" WHERE "reservations"."guest_id" = $1[0m  [["guest_id", 2]]
   [1m[36mMasterclassesRecipe Load (0.5ms)[0m  [1m[34mSELECT "masterclasses_recipes".* FROM "masterclasses_recipes" ORDER BY "masterclasses_recipes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mMasterclass Load (0.3ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses" WHERE "masterclasses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2023-03-22 11:00:28 +0100
+  
+ActiveRecord::NoDatabaseError (We could not find your database: cookin_development. Which can be found in the database configuration file located at config/database.yml.
+
+To resolve this issue:
+
+- Did you create the database for this app, or delete it? You may need to create your database.
+- Has the database name changed? Check your database.yml config has the correct database name.
+
+To create your database, run:
+
+        bin/rails db:create
+):
+  
+activerecord (7.0.4.3) lib/active_record/connection_adapters/postgresql_adapter.rb:81:in `rescue in new_client'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `public_send'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `new_connection'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:700:in `checkout_new_connection'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:679:in `try_to_checkout_new_connection'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:640:in `acquire_connection'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:341:in `checkout'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:181:in `connection'
+activerecord (7.0.4.3) lib/active_record/connection_adapters/abstract/connection_handler.rb:211:in `retrieve_connection'
+activerecord (7.0.4.3) lib/active_record/connection_handling.rb:313:in `retrieve_connection'
+activerecord (7.0.4.3) lib/active_record/connection_handling.rb:280:in `connection'
+activerecord (7.0.4.3) lib/active_record/migration.rb:613:in `connection'
+activerecord (7.0.4.3) lib/active_record/migration.rb:608:in `build_watcher'
+activerecord (7.0.4.3) lib/active_record/migration.rb:590:in `block in call'
+activerecord (7.0.4.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.4.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (64.1ms)[0m  [1m[35mCREATE DATABASE "cookin_development" ENCODING = 'unicode'[0m
+  [1m[35m (29.8ms)[0m  [1m[35mCREATE DATABASE "cookin_test" ENCODING = 'unicode'[0m
+Started GET "/" for ::1 at 2023-03-22 11:00:38 +0100
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 6 pending migrations:
+
+20230321092851_devise_create_users.rb
+20230321143626_create_masterclasses.rb
+20230321144106_create_recipes.rb
+20230321152153_create_masterclasses_recipes.rb
+20230321153406_create_meetings.rb
+20230321164824_create_reservations.rb
+
+
+):
+  
+activerecord (7.0.4.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.4.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.4.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.4.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.4.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.4.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6870934894677600600)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20230321092851)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "city" character varying, "first_name" character varying, "last_name" character varying, "birth_date" timestamp(6), "zip_code" character varying, "phone_number" character varying, "is_admin" boolean DEFAULT FALSE NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230321092851"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMasterclasses (20230321143626)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "masterclasses" ("id" bigserial primary key, "title" character varying, "description" text, "duration" integer, "price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "chef_id" bigint)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_masterclasses_on_chef_id" ON "masterclasses" ("chef_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230321143626"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRecipes (20230321144106)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" bigserial primary key, "title" character varying, "content" text, "duration" integer, "difficulty" integer, "chef_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_recipes_on_chef_id" ON "recipes" ("chef_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230321144106"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMasterclassesRecipes (20230321152153)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "masterclasses_recipes" ("id" bigserial primary key, "recipe_id" bigint, "masterclass_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_masterclasses_recipes_on_recipe_id" ON "masterclasses_recipes" ("recipe_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_masterclasses_recipes_on_masterclass_id" ON "masterclasses_recipes" ("masterclass_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230321152153"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMeetings (20230321153406)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "meetings" ("id" bigserial primary key, "masterclass_id" bigint, "start_date" timestamp(6), "zip_code" character varying, "capacity" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_meetings_on_masterclass_id" ON "meetings" ("masterclass_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230321153406"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReservations (20230321164824)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "guest_id" bigint, "meeting_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_guest_id" ON "reservations" ("guest_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_meeting_id" ON "reservations" ("meeting_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230321164824"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-22 10:00:44.264638"], ["updated_at", "2023-03-22 10:00:44.264638"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6870934894677600600)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-03-22 11:00:45 +0100
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 125)
+  Rendered layout layouts/application.html.erb (Duration: 185.6ms | Allocations: 146096)
+Completed 200 OK in 201ms (Views: 186.5ms | ActiveRecord: 0.0ms | Allocations: 150389)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mMasterclass Load (0.2ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses"[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings"[0m
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  [1m[36mMasterclassesRecipe Load (0.2ms)[0m  [1m[34mSELECT "masterclasses_recipes".* FROM "masterclasses_recipes"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("city", "first_name", "last_name", "birth_date", "zip_code", "phone_number", "is_admin", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["city", nil], ["first_name", nil], ["last_name", nil], ["birth_date", nil], ["zip_code", nil], ["phone_number", nil], ["is_admin", false], ["email", "test@test.test"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-03-22 10:01:38.343719"], ["updated_at", "2023-03-22 10:01:38.343719"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.fr"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("city", "first_name", "last_name", "birth_date", "zip_code", "phone_number", "is_admin", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["city", nil], ["first_name", nil], ["last_name", nil], ["birth_date", nil], ["zip_code", nil], ["phone_number", nil], ["is_admin", false], ["email", "test@test.fr"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-03-22 10:01:38.517765"], ["updated_at", "2023-03-22 10:01:38.517765"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "content", "duration", "difficulty", "chef_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", nil], ["content", nil], ["duration", nil], ["difficulty", nil], ["chef_id", 1], ["created_at", "2023-03-22 10:01:38.530132"], ["updated_at", "2023-03-22 10:01:38.530132"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMasterclass Create (0.3ms)[0m  [1m[32mINSERT INTO "masterclasses" ("title", "description", "duration", "price", "created_at", "updated_at", "chef_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", nil], ["description", nil], ["duration", nil], ["price", nil], ["created_at", "2023-03-22 10:01:38.539151"], ["updated_at", "2023-03-22 10:01:38.539151"], ["chef_id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMasterclassesRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "masterclasses_recipes" ("recipe_id", "masterclass_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["recipe_id", 1], ["masterclass_id", 1], ["created_at", "2023-03-22 10:01:38.563313"], ["updated_at", "2023-03-22 10:01:38.563313"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMasterclass Load (0.1ms)[0m  [1m[34mSELECT "masterclasses".* FROM "masterclasses" ORDER BY "masterclasses"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("masterclass_id", "start_date", "zip_code", "capacity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["masterclass_id", 1], ["start_date", nil], ["zip_code", nil], ["capacity", nil], ["created_at", "2023-03-22 10:01:38.572268"], ["updated_at", "2023-03-22 10:01:38.572268"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMeeting Load (0.1ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" ORDER BY "meetings"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mReservation Create (0.3ms)[0m  [1m[32mINSERT INTO "reservations" ("guest_id", "meeting_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 2], ["meeting_id", 1], ["created_at", "2023-03-22 10:01:38.582023"], ["updated_at", "2023-03-22 10:01:38.582023"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2023-03-22 11:01:40 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 6896)
+Completed 200 OK in 6ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 7217)
+
+
+Started GET "/guest/1/recipes/1" for ::1 at 2023-03-22 11:01:53 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/guest/1/recipes/1"):
+  
+Started GET "/guest/1/recipe/1" for ::1 at 2023-03-22 11:02:01 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/guest/1/recipe/1"):
+  
+Started GET "/guest/recipes/1" for ::1 at 2023-03-22 11:02:27 +0100
+Processing by Guest::RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering guest/recipes/show.html.erb within layouts/application
+  Rendered guest/recipes/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 6953)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 7839)
+
+
+Started GET "/guest/recipes" for ::1 at 2023-03-22 11:02:51 +0100
+Processing by Guest::RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering guest/recipes/index.html.erb within layouts/application
+  Rendered guest/recipes/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 118)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 6950)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.0ms | Allocations: 7326)
+
+
+Started GET "/recipes" for ::1 at 2023-03-22 11:03:17 +0100
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 6940)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 7820)
+
+
+Started GET "/chef/recipes" for ::1 at 2023-03-22 11:03:26 +0100
+Processing by Chef::RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chef/recipes/index.html.erb within layouts/application
+  Rendered chef/recipes/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 6930)
+Completed 200 OK in 6ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 7816)
+
+
+Started GET "/chef/recipes" for ::1 at 2023-03-22 11:12:03 +0100
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/chef/recipes"):
+  
+Started GET "/" for ::1 at 2023-03-22 11:12:12 +0100
+Processing by MasterclassesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering masterclasses/index.html.erb within layouts/application
+  Rendered masterclasses/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 122)
+  Rendered layout layouts/application.html.erb (Duration: 38.4ms | Allocations: 52543)
+Completed 200 OK in 42ms (Views: 39.5ms | ActiveRecord: 0.0ms | Allocations: 56437)
+
+
+Started GET "/chefs/1/recipes" for ::1 at 2023-03-22 11:12:22 +0100
+Processing by Chef::RecipesController#index as HTML
+  Parameters: {"chef_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering chef/recipes/index.html.erb within layouts/application
+  Rendered chef/recipes/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 6931)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 7822)
+
+
+Started GET "/guest/1/recipes" for ::1 at 2023-03-22 11:12:38 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/guest/1/recipes"):
+  
+Started GET "/guest/recipes" for ::1 at 2023-03-22 11:12:42 +0100
+Processing by Guest::RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering guest/recipes/index.html.erb within layouts/application
+  Rendered guest/recipes/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 7029)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 7917)
+
+
+Started GET "/guest/reservations" for ::1 at 2023-03-22 11:13:28 +0100
+Processing by Guest::ReservationsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering guest/reservations/index.html.erb within layouts/application
+  Rendered guest/reservations/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 6925)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 7822)
+
+
+Started GET "/guest/reservations/1" for ::1 at 2023-03-22 11:13:35 +0100
+Processing by Guest::ReservationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering guest/reservations/show.html.erb within layouts/application
+  Rendered guest/reservations/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 118)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 6865)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 7246)
+
+
+Started GET "/chef/meetings" for ::1 at 2023-03-22 11:13:49 +0100
+Processing by Chef::MeetingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chef/meetings/index.html.erb within layouts/application
+  Rendered chef/meetings/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 6944)
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.0ms | Allocations: 7831)
+
+
+Started GET "/meetings" for ::1 at 2023-03-22 11:16:45 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/meetings"):
+  
+Started GET "/meetings" for ::1 at 2023-03-22 11:16:57 +0100
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/meetings"):
+  
+Started GET "/masterclasses/1/meetings" for ::1 at 2023-03-22 11:17:22 +0100
+  
+ActionController::RoutingError (uninitialized constant MeetingsController):
+  
+Started GET "/chefs/1/recipes" for ::1 at 2023-03-22 11:18:39 +0100
+Processing by Chef::RecipesController#index as HTML
+  Parameters: {"chef_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering chef/recipes/index.html.erb within layouts/application
+  Rendered chef/recipes/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 127)
+  Rendered layout layouts/application.html.erb (Duration: 44.3ms | Allocations: 52309)
+Completed 200 OK in 49ms (Views: 45.7ms | ActiveRecord: 0.0ms | Allocations: 56264)
+
+
+Started GET "/chefs/1/recipes/1" for ::1 at 2023-03-22 11:18:43 +0100
+Processing by Chef::RecipesController#show as HTML
+  Parameters: {"chef_id"=>"1", "id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering chef/recipes/show.html.erb within layouts/application
+  Rendered chef/recipes/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 118)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 6847)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 7229)
+
+
+Started GET "/masterclasses/1/meetings" for ::1 at 2023-03-22 11:18:55 +0100
+Processing by MeetingsController#index as HTML
+  Parameters: {"masterclass_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering meetings/index.html.erb within layouts/application
+  Rendered meetings/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 6937)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 7821)
+
+
+Started GET "/masterclasses/1/meetings" for ::1 at 2023-03-22 11:24:42 +0100
+Processing by MeetingsController#index as HTML
+  Parameters: {"masterclass_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering meetings/index.html.erb within layouts/application
+  Rendered meetings/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 20477)
+Completed 200 OK in 10ms (Views: 10.1ms | Allocations: 21225)
+
+
+Started GET "/users" for ::1 at 2023-03-22 11:24:46 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/sign_in" for ::1 at 2023-03-22 11:25:00 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/theo/.rvm/gems/ruby-3.0.0/gems/devise-4.9.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theo/.rvm/gems/ruby-3.0.0/gems/devise-4.9.0/app/views/devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 939)
+  Rendered /home/theo/.rvm/gems/ruby-3.0.0/gems/devise-4.9.0/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 805.3ms | Allocations: 1349776)
+  Rendered layout layouts/application.html.erb (Duration: 809.2ms | Allocations: 1356491)
+Completed 200 OK in 833ms (Views: 810.6ms | ActiveRecord: 5.7ms | Allocations: 1382375)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jean.jacques@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("city", "first_name", "last_name", "birth_date", "zip_code", "phone_number", "is_admin", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["city", nil], ["first_name", "Jean"], ["last_name", "Jacques"], ["birth_date", nil], ["zip_code", nil], ["phone_number", nil], ["is_admin", false], ["email", "jean.jacques@test.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-03-22 10:27:41.956118"], ["updated_at", "2023-03-22 10:27:41.956118"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/chefs/jean_jacques" for ::1 at 2023-03-22 11:27:56 +0100
+Processing by ChefsController#show as HTML
+  Parameters: {"name"=>"jean_jacques"}
+  Rendering layout layouts/application.html.erb
+  Rendering chefs/show.html.erb within layouts/application
+  Rendered chefs/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 124)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 20789)
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 21676)
+
+
+Started GET "/chefs/jean_jacques/recipes" for ::1 at 2023-03-22 11:28:05 +0100
+Processing by Chef::RecipesController#index as HTML
+  Parameters: {"chef_name"=>"jean_jacques"}
+  Rendering layout layouts/application.html.erb
+  Rendering chef/recipes/index.html.erb within layouts/application
+  Rendered chef/recipes/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 6828)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 7579)
+
+
+Started GET "/chefs/jean_jacques/masterclasses" for ::1 at 2023-03-22 11:30:14 +0100
+Processing by Chef::MasterclassesController#index as HTML
+  Parameters: {"chef_name"=>"jean_jacques"}
+  Rendering layout layouts/application.html.erb
+  Rendering chef/masterclasses/index.html.erb within layouts/application
+  Rendered chef/masterclasses/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 6940)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 7833)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRecipe Create (0.6ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "content", "duration", "difficulty", "chef_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Le gros cassoulet qui tache"], ["content", nil], ["duration", nil], ["difficulty", nil], ["chef_id", 3], ["created_at", "2023-03-22 10:37:10.520220"], ["updated_at", "2023-03-22 10:37:10.520220"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRecipe Update (6.7ms)[0m  [1m[33mUPDATE "recipes" SET "title" = $1, "updated_at" = $2 WHERE "recipes"."id" = $3[0m  [["title", "cassoulet"], ["updated_at", "2023-03-22 10:37:45.484692"], ["id", 2]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/chefs/jean_jacques/recipes/cassoulet" for ::1 at 2023-03-22 11:37:50 +0100
+Processing by Chef::RecipesController#show as HTML
+  Parameters: {"chef_name"=>"jean_jacques", "title"=>"cassoulet"}
+  Rendering layout layouts/application.html.erb
+  Rendering chef/recipes/show.html.erb within layouts/application
+  Rendered chef/recipes/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 20489)
+Completed 200 OK in 10ms (Views: 9.4ms | Allocations: 21243)
+
+
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRecipe Update (0.4ms)[0m  [1m[33mUPDATE "recipes" SET "title" = $1, "updated_at" = $2 WHERE "recipes"."id" = $3[0m  [["title", "Le Cassoulet"], ["updated_at", "2023-03-22 10:39:06.457606"], ["id", 2]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/chefs/jean_jacques/recipes/le_cassoulet" for ::1 at 2023-03-22 11:39:12 +0100
+Processing by Chef::RecipesController#show as HTML
+  Parameters: {"chef_name"=>"jean_jacques", "title"=>"le_cassoulet"}
+  Rendering layout layouts/application.html.erb
+  Rendering chef/recipes/show.html.erb within layouts/application
+  Rendered chef/recipes/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 20477)
+Completed 200 OK in 9ms (Views: 9.0ms | Allocations: 21231)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMasterclass Create (0.3ms)[0m  [1m[32mINSERT INTO "masterclasses" ("title", "description", "duration", "price", "created_at", "updated_at", "chef_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Un bon cassoulet"], ["description", nil], ["duration", nil], ["price", nil], ["created_at", "2023-03-22 10:42:42.362819"], ["updated_at", "2023-03-22 10:42:42.362819"], ["chef_id", 3]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/chefs/jean_jacques/masterclasses/un_bon_cassoulet" for ::1 at 2023-03-22 11:42:54 +0100
+Processing by Chef::MasterclassesController#show as HTML
+  Parameters: {"chef_name"=>"jean_jacques", "title"=>"un_bon_cassoulet"}
+  Rendering layout layouts/application.html.erb
+  Rendering chef/masterclasses/show.html.erb within layouts/application
+  Rendered chef/masterclasses/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 121)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 20591)
+Completed 200 OK in 9ms (Views: 9.0ms | Allocations: 21400)
+
+
