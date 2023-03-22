@@ -3,7 +3,10 @@ class MasterclassesController < ApplicationController
     @masterclasses = Masterclass.all
   end
 
-  def show; end
+  def show
+    @masterclass = Masterclass.find_by(title: params[:title])
+    @recipes = @masterclass.recipes
+  end
 
   def new
     @masterclass = Masterclass.new
