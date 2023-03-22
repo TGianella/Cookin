@@ -57,10 +57,12 @@
   height: 43px;
   color: white;
   background-color: var(--danger);
+  outline: 2px var(--danger) solid;
   text-align: center;
   padding: 0.5em 1.3em;
   border-radius: 50px;
   margin-right: 4.5em;
+  transition: 0.3s ease;
 }
 .masterclass_options a{
   font-size: 1.7em;
@@ -69,16 +71,25 @@
   letter-spacing: 1px;
 }
 
+.masterclass_options:hover{
+  background-color: transparent;
+  color: var(--danger);
+  outline: 2px var(--danger) solid;
+}
+
 .profile_menu{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.profile_menu button img{
+
+.profile_menu button img, .profile_menu button i{
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  border: 2px var(--success) solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .collapse_profile{
@@ -91,7 +102,6 @@
   background-color: white;
   box-shadow: 0px 5px 15px -5px rgba(204,204,204,0.75);
   border-radius: .5em;
-
   display: none;
 }
 .collapse_profile--active{
@@ -114,10 +124,11 @@
 
 }
 
-.collapse__login a, .collapse__static_pages a,.collapse__logged a{
+.collapse__login a, .collapse__static_pages a,.collapse__logged a, .disconnect-button{
   display: flex;
   align-items: center;
   height: 50px;
+  width: 100%;
   padding-left: 1em;
 }
 .collapse__login a:hover, .collapse__static_pages a:hover,.collapse__logged a:hover{
@@ -127,7 +138,7 @@
 .collapse__login a:nth-child(1){
   font-weight: bold;
 }
-.collapse__static_pages a:nth-last-child(1):hover{
+.disconnect-button:hover{
   border-radius: 0 0 .5em .5em ;
   color: white;
   background-color: rgba(211, 0, 0, 0.822);
@@ -138,13 +149,27 @@
     display: none;
   }
 }
+
+@media screen and (max-width:1024px){
+  .logo__wrapper a{
+    display: none;
+  }
+}
 /* MENU SHOW WHEN SIZE IS EQUAL TO 768px AND NAVBAR IS HIDDEN*/
 .menu{
   display: none;
 }
 @media screen and (max-width: 768px) {
-  .navbar {
+  .profile, .logo {
     display: none;
+  }
+
+  .navbar{
+    visibility: hidden;
+  }
+
+  .navbar--collapse{
+   visibility: visible;
   }
 
   .menu {

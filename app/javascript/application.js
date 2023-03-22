@@ -10,7 +10,12 @@ collapseButton.addEventListener('click', function(){
 
 window.addEventListener('click', function(e){
   console.log(e.target.id)
-  if(e.target.localName !== 'img' && e.target.id !== 'collapse_profile' ){
+  if(e.target.localName !== 'img' && e.target.localName !== 'i' && e.target.id  !== 'collapse_profile' ){
     collapse_profile.classList.remove('collapse_profile--active')
   }
+})
+
+let collapseNavbar = document.querySelector('.navbar')
+search_button.addEventListener('click', function(){
+  collapseNavbar.classList.toggle('navbar--collapse')
 })
