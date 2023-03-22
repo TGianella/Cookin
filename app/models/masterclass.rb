@@ -8,8 +8,6 @@ class Masterclass < ApplicationRecord
   has_many :reservations, through: :meetings
   has_many :guests, through: :reservations, class_name: 'User'
 
-  private
-
   def to_param
     title
   end
