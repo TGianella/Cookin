@@ -7,16 +7,19 @@
   display: flex;
   justify-content: center;
   align-content: center;
+
 }
 
 .navbar__wrapper{
   display: flex;
   align-items: center;
+  padding: 0 2em;
+  position: relative;
 }
 .logo__wrapper,.profile__wrapper{
   height: 80px;
 }
-.logo{
+.logo,.search,.profile{
   flex: 1;
 }
 .logo__wrapper{
@@ -31,9 +34,6 @@
   margin-left: .5em;
 }
 
-.search{
-  flex:1;
-}
 
 .search__wrapper{
   display: flex;
@@ -41,15 +41,11 @@
 }
 
 .searchbar input{
-  border-radius: 42px;
+  border-radius: 50px;
   box-shadow: 0 0 0 1px rgba(53, 72, 91, 0.07), 0 2px 2px rgba(0, 0, 0, 0.01),
   0 4px 4px rgba(0, 0, 0, 0.02), 0 10px 8px rgba(0, 0, 0, 0.03),
   0 15px 15px rgba(0, 0, 0, 0.03), 0 30px 30px rgba(0, 0, 0, 0.04),
   0 70px 65px rgba(0, 0, 0, 0.05);
-}
-
-.profile{
-  flex:1;
 }
 
 .profile__wrapper{
@@ -58,12 +54,13 @@
   justify-content: flex-end;
 }
 .masterclass_options{
+  height: 43px;
   color: white;
   background-color: var(--danger);
   text-align: center;
-  padding: 0.5em 0.8em;
+  padding: 0.5em 1.3em;
   border-radius: 50px;
-  margin-right: 2.5em;
+  margin-right: 4.5em;
 }
 .masterclass_options a{
   font-size: 1.7em;
@@ -79,12 +76,34 @@
 }
 .profile_menu button img{
   border-radius: 50%;
+  border: 2px var(--success) solid;
 }
 
+.collapse_profile{
+  background-color: blue;
+  width: 245px ;
+  height: 350px;
+  position: absolute;
+  right: 2em;
+  top: 80px;
+  display: none;
+}
+.collapse_profile--active{
+  display: block;
+}
+
+
+
+
+@media screen and (max-width:1280px){
+  .masterclass_options{
+    display: none;
+  }
+}
+/* MENU SHOW WHEN SIZE IS EQUAL TO 768px AND NAVBAR IS HIDDEN*/
 .menu{
   display: none;
 }
-/* MENU SHOW WHEN SIZE IS EQUAL TO 768px AND NAVBAR IS HIDDEN*/
 @media screen and (max-width: 768px) {
   .navbar {
     display: none;
