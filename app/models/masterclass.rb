@@ -11,6 +11,6 @@ class Masterclass < ApplicationRecord
   private
 
   def to_param
-    title.gsub(' ', '_').downcase
+    title
   end
 end
