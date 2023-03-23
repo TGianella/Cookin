@@ -1,0 +1,48 @@
+/* *{
+  outline: 1px red solid;
+} */
+
+.masterclass {
+  display: flex;
+  flex-direction: column;
+}
+
+.masterclass__header {
+  display: flex;
+  flex-direction: column;
+  margin: 5dvh 0;
+}
+
+.masterclass_informations {
+  display: flex;
+  justify-content: space-between;
+}
+.notice_commentaries {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notice_commentaries p {
+  margin-right: 1em;
+}
+
+.buttons--row button:first-child {
+  transition: 0.2s ease;
+  margin-right: 1em;
+}
+.buttons--row button:first-child:hover {
+  color: rgb(255, 83, 83);
+}
+
+.masterclass__body {
+  display: flex;
+}
+.masterclass__body img {
+  aspect-ratio: 1/1;
+  width: 400px;
+  border-radius: 0.5em;
+}
+
+.masterclass__body > div{
+  flex: 1;
+}

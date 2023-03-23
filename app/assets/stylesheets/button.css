@@ -79,7 +79,11 @@
   color: var(--white);
 }
 /***** BUTTONS GROUP ****/
-.buttons {
+.buttons--column {
   display: flex;
   flex-direction: column;
+}
+
+.buttons--row{
+  display: flex;
 }

@@ -1,0 +1,40 @@
+.profile_badge{
+  display: flex;
+  height: 125px;
+  min-width: fit-content;
+  max-width: fit-content;
+  border-radius: .5em 125px  125px .5em ;
+  border: 1px lightgray solid;
+  align-items: center;
+}
+.profile_badge__image {
+  width: 100px;
+  height: 100px;
+  margin: 0 0.8em;
+}
+.profile_badge__image img{
+  border-radius: 50%;
+}
+
+.profile_badge__section{
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  margin-left: 1em;
+  padding-right: 3em;
+}
+
+.profile_badge__section h2{
+  align-self: flex-start;
+}
+.profile_badge__notice{
+  display: flex;
+}
+/* .profile_badge__notice p, .profile_badge__section button{
+  margin-left: 1em ;
+} */
+.profile_badge__section button{
+  margin-top: 0.2em;
+}
+

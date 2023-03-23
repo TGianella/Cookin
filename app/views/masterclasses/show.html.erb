@@ -1,19 +1,39 @@
-<div>
-  <h1 class="font-bold text-4xl"><%= @masterclass.title %></h1>
-</div>
+<main class="container">
+  <div class="masterclass">
+    <div class="masterclass__header">
+      <h1 class="font-bold text-4xl"><%= @masterclass.title %></h1>
+      <div class="masterclass_informations">
+        <div class="notice_commentaries">
+          <p>
+            <i class="fas fa-star"></i>
+            4,5
+          </p>
+          <p>20 commentaires</p>
+          <p>Tours, Centre-Val de Loire, France</p>
+        </div>
+        <div class="buttons--row">
+          <button><i class="far fa-heart"></i> Enregistrer</button>
+          <button class="button--s button--primary">Participer</button>
+        </div>
+      </div>
+    </div>
+    <div class="masterclass__body">
+      <div class="masterclass_section--1">
+        <img src="https://picsum.photos/1000" alt="" />   
+      </div>
+      <div class="masterclass_section--2">
+        <%= render partial:'layouts/profilebadge', locals:{masterclass: @masterclass} %>
+        <h2>Durée : <%= @masterclass.duration %> minutes</h2> 
+        <div>Prix par personne : <%= @masterclass.price %></div>
+    <h3 class="font-bold text-2xl">Recettes</h3>
+    <% @recipes.each do |recipe| %> <%= link_to "#{recipe.title}",
+    recipe_path(recipe) %> <% end %>
+      </div>
+      <div class="masterclass_section--3">
+        <div>Description : <%= @masterclass.description %></div>
+      </div>
+    </div>
 
-<div>
-  Description : <%= @masterclass.description %>
-</div>
-<div>
-  Durée : <%= @masterclass.duration %>
-</div>
-<div>
-  Prix par personne : <%= @masterclass.price %>
-</div>
 
-<h3 class="font-bold text-2xl">Recettes</h2>
-
-<% @recipes.each do |recipe| %>
-  <%= link_to "#{recipe.title}", recipe_path(recipe) %>
-<% end %>
+  </div>
+</main>
