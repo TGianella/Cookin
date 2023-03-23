@@ -1,7 +1,7 @@
 <main class="container">
   <div class="masterclass">
     <div class="masterclass__header">
-      <h1 class="font-bold text-4xl"><%= @masterclass.title %></h1>
+      <h1><%= @masterclass.title %></h1>
       <div class="masterclass_informations">
         <div class="notice_commentaries">
           <p>
@@ -23,14 +23,15 @@
       </div>
       <div class="masterclass_section--2">
         <%= render partial:'layouts/profilebadge', locals:{masterclass: @masterclass} %>
-        <h2>Durée : <%= @masterclass.duration %> minutes</h2> 
-        <div>Prix par personne : <%= @masterclass.price %></div>
-    <h3 class="font-bold text-2xl">Recettes</h3>
-    <% @recipes.each do |recipe| %> <%= link_to "#{recipe.title}",
-    recipe_path(recipe) %> <% end %>
+          <div><%= @masterclass.price %> € /personnes</div>
+          <h3 class="font-bold text-2xl">Recettes</h3>
+          <% @recipes.each do |recipe| %> <%= link_to "#{recipe.title}",
+            recipe_path(recipe) %> 
+          <% end %>
       </div>
       <div class="masterclass_section--3">
         <div>Description : <%= @masterclass.description %></div>
+        <h2>Durée : <%= @masterclass.duration %> minutes</h2> 
       </div>
     </div>
 

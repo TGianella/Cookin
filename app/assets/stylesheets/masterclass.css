@@ -13,6 +13,11 @@
   margin: 5dvh 0;
 }
 
+.masterclass__header h1 {
+  font-size: 3em;
+  font-weight: 600;
+}
+
 .masterclass_informations {
   display: flex;
   justify-content: space-between;
@@ -43,6 +48,9 @@
   border-radius: 0.5em;
 }
 
-.masterclass__body > div{
+.masterclass__body > div {
   flex: 1;
+}
+.masterclass_section--2 {
+  border: 1px lightgray solid;
 }
