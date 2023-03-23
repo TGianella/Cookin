@@ -1,4 +1,40 @@
-<div>
-  <h1 class="font-bold text-4xl">Chef::Recipes#edit</h1>
-  <p>Find me in app/views/chef/recipes/edit.html.erb</p>
-</div>
+<% if current_user %>
+  <% if current_user.id == @recipe.chef_id %>
+    <div>
+      <h1 class="font-bold text-4xl">Editer la recette</h1>
+    </div>
+
+    <div class="flex-column">
+      <%= form_with model: @recipe do |form| %>
+
+        <div>
+          <%= form.label "Titre" %>
+          <%= form.text_field :title %>
+        </div>
+
+        <div>
+          <%= form.label "Description" %>
+          <%= form.text_area :content %>
+        </div>
+
+        <div>
+          <%= form.label "Durée" %>
+          <%= form.number_field :duration, in: 5..180, step: 5 %>
+        </div>
+
+        <div>
+          <%= form.label "Difficulté" %>
+          <%= form.select :difficulty, ['facile', 'moyen', 'difficile'] %>
+        </div>
+
+        <div>
+          <%= form.submit "Modifier ma recette" %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <h1>Vous n'etes pas le créateur de cette recette</h1>
+  <% end %>
+<% else %>
+  <%= link_to 'Connexion', new_user_session_path %>
+<% end %>

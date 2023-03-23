@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find_by(title: params[:title])
+    find_recipe
   end
 
   def new
@@ -24,9 +24,38 @@ class RecipesController < ApplicationController
     end
   end
 
+  def update
+    find_recipe
+    if @recipe.chef_id == current_user.id
+      @recipe.update(recipe_params)
+      if @recipe.save!
+        flash[:success] = 'Recette modifiée !'
+        redirect_to recipe_path(@recipe)
+      else
+        flash[:alert] = "La recette n'a pas pu être modifiée !"
+        render :new
+      end
+    else
+      flash[:alert] = "Vous n'êtes pas le propriétaire de cette recette"
+      render :new
+    end
+  end
+
+  def destroy
+    find_recipe
+    @recipe.destroy
+    flash[:success] = 'Recette supprimée !'
+    redirect_to chef_path(current_user)
+  end
+
   private
 
   def recipe_params
     params.require(:recipe).permit(:title, :content, :duration, :difficulty)
   end
+
+  def find_recipe
+    @recipe = Recipe.find_by(title: params[:title])
+  end
+
 end
