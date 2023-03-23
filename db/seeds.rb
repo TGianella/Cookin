@@ -22,8 +22,8 @@ User.create(first_name: 'Alain',
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
 20.times do |_|
-  user = User.new(first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name,
+  user = User.new(first_name: Faker::Name.unique.first_name,
+                  last_name: Faker::Name.unique.last_name,
                   password: 'foobar',
                   is_chef: false,
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
@@ -33,8 +33,8 @@ User.create(first_name: 'Alain',
 end
 
 10.times do |_|
-  user = User.new(first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name,
+  user = User.new(first_name: Faker::Name.unique.first_name,
+                  last_name: Faker::Name.unique.last_name,
                   password: 'foobar',
                   is_chef: true,
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
@@ -44,8 +44,8 @@ end
 end
 
 User.chefs.each do |chef|
-  5.times do |_|
-    Recipe.create(title: Faker::Food.dish,
+  2.times do |_|
+    Recipe.create(title: Faker::Food.unique.dish,
                   content: Faker::Lorem.paragraph(sentence_count: 50),
                   duration: Faker::Number.within(range: 5..180),
                   difficulty: %w[facile moyen difficile].sample,
@@ -53,7 +53,7 @@ User.chefs.each do |chef|
   end
 
   3.times do |_|
-    masterclass = Masterclass.new(title: Faker::Restaurant.type,
+    masterclass = Masterclass.new(title: Faker::Restaurant.unique.type,
                                   description: Faker::Lorem.paragraph(sentence_count: 20),
                                   duration: Faker::Number.within(range: 60..300),
                                   price: Faker::Number.within(range: 1..100),

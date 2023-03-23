@@ -3,6 +3,9 @@
 </div>
 
 <div>
+  Chef : <%= @masterclass.chef.full_name %>
+</div>
+<div>
   Description : <%= @masterclass.description %>
 </div>
 <div>
@@ -16,4 +19,10 @@
 
 <% @recipes.each do |recipe| %>
   <%= link_to "#{recipe.title}", recipe_path(recipe) %>
+<% end %>
+<% if current_user%>
+  <% if current_user.is_chef && @masterclass.chef_id == current_user.id %>
+  <%= link_to "Editer la masterclass", edit_chef_masterclass_path(@masterclass) %>
+  <%= button_to "Supprimer ma masterclass", masterclass_path(@masterclass), method: :delete, class: "button--danger" %>
+  <% end %>
 <% end %>

@@ -6,9 +6,9 @@ class Chef::RecipesController < ApplicationController
 
   def show; end
 
-  def edit; end
-
-  def update; end
+  def edit
+    @recipe = Recipe.find_by(title: params[:title])
+  end
 
   def destroy; end
 end
