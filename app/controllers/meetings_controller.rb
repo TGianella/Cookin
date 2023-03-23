@@ -4,5 +4,7 @@ class MeetingsController < ApplicationController
     @meetings = @masterclass.meetings
   end
 
-  def show; end
+  def show
+    @meeting = Meeting.find(params[:id])
+  end
 end
