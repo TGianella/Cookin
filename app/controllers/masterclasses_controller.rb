@@ -4,7 +4,7 @@ class MasterclassesController < ApplicationController
   end
 
   def show
-    @masterclass = Masterclass.find_by(title: params[:title])
+    find_masterclass
     @recipes = @masterclass.recipes
   end
 
@@ -26,15 +26,38 @@ class MasterclassesController < ApplicationController
     end
   end
 
-  def edit; end
 
-  def update; end
+  def update
+    find_masterclass
+    if @masterclass.chef_id == current_user.id
+      @masterclass.update(masterclass_params)
+      if @masterclass.save!
+        flash[:success] = 'Recette modifiée !'
+        redirect_to masterclass_path(@masterclass)
+      else
+        flash[:alert] = "La recette n'a pas pu être modifiée !"
+        render :new
+      end
+    else
+      flash[:alert] = "Vous n'êtes pas le propriétaire de cette recette"
+      render :new
+    end
+  end
 
-  def destroy; end
+  def destroy
+    find_masterclass
+    @masterclass.destroy
+    flash[:success] = 'Masterclass supprimée !'
+    redirect_to chef_path(current_user)
+  end
 
   private
 
   def masterclass_params
     params.require(:masterclass).permit(:title, :description, :duration, :price, recipe_ids: [])
+  end
+
+  def find_masterclass
+    @masterclass = Masterclass.find_by(title: params[:title])
   end
 end

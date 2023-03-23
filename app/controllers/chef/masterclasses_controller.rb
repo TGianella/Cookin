@@ -5,4 +5,9 @@ class Chef::MasterclassesController < ApplicationController
   end
 
   def show; end
+
+  def edit
+    @masterclass = Masterclass.find_by(title: params[:title])
+    @recipes = Recipe.where(chef_id: current_user.id)
+  end
 end
