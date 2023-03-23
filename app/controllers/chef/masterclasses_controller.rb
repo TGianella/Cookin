@@ -8,6 +8,8 @@ class Chef::MasterclassesController < ApplicationController
 
   def edit
     @masterclass = Masterclass.find_by(title: params[:title])
-    @recipes = Recipe.where(chef_id: current_user.id)
+    if current_user
+      @recipes = Recipe.where(chef_id: current_user.id)
+    end
   end
 end

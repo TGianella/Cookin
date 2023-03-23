@@ -32,14 +32,14 @@ class MasterclassesController < ApplicationController
     if @masterclass.chef_id == current_user.id
       @masterclass.update(masterclass_params)
       if @masterclass.save!
-        flash[:success] = 'Recette modifiée !'
+        flash[:success] = 'Mastrclass modifiée !'
         redirect_to masterclass_path(@masterclass)
       else
-        flash[:alert] = "La recette n'a pas pu être modifiée !"
+        flash[:alert] = "La masterclass n'a pas pu être modifiée !"
         render :new
       end
     else
-      flash[:alert] = "Vous n'êtes pas le propriétaire de cette recette"
+      flash[:alert] = "Vous n'êtes pas le propriétaire de cette masterclass"
       render :new
     end
   end
