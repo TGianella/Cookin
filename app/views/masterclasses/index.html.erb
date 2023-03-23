@@ -1,9 +1,5 @@
-<div>
-  <h1 class="font-bold text-4xl"> Toutes les masterclasses du site </h1>
-</div>
-
-<div>
+<div class="cards">
   <% @masterclasses.each do |masterclass| %>
-    <div> <%= link_to "#{masterclass.title}", masterclass_path(masterclass) %> </div>
+  <%= render partial:'masterclasses/card', locals:{masterclass: masterclass} %>
   <% end %>
 </div>
