@@ -4,11 +4,12 @@ class Chef::RecipesController < ApplicationController
     @recipes = @chef.taught_recipes
   end
 
-  def show; end
+  def show
+  end
 
-  def edit; end
-
-  def update; end
-
+  def edit
+    @recipe = Recipe.find_by(title: params[:title])
+  end
+  
   def destroy; end
 end

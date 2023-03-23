@@ -1,6 +1,6 @@
 class MasterclassesController < ApplicationController
   def index
-    @masterclasses = Masterclass.all
+    @masterclasses = Masterclass.all.reject { |masterclass| masterclass.recipes.empty? }
   end
 
   def show
