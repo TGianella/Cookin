@@ -6,6 +6,7 @@ class MasterclassesController < ApplicationController
   def show
     @masterclass = Masterclass.find_by(title: params[:title])
     @recipes = @masterclass.recipes
+    @user_is_owner = current_user == @masterclass.chef
   end
 
   def new

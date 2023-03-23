@@ -17,3 +17,7 @@
 <% @recipes.each do |recipe| %>
   <%= link_to "#{recipe.title}", recipe_path(recipe) %>
 <% end %>
+
+<% if @user_is_owner %>
+  <div><%= link_to "Créer une session", new_chef_meeting_path %></div>
+<% end %>
