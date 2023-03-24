@@ -20,16 +20,9 @@
 <% @recipe.masterclasses.each do |masterclass| %>
   <%= link_to "#{masterclass.title}", masterclass_path(masterclass) %>
 <% end %>
-<% if current_user%>
-  <% if current_user.is_chef && @recipe.chef_id == current_user.id %>
-    <%= link_to "Editer la recette", edit_chef_recipe_path(@recipe) %>
-    <%= button_to "Supprimer ma recette", recipe_path(@recipe), method: :delete, class: "button--danger" %>
-  <% end %>
-<% end %>
 
-<% flash.each do |type, msg| %>
-  <div class="alert--success">
-    <%= msg %>
-  </div>
+<% if @is_owner %>
+  <%= link_to "Editer la recette", edit_chef_recipe_path(@recipe) %>
+  <%= button_to "Supprimer ma recette", recipe_path(@recipe), method: :delete, class: "button--danger" %>
 <% end %>
 
