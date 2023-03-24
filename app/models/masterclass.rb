@@ -13,7 +13,7 @@ class Masterclass < ApplicationRecord
                     format: { with: /\A[A-Za-z\-\s'()&]+\z/ },
                     length: { in: 3..50 }
   validates :description, presence: true,
-                          length: { minimum: 100 }
+                          length: { in: 100..100000 }
   validates :duration, presence: true,
                        numericality: { in: 60..300 }
   validate :duration_multiple_of_5
