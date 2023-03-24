@@ -50,7 +50,7 @@
             <div class="collapse__static_pages">
               <a href="#">À propos</a>
               <a href="">Nous contacter</a>
-              <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'disconnect-button' %>
+              <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
             </div>
           <% else %>
             <div class="collapse__logged">
@@ -61,7 +61,7 @@
             <div class="collapse__static_pages">
               <a href="#">À propos</a>
               <a href="">Nous contacter</a>
-              <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'disconnect-button' %>
+              <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
             </div>
           <% end %> 
         <% else %>
