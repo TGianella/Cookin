@@ -38,6 +38,7 @@ class RecipesController < ApplicationController
     else
       flash[:alert] = "Vous n'êtes pas le propriétaire de cette recette"
       render :edit
+      puts "test commit"
     end
   end
 
