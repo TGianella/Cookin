@@ -18,7 +18,7 @@
 <h3 class="font-bold text-2xl">Recettes</h2>
 
 <% @recipes.each do |recipe| %>
-  <%= link_to "#{recipe.title}", recipe_path(recipe) %>
+  <%= link_to "#{recipe.title}", chef_recipe_path(recipe.chef, recipe) %>
 <% end %>
 
 <% if @is_owner %>

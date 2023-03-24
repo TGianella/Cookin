@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   resources :masterclasses, param: 'title', only: %i[show index new create update destroy] do
     resources :meetings, only: %i[show index]
   end
-  resources :recipes, param: 'title', only: %i[show index new create update destroy]
+  resources :recipes, param: 'title', only: %i[index new create update destroy]
   resources :chefs, param: 'name' do
-    resources :recipes, param: 'title', only: %i[show index], controller: 'chef/recipes'
+    resources :recipes, param: 'title', only: %i[index], controller: 'chef/recipes'
+    resources :recipes, param: 'title', only: %i[show]
     resources :masterclasses, param: 'title', only: %i[show index], controller: 'chef/masterclasses'
   end
 
