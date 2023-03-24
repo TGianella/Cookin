@@ -51,8 +51,8 @@
           <%= render partial:'layouts/profilebadge', locals:{masterclass: @masterclass} %>
           <div class="buttons--row">
             <% if @is_owner %>
-              <%= link_to "Editer la masterclass", edit_chef_masterclass_path(@masterclass) %>
-              <%= button_to "Supprimer ma masterclass", masterclass_path(@masterclass), method: :delete, class: "button--danger" %>
+              <%= link_to "Editer le cours", edit_chef_masterclass_path(@masterclass), class:'button--s button--secondary' %>
+              <%= button_to "Supprimer", masterclass_path(@masterclass), method: :delete, class: "button--s button--danger" %>
             <% end %>
           </div>
         </div> 

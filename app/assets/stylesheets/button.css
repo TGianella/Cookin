@@ -6,8 +6,11 @@
   --danger: #ff9933;
   --white: white;
   --black: black;
+
 }
+
 /******** BUTTON SIZE *********/
+
 .button--s {
   padding: 2px 8px;
   border-radius: 0.5em;
@@ -15,8 +18,6 @@
   justify-content: center;
   align-items: center;
   max-width: fit-content;
-
-
 
 }
 .button--m {
