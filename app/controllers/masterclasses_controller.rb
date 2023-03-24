@@ -20,13 +20,12 @@ class MasterclassesController < ApplicationController
 
     if @masterclass.save
       flash[:success] = 'Masterclass créée !'
-      redirect_to masterclass_path(@masterclass)
+      redirect_to chef_masterclass_path(current_user, @masterclass)
     else
       flash[:alert] = "La masterclass n'a pas pu être créée"
       render :new
     end
   end
-
 
   def update
     find_masterclass
@@ -34,7 +33,7 @@ class MasterclassesController < ApplicationController
       @masterclass.update(masterclass_params)
       if @masterclass.save!
         flash[:success] = 'Mastrclass modifiée !'
-        redirect_to masterclass_path(@masterclass)
+        redirect_to chef_masterclass_path(@masterclass)
       else
         flash[:alert] = "La masterclass n'a pas pu être modifiée !"
         render :edit
