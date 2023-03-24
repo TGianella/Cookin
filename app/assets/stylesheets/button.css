@@ -1,0 +1,103 @@
+/* ****** BUTTON INITIALIZE****/
+:root {
+  --primary: #00abbd;
+  --secondary: rgb(17, 17, 17);
+  --success: #00bd48;
+  --danger: #ff9933;
+  --white: white;
+  --black: black;
+
+}
+
+/******** BUTTON SIZE *********/
+
+.button--s {
+  padding: 2px 8px;
+  border-radius: 0.5em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+
+}
+.button--m {
+  padding: 5px 12px;
+  border-radius: 0.5em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+}
+.button--l {
+  padding: 8px 15px;
+  border-radius: 0.5em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+}
+/***** BUTTON PRIMARY *****/
+.button--primary {
+  background-color: var(--primary);
+  border: solid var(--primary) 1px;
+  color: var(--white);
+  transition: ease 0.1s;
+}
+/* BUTTON PRIMARY HOVER */
+.button--primary:hover {
+  background-color: transparent;
+  color: var(--primary);
+}
+/***** BUTTON SECONDARY *****/
+.button--secondary {
+  border: solid 1px var(--secondary);
+}
+/******** BUTTON SUCCESS *******/
+.button--success {
+  background-color: var(--success);
+  border: solid 1px var(--success);
+  color: var(--white);
+  transition: 0.1s ease;
+}
+.button--outline--success {
+  border: solid 1px var(--success);
+  color: var(--success);
+  transition: 0.1 ease;
+}
+/* BUTTON SUCCESS HOVER */
+.button--success:hover {
+  background-color: transparent;
+  color: var(--success);
+}
+.button--outline--success:hover {
+  background-color: var(--success);
+  color: var(--white);
+}
+/***** BUTTON DANGER *****/
+.button--danger {
+  background-color: var(--danger);
+  color: var(--white);
+  border: solid 1px var(--danger);
+}
+.button--outline--danger {
+  border: solid 1px var(--danger);
+  color: var(--danger);
+}
+/* BUTTON DANGER HOVER */
+.button--danger:hover {
+  background-color: transparent;
+  color: var(--danger);
+}
+.button--outline--danger:hover {
+  background-color: var(--danger);
+  color: var(--white);
+}
+/***** BUTTONS GROUP ****/
+.buttons--column {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons--row{
+  display: inline-flex;
+}

@@ -1,0 +1,2 @@
+module Chef::ReservationsHelper
+end

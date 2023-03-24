@@ -1,0 +1,48 @@
+.secondnav {
+  width: 100%;
+  height: 80px;
+  border-top: 1px solid rgb(235, 235, 235);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.secondnav__wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 2em;
+  position: relative;
+  height: 100%;
+  margin-top: .2em;
+}
+.secondnav_icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 0.8em;
+}
+
+.secondnav_icon img{
+  height:50px;
+  width:50px;
+  margin-bottom: .5em;
+  margin-top: .5em;
+  padding: 0.2em;
+  transition: ease .2s;
+  
+}
+.secondnav_icon img:hover{
+  background-color: lightgray;
+  border-radius: 50%;
+  rotate: 10deg;
+  scale: 1.2;
+}
+
+
+.secondnav--collapse{
+  margin-top: 80px;
+}

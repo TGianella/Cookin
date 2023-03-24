@@ -1,0 +1,234 @@
+.navbar {
+  width: 100%;
+  height: 80px;
+  border-top: 1px solid rgb(235, 235, 235);
+  background-color: white;
+  box-shadow: 0px 5px 30px -5px rgba(204, 204, 204, 0.75);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.navbar__wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 2em;
+  position: relative;
+}
+.logo__wrapper,
+.profile__wrapper {
+  height: 80px;
+}
+.logo,
+.search,
+.profile {
+  flex: 1;
+}
+.logo__wrapper {
+  display: flex;
+  align-items: center;
+}
+.logo__wrapper a {
+  font-size: 1.7em;
+  line-height: 1em;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+
+.search__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.searchbar input {
+  border-radius: 50px;
+  box-shadow: 0 0 0 1px rgba(53, 72, 91, 0.07), 0 2px 2px rgba(0, 0, 0, 0.01),
+    0 4px 4px rgba(0, 0, 0, 0.02), 0 10px 8px rgba(0, 0, 0, 0.03),
+    0 15px 15px rgba(0, 0, 0, 0.03), 0 30px 30px rgba(0, 0, 0, 0.04),
+    0 70px 65px rgba(0, 0, 0, 0.05);
+}
+
+.profile__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.masterclass_options {
+  height: 43px;
+  color: white;
+  background-color: var(--danger);
+  outline: 2px var(--danger) solid;
+  text-align: center;
+  padding: 0.5em 1.3em;
+  border-radius: 50px;
+  margin-right: 4.5em;
+  transition: 0.3s ease;
+}
+.masterclass_options a {
+  font-size: 1.7em;
+  line-height: 1em;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.masterclass_options:hover {
+  background-color: transparent;
+  color: var(--danger);
+  outline: 2px var(--danger) solid;
+}
+
+.profile_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile_menu button img,
+.profile_menu button i {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collapse_profile {
+  width: 245px;
+  height: fit-content;
+  position: absolute;
+  z-index: 1000;
+  right: 2em;
+  top: 90px;
+  border-top: 1px solid rgb(235, 235, 235);
+  background-color: white;
+  box-shadow: 0px 5px 15px -5px rgba(204, 204, 204, 0.75);
+  border-radius: 0.5em;
+  display: none;
+}
+.collapse_profile--active {
+  display: block;
+}
+
+.collapse_profile__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.collapse__login,
+.collapse__static_pages,
+.collapse__logged {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5em;
+}
+.collapse__login,
+.collapse__logged {
+  border-bottom: 1px lightgray solid;
+}
+
+.collapse__login a,
+.collapse__static_pages a,
+.collapse__logged a,
+.disconnect-button {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  padding-left: 1em;
+}
+.collapse__login a:hover,
+.collapse__static_pages a:hover,
+.collapse__logged a:hover {
+  background-color: rgba(241, 241, 241, 0.685);
+}
+
+.collapse__login a:nth-child(1) {
+  font-weight: bold;
+}
+.disconnect-button:hover {
+  border-radius: 0 0 0.5em 0.5em;
+  color: white;
+  background-color: rgba(211, 0, 0, 0.822);
+}
+
+@media screen and (max-width: 1280px) {
+  .masterclass_options {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .logo__wrapper a {
+    display: none;
+  }
+}
+/* MENU SHOW WHEN SIZE IS EQUAL TO 768px AND NAVBAR IS HIDDEN*/
+.menu {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .profile,
+  .logo {
+    display: none;
+  }
+
+  .navbar {
+    visibility: hidden;
+    z-index: 1000;
+    position: fixed;
+    top: -80px;
+  }
+
+  .navbar--collapse {
+    position: fixed;
+    top: 0px;
+    visibility: visible;
+  }
+
+  .menu {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    border-top: 1px solid rgb(235, 235, 235);
+    background-color: white;
+    box-shadow: 0px -5px 30px -5px rgba(204, 204, 204, 0.75);
+  }
+  .menu__wrapper {
+    width: 100%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .icon {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .icon__button__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
+  .icon__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+  }
+
+  .icon__button--logo {
+    height: 60px;
+    width: 60px;
+  }
+}

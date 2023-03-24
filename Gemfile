@@ -90,3 +90,4 @@ gem "shoulda-matchers", "~> 5.3"
 gem "table_print", "~> 1.5"
 
 gem "validates_timeliness", "~> 7.0.0.beta1"
+

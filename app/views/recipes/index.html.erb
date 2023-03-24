@@ -1,0 +1,9 @@
+<div>
+  <h1 class="font-bold text-4xl">Toutes les recettes du site</h1>
+</div>
+
+<div>
+  <% @recipes.each do |recipe| %>
+    <div> <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe)  %> </div>
+  <% end %>
+</div>
