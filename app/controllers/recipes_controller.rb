@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
 
     if @recipe.save!
       flash[:success] = 'Recette créée !'
-      redirect_to recipe_path(@recipe)
+      redirect_to chef_recipe_path(current_user, @recipe)
     else
       flash.now[:alert] = "La recette n'a pas pu être créée !"
       render :new
@@ -30,8 +30,8 @@ class RecipesController < ApplicationController
     if @recipe.chef == current_user
       @recipe.update(recipe_params)
       if @recipe.save!
-        flash.now[:success] = "Recette modifiée"
-        render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
+        flash.now[:success] = 'Recette modifiée'
+        render turbo_stream: turbo_stream.update('flash', partial: 'layouts/flash')
         # redirect_to recipe_path(@recipe)
       else
         flash[:alert] = "La recette n'a pas pu être modifiée !"
@@ -59,5 +59,4 @@ class RecipesController < ApplicationController
   def find_recipe
     @recipe = Recipe.find_by(title: params[:title])
   end
-
 end

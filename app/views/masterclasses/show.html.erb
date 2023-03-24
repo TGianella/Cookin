@@ -31,7 +31,7 @@
           <h3>Recette prévu pendant le cours  <i class="fas fa-arrow-right"></i></h3>
           <div class="recipe-badge buttons--row">
             <% @recipes.each do |recipe| %> 
-              <%= link_to "#{recipe.title}",recipe_path(recipe), class:"price--badge button--s button--outline--success" %> 
+              <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:"price--badge button--s button--outline--success" %> 
             <% end %>
           </div>
           <div class="reservation-badge">
