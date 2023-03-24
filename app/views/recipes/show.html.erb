@@ -1,29 +1,38 @@
 <main class="container">
-  <h1 class="font-bold text-4xl"><%= @recipe.title %></h1>
-
-
-<div>
-  Chef : <%= @recipe.chef.full_name %> 
-</div>
-<div>
-  Description : <%= @recipe.content %> 
-</div>
-<div>
-  Durée : <%= @recipe.duration %> minutes
-</div>
-<div>
-  Difficulté : <%= @recipe.difficulty %> 
-</div>
-
-<h3 class="font-bold text-2xl">Masterclass</h2>
-
-<% @recipe.masterclasses.each do |masterclass| %>
-  <%= link_to masterclass.title, chef_masterclass_path(masterclass.chef, masterclass) %>
-<% end %>
-
-<% if @is_owner %>
-  <%= link_to "Editer la recette", edit_chef_recipe_path(@recipe) %>
-  <%= button_to "Supprimer ma recette", recipe_path(@recipe), method: :delete, class: "button--danger" %>
-<% end %>
-
+  <div class="recipe">
+    <div class="recipe__wrapper">
+      <h1 class="font-bold text-4xl">
+        <%= @recipe.title %> par <%= @recipe.chef.full_name %>
+      </h1>
+      <div class="recipe__wrapper__header">
+        <div class="recipe_image__wrapper">
+          <img src="https://picsum.photos/1000" alt=""/>   
+          <div class="edit_destroy">
+            <% if @is_owner %> 
+              <%= link_to "Editer la recette", edit_chef_recipe_path(@recipe), class: "button--s button--success" %> 
+              <%= button_to "Supprimer", recipe_path(@recipe), method: :delete, class: "button--s button--danger" %> 
+          <% end %>
+          </div>
+        </div>
+        <div class="recipe_information__wrapper">
+          <h3 class="button--s button--success">Difficulté : <%= @recipe.difficulty %></h3>
+          <h3 class="button--s button--outline--success">Durée : <%= @recipe.duration %> minutes</h3>
+        </div>
+      </div>
+      <div class="recipe__wrapper__body">
+        <h3>Déroulé de la recette</h3>
+        <p><%= @recipe.content %></p>
+      </div>
+      <div class="recipe__wrapper__footer">
+        <div class="recipe_masterclasses">
+          <h2>Retrouvez cette recette dans un cours</h2>
+          <% @recipe.masterclasses.each do |masterclass| %>
+            <div class="masterclass_badge button--m button--outline--danger">
+              <%= link_to "#{masterclass.title}", chef_masterclass_path(masterclass.chef, masterclass) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
