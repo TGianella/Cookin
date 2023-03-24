@@ -2,7 +2,7 @@
 <main class="container">
   <div class="cards">
     <% @masterclasses.each do |masterclass| %>
-    <%= render partial:'masterclasses/card', locals:{masterclass: masterclass} %>
+      <%= render partial:'masterclasses/card', locals:{masterclass: masterclass} %>
     <% end %>
   </div>
 </main>
