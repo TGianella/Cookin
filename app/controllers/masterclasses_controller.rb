@@ -33,7 +33,7 @@ class MasterclassesController < ApplicationController
       @masterclass.update(masterclass_params)
       if @masterclass.save!
         flash[:success] = 'Mastrclass modifiée !'
-        redirect_to chef_masterclass_path(@masterclass)
+        redirect_to chef_masterclass_path(current_user, @masterclass)
       else
         flash[:alert] = "La masterclass n'a pas pu être modifiée !"
         render :edit
