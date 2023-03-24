@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
       flash[:success] = 'Recette créée !'
       redirect_to recipe_path(@recipe)
     else
-      flash[:alert] = "La recette n'a pas pu être créée !"
+      flash.now[:alert] = "La recette n'a pas pu être créée !"
       render :new
     end
   end
@@ -29,14 +29,14 @@ class RecipesController < ApplicationController
     if @recipe.chef_id == current_user.id
       @recipe.update(recipe_params)
       if @recipe.save!
-        flash[:success] = 'Recette modifiée !'
+        flash.now[:success] = 'Recette modifiée !'
         redirect_to recipe_path(@recipe)
       else
         flash[:alert] = "La recette n'a pas pu être modifiée !"
         render :new
       end
     else
-      flash[:alert] = "Vous n'êtes pas le propriétaire de cette recette"
+      flash.now[:alert] = "Vous n'êtes pas le propriétaire de cette recette"
       render :new
     end
   end
@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
   def destroy
     find_recipe
     @recipe.destroy
-    flash[:success] = 'Recette supprimée !'
+    flash.now[:success] = 'Recette supprimée !'
     redirect_to chef_path(current_user)
   end
 

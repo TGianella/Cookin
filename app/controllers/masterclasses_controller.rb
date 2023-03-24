@@ -26,13 +26,12 @@ class MasterclassesController < ApplicationController
     end
   end
 
-
   def update
     find_masterclass
     if @masterclass.chef_id == current_user.id
       @masterclass.update(masterclass_params)
       if @masterclass.save!
-        flash[:success] = 'Mastrclass modifiée !'
+        flash[:success] = 'Masterclass modifiée !'
         redirect_to masterclass_path(@masterclass)
       else
         flash[:alert] = "La masterclass n'a pas pu être modifiée !"
