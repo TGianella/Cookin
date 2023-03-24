@@ -28,6 +28,10 @@
 .profile_badge__section h2{
   align-self: flex-start;
 }
+
+.profile_badge__section p:nth-child(2){
+  margin-left: .5em;
+}
 .profile_badge__notice{
   display: flex;
 }
