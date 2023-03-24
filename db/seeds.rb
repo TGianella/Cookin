@@ -30,7 +30,7 @@ User.create(first_name: 'Alain',
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
   user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"
-  user.save!
+  user.save
 end
 
 10.times do |_|
@@ -41,28 +41,28 @@ end
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
   user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"
-  user.save!
+  user.save
 end
 
 User.chefs.each do |chef|
   2.times do |_|
     Recipe.create(title: Faker::Food.unique.dish,
-                  content: Faker::Lorem.paragraph(sentence_count: 50),
-                  duration: Faker::Number.within(range: 5..180),
-                  difficulty: %w[facile moyen difficile].sample,
-                  chef: chef)
+                   content: Faker::Lorem.paragraph(sentence_count: 50),
+                   duration: Faker::Number.within(range: 1..36) * 5,
+                   difficulty: %w[facile moyen difficile].sample,
+                   chef: chef)
   end
 
   3.times do |_|
     masterclass = Masterclass.new(title: Faker::Restaurant.unique.type,
                                   description: Faker::Lorem.paragraph(sentence_count: 20),
-                                  duration: Faker::Number.within(range: 60..300),
+                                  duration: Faker::Number.within(range: 12..60) * 5,
                                   price: Faker::Number.within(range: 1..100),
                                   chef: chef)
     masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
-    masterclass.save!
+    masterclass.save
   end
 end
 
-Meeting.create!(masterclass: Masterclass.first)
-Reservation.create!(meeting: Meeting.first, guest: User.last)
+Meeting.create(masterclass: Masterclass.first)
+Reservation.create(meeting: Meeting.first, guest: User.last)

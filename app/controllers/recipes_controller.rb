@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
 
     if @recipe.save!
       flash[:success] = 'Recette créée !'
-      redirect_to recipe_path(@recipe)
+      redirect_to chef_recipe_path(current_user, @recipe)
     else
       flash[:alert] = "La recette n'a pas pu être créée !"
       render :new
@@ -57,5 +57,4 @@ class RecipesController < ApplicationController
   def find_recipe
     @recipe = Recipe.find_by(title: params[:title])
   end
-
 end
