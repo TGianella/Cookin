@@ -1,10 +1,11 @@
 class MasterclassesController < ApplicationController
   def index
-    @masterclasses = Masterclass.all.reject { |masterclass| masterclass.recipes.empty? }
+    @masterclasses = Masterclass.all
   end
 
   def show
     find_masterclass
+    @is_owner = user_signed_in? && current_user.is_chef && @masterclass.chef == current_user
     @recipes = @masterclass.recipes
   end
 
@@ -29,18 +30,18 @@ class MasterclassesController < ApplicationController
 
   def update
     find_masterclass
-    if @masterclass.chef_id == current_user.id
+    if @masterclass.chef == current_user
       @masterclass.update(masterclass_params)
       if @masterclass.save!
         flash[:success] = 'Mastrclass modifiée !'
         redirect_to masterclass_path(@masterclass)
       else
         flash[:alert] = "La masterclass n'a pas pu être modifiée !"
-        render :new
+        render :edit
       end
     else
       flash[:alert] = "Vous n'êtes pas le propriétaire de cette masterclass"
-      render :new
+      render :edit
     end
   end
 

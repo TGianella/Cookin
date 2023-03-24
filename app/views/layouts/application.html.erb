@@ -12,8 +12,10 @@
   </head>
   <body>
   <%= render 'layouts/navbar' %>
-      <%= yield %>
-    </main>
+  <turbo-frame id="flash">
+    <%= render 'layouts/flash' %>
+      </turbo-frame>
+  <%= yield %>
   <%= render 'layouts/footer' %>
   </body>
 </html>
