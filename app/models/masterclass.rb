@@ -10,7 +10,7 @@ class Masterclass < ApplicationRecord
 
   validate :owner_is_chef
   validates :title, presence: true,
-                    format: { with: /\A[A-Za-z\-\s']+\z/ },
+                    format: { with: /\A[A-Za-z\-\s'()&]+\z/ },
                     length: { in: 3..50 }
   validates :description, presence: true,
                           length: { minimum: 100 }

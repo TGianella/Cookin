@@ -55,12 +55,10 @@ User.chefs.each do |chef|
   3.times do |_|
     masterclass = Masterclass.new(title: Faker::Restaurant.unique.type,
                                   description: Faker::Lorem.paragraph(sentence_count: 20),
-                                  duration: Faker::Number.within(range: 60..300),
+                                  duration: Faker::Number.within(range: 12..60) * 5,
                                   price: Faker::Number.within(range: 1..100),
                                   chef: chef)
     masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
-    puts masterclass.title
-    masterclass.recipes.each { |recipe| puts recipe.title }
     masterclass.save!
   end
 end
