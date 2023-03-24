@@ -45,11 +45,11 @@ end
 
 User.chefs.each do |chef|
   2.times do |_|
-    Recipe.create(title: Faker::Food.unique.dish,
-                  content: Faker::Lorem.paragraph(sentence_count: 50),
-                  duration: Faker::Number.within(range: 5..180),
-                  difficulty: %w[facile moyen difficile].sample,
-                  chef: chef)
+    Recipe.create!(title: Faker::Food.unique.dish,
+                   content: Faker::Lorem.paragraph(sentence_count: 50),
+                   duration: Faker::Number.within(range: 1..36) * 5,
+                   difficulty: %w[facile moyen difficile].sample,
+                   chef: chef)
   end
 
   3.times do |_|
@@ -59,6 +59,8 @@ User.chefs.each do |chef|
                                   price: Faker::Number.within(range: 1..100),
                                   chef: chef)
     masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
+    puts masterclass.title
+    masterclass.recipes.each { |recipe| puts recipe.title }
     masterclass.save!
   end
 end
