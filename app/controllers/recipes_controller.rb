@@ -5,7 +5,6 @@ class RecipesController < ApplicationController
 
   def show
     find_recipe
-    @is_owner = user_signed_in? && current_user.is_chef && @recipe.chef == current_user
   end
 
   def new
@@ -20,33 +19,32 @@ class RecipesController < ApplicationController
       flash[:success] = 'Recette créée !'
       redirect_to recipe_path(@recipe)
     else
-      flash.now[:alert] = "La recette n'a pas pu être créée !"
+      flash[:alert] = "La recette n'a pas pu être créée !"
       render :new
     end
   end
 
   def update
     find_recipe
-    if @recipe.chef == current_user
+    if @recipe.chef_id == current_user.id
       @recipe.update(recipe_params)
       if @recipe.save!
-        flash.now[:success] = "Recette modifiée"
-        render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
-        # redirect_to recipe_path(@recipe)
+        flash[:success] = 'Recette modifiée !'
+        redirect_to recipe_path(@recipe)
       else
         flash[:alert] = "La recette n'a pas pu être modifiée !"
-        render :edit
+        render :new
       end
     else
       flash[:alert] = "Vous n'êtes pas le propriétaire de cette recette"
-      render :edit
+      render :new
     end
   end
 
   def destroy
     find_recipe
     @recipe.destroy
-    flash.now[:success] = 'Recette supprimée !'
+    flash[:success] = 'Recette supprimée !'
     redirect_to chef_path(current_user)
   end
 

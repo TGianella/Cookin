@@ -54,12 +54,12 @@
   display: flex;
   max-width: 33%;
   max-height: 430px;
-  overflow-y: scroll;
 }
 
 .masterclass_section--2 {
   border-bottom: 1px lightgray solid;
   position: relative;
+  overflow-y: scroll;
 }
 .masterclass_section--1__wrapper,
 .masterclass_section--2__wrapper,
