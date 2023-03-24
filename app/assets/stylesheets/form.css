@@ -1,0 +1,51 @@
+.text-4xl{
+  text-align: center;
+  margin: 1em auto;
+}
+.flex-column form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50dvh;
+  min-width: 50dvh;
+}
+.flex-column{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-column form div{
+  display: flex;
+  flex-direction: column;
+}
+.flex-column input[type="text"],
+.flex-column input[type="number"],
+.flex-column input[type="email"],
+.flex-column input[type="password"] {
+  height: 30px;
+  border: 1px solid blue;
+  border-radius: 5em;
+  width: 35dvh;
+
+}
+ input[type="submit"]{
+  background-color: var(--success);
+  padding: .5em 1em;
+  border-radius: .5em;
+  color: white;
+  margin: .5em 1em;
+ }
+select {
+  border-radius: 0.5em;
+}
+textarea {
+  border-radius: 0.5em;
+  width: 35dvh;
+  height: 300px;
+}
+
+.flex-column div:nth-last-child(2){
+  display: flex;
+  margin: .5em 0;
+}

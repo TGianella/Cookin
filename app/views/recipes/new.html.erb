@@ -1,3 +1,4 @@
+<main class="container">
 <% if current_user%>
   <%if current_user.is_chef%>
   <div>
@@ -11,7 +12,6 @@
         <%= form.label "Titre" %>
         <%= form.text_field :title %>
       </div>
-
       <div>
         <%= form.label "Description" %>
         <%= form.text_area :content %>
@@ -38,3 +38,4 @@
 <% else %>
   <h1>Veuillez vous connecter pour créer une recette</h1> 
 <% end %>
+</main>
