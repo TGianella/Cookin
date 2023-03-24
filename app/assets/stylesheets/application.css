@@ -29,6 +29,7 @@
    --black: black;
  }
 
+
 * {
    box-sizing: border-box;
 }
@@ -48,4 +49,12 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+}
+
+.alert--danger {
+  background: #dc3545;
+}
+
+.alert--success {
+  background: #198754;
 }

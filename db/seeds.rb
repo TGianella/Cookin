@@ -1,3 +1,4 @@
+ActionMailer::Base.perform_deliveries = false
 User.destroy_all
 Masterclass.destroy_all
 Recipe.destroy_all

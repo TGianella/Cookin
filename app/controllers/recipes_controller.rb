@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
       flash[:success] = 'Recette créée !'
       redirect_to chef_recipe_path(current_user, @recipe)
     else
-      flash[:alert] = "La recette n'a pas pu être créée !"
+      flash.now[:alert] = "La recette n'a pas pu être créée !"
       render :new
     end
   end
@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
   def destroy
     find_recipe
     @recipe.destroy
-    flash[:success] = 'Recette supprimée !'
+    flash.now[:success] = 'Recette supprimée !'
     redirect_to chef_path(current_user)
   end
 

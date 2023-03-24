@@ -1,27 +1,62 @@
-<div>
-  <h1 class="font-bold text-4xl"><%= @masterclass.title %></h1>
-</div>
-
-<div>
-  Chef : <%= @masterclass.chef.full_name %>
-</div>
-<div>
-  Description : <%= @masterclass.description %>
-</div>
-<div>
-  Durée : <%= @masterclass.duration %>
-</div>
-<div>
-  Prix par personne : <%= @masterclass.price %>
-</div>
-
-<h3 class="font-bold text-2xl">Recettes</h2>
-
-<% @recipes.each do |recipe| %>
-  <%= link_to "#{recipe.title}", chef_recipe_path(recipe.chef, recipe) %>
-<% end %>
-
-<% if @is_owner %>
-  <%= link_to "Editer la masterclass", edit_chef_masterclass_path(@masterclass) %>
-  <%= button_to "Supprimer ma masterclass", masterclass_path(@masterclass), method: :delete, class: "button--danger" %>
-<% end %>
+<main class="container">
+  <div class="masterclass">
+    <div class="masterclass__header">
+      <h1><%= @masterclass.title %> </h1>
+      <div class="masterclass_informations">
+        <div class="notice_commentaries">
+          <p>
+            <i class="fas fa-star"></i>
+            4,5
+          </p>
+          <p>20 commentaires</p>
+          <p>Tours, Centre-Val de Loire, France</p>
+        </div>
+        <div class="buttons--row share_like_button">
+          <button><i class="far fa-heart"></i> Enregistrer</button>
+          <button class="button--s button--primary">Participer</button>
+        </div>
+      </div>
+    </div>
+    <div class="masterclass__body">
+      <div class="masterclass_section--1">
+        <div class="masterclass_section--1__wrapper">
+          <img src="https://picsum.photos/1000" alt="" />   
+        </div>
+      </div>
+      <div class="masterclass_section--2">
+        <div class="masterclass_section--2__wrapper">
+          <h2>Présentation du cours</h2>
+          <p class="masterclass--description"><%= @masterclass.description %></p>
+          <h2>Durée du cours : <%= @masterclass.duration %> minutes</h2> 
+          <h3>Recette prévu pendant le cours  <i class="fas fa-arrow-right"></i></h3>
+          <div class="recipe-badge buttons--row">
+            <% @recipes.each do |recipe| %> 
+              <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:"price--badge button--s button--outline--success" %> 
+            <% end %>
+          </div>
+          <div class="reservation-badge">
+            <div class="reservation-badge__wrapper">
+              <div>
+                <%= @masterclass.price %> € /personnes
+              </div>
+              <div class=" button--l button--primary">
+                Participer 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="masterclass_section--3">
+        <div class="masterclass_section--3__wrapper">
+          <%= render partial:'layouts/profilebadge', locals:{masterclass: @masterclass} %>
+          <div class="buttons--row">
+            <% if @is_owner %>
+              <%= link_to "Editer le cours", edit_chef_masterclass_path(@masterclass), class:'button--s button--secondary' %>
+              <%= button_to "Supprimer", masterclass_path(@masterclass), method: :delete, class: "button--s button--danger" %>
+            <% end %>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</main>
