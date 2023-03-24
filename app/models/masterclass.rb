@@ -18,7 +18,7 @@ class Masterclass < ApplicationRecord
                        numericality: { in: 60..300 }
   validate :duration_multiple_of_5
   validates :price, presence: true,
-                    numericality: { greater_than: 0 }
+                    numericality: { in: 1..1000 }
   validate :recipes_belong_to_same_chef
   validates :recipes, presence: true
 
