@@ -19,5 +19,5 @@
 <% end %>
 
 <% if @user_is_owner %>
-  <div><%= link_to "Créer une session", new_chef_meeting_path %></div>
+  <div><%= link_to "Créer une session", new_chef_meeting_path, params: { masterclass: @masterclass } %></div>
 <% end %>
