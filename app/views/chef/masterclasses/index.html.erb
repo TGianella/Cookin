@@ -4,6 +4,6 @@
 
 <% @masterclasses.each do |masterclass| %>
   <div>
-    <%= link_to "#{masterclass.title}", masterclass_path(masterclass) %>
+    <%= link_to masterclass.title, chef_masterclass_path(masterclass.chef, masterclass) %>
   </div>
 <% end %>
