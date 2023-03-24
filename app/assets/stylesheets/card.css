@@ -16,7 +16,6 @@
   width: 100%;
 }
 .card__header {
-  background-color: blue;
   aspect-ratio: 1/1;
   box-sizing: border-box;
   min-height: fit-content;
