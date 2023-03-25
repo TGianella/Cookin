@@ -1,0 +1,29 @@
+<div>
+  <h1 class="font-bold text-4xl">Créer une nouvelle session</h1>
+</div>
+
+<div><%= @masterclass.title %></div>
+
+<div class="flex-column">
+  <%= form_with model: [:masterclass, @meeting] do |form| %>
+
+    <div>
+      <%= form.label "Début" %>
+      <%= form.datetime_local_field :start_date %>
+    </div>
+
+    <div>
+      <%= form.label "Code postal" %>
+      <%= form.text_field :zip_code %>
+    </div>
+
+    <div>
+      <%= form.label "Nombre de convives" %>
+      <%= form.number_field :capacity, in: 1..10 %>
+    </div>
+
+    <div>
+      <%= form.submit "Créer la session" %>
+    </div>
+  <% end %>
+</div>

@@ -53,7 +53,7 @@
             <% if @is_owner %>
               <%= link_to "Editer le cours", edit_chef_masterclass_path(@masterclass), class:'button--s button--secondary' %>
               <%= button_to "Supprimer", masterclass_path(@masterclass), method: :delete, class: "button--s button--danger" %>
-              <%= link_to "Créer une session", new_chef_meeting_path, params: { masterclass: @masterclass } %>
+              <%= link_to "Créer une session", new_masterclass_meeting_path(@masterclass) %>
             <% end %>
           </div>
         </div> 

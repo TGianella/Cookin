@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :masterclasses, param: 'title', only: %i[index new create update destroy] do
-    resources :meetings, only: %i[show index]
+    resources :meetings, shallow: true
   end
+
   resources :recipes, param: 'title', only: %i[index new create update destroy]
   resources :chefs, param: 'name' do
     resources :recipes, param: 'title', only: %i[index], controller: 'chef/recipes'

@@ -4,7 +4,7 @@ class Chef::MeetingsController < ApplicationController
   def show; end
 
   def new
-    @masterclass = params[:masterclass]
+    @masterclass = params[:title]
     @meeting = Meeting.new
   end
 
