@@ -3,5 +3,5 @@
 </div>
 
 <% @meetings.each do |meeting| %>
-  <div><%= link_to meeting.start_date, masterclass_meeting_path(@masterclass.title, meeting) %></div>
+  <div><%= link_to meeting.start_date, meeting_path(meeting) %></div>
 <% end %>
