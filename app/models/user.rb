@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :welcome_send
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,7 +15,7 @@ class User < ApplicationRecord
   has_many :attended_masterclasses, through: :meetings, source: :masterclass
   has_many :learned_recipes, through: :attended_masterclasses, source: :recipes
 
-  validates :first_name, length: { in: 3..25 },
+  validates :first_name, length: { in: 2..25 },
                          format: { with: /\A[A-Za-z\-'éèêëôûüùïîâäç]+\z/ },
                          allow_blank: true
   validates :phone_number, format: { with: /(0|\\+33|0033)[1-9][0-9]{8}/ },
@@ -36,6 +37,10 @@ class User < ApplicationRecord
 
   def self.chefs
     where(is_chef: true).to_a
+  end
+
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
   end
 
   private

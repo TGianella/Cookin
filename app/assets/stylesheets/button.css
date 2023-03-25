@@ -6,21 +6,35 @@
   --danger: #ff9933;
   --white: white;
   --black: black;
+
 }
+
 /******** BUTTON SIZE *********/
+
 .button--s {
   padding: 2px 8px;
   border-radius: 0.5em;
-
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
 
 }
 .button--m {
   padding: 5px 12px;
   border-radius: 0.5em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
 }
 .button--l {
   padding: 8px 15px;
   border-radius: 0.5em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
 }
 /***** BUTTON PRIMARY *****/
 .button--primary {
@@ -79,7 +93,11 @@
   color: var(--white);
 }
 /***** BUTTONS GROUP ****/
-.buttons {
+.buttons--column {
   display: flex;
   flex-direction: column;
+}
+
+.buttons--row{
+  display: inline-flex;
 }

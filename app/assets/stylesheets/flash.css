@@ -1,0 +1,36 @@
+.alert{
+  position: absolute;
+  height: 30px;
+  width: 20dvw;
+  top: 80px;
+  z-index: 1000;
+  right: 50%;
+  transform: translateX(50%);
+  border-radius: 0.5em;
+  text-align: center;
+  padding-top: 4px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.alert--danger {
+  background-color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.alert--success {
+  background-color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.fade {
+  display: block;
+  -webkit-animation: fadeOut 3s;
+  animation: fadeOut 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeOut {
+  0% { opacity: 1;}
+  50% { opacity: 0.99;}
+  100% { opacity: 0;}
+}

@@ -16,7 +16,6 @@
   width: 100%;
 }
 .card__header {
-  background-color: blue;
   aspect-ratio: 1/1;
   box-sizing: border-box;
   min-height: fit-content;
@@ -76,7 +75,7 @@
     flex-direction: column;
   }
   .cards{
-    margin-bottom: 80px;
+    /* margin-bottom: 80px; */
   }
 }
 @media screen and (max-width: 640px) {

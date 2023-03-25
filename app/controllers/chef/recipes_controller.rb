@@ -1,4 +1,5 @@
 class Chef::RecipesController < ApplicationController
+  before_action :authenticate_user!, only: :edit
   def index
     @chef = User.find_from_param(params[:chef_name])
     @recipes = @chef.taught_recipes
@@ -6,9 +7,12 @@ class Chef::RecipesController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @recipe = Recipe.find_by(title: params[:title])
+    return if current_user == @recipe.chef
 
-  def update; end
+    redirect_back fallback_location: root_path
+  end
 
   def destroy; end
 end

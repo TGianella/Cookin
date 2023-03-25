@@ -43,14 +43,14 @@
           <% if current_user.is_chef %>
 
             <div class="collapse__logged">
-              <a href="#">Profil</a>
-              <a href="#">Proposer un cours</a>
-              <a href="#">Ajouter une recette</a>
+              <a href="<%= chef_path(current_user) %>">Profil</a>
+              <a href="<%= new_masterclass_path %>">Proposer un cours</a>
+              <a href="<%= new_recipe_path %>">Ajouter une recette</a>
             </div>
             <div class="collapse__static_pages">
               <a href="#">À propos</a>
               <a href="">Nous contacter</a>
-              <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'disconnect-button' %>
+              <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
             </div>
           <% else %>
             <div class="collapse__logged">
@@ -61,7 +61,7 @@
             <div class="collapse__static_pages">
               <a href="#">À propos</a>
               <a href="">Nous contacter</a>
-              <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'disconnect-button' %>
+              <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
             </div>
           <% end %> 
         <% else %>
