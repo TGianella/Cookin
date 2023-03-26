@@ -2,7 +2,7 @@
   <h1 class="font-bold text-4xl">Créer une nouvelle session</h1>
 </div>
 
-<div><%= @masterclass.title %></div>
+<div><%= @meeting.masterclass.title %></div>
 
 <div class="flex-column">
   <%= form_with model: [:masterclass, @meeting] do |form| %>

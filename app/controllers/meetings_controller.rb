@@ -6,7 +6,7 @@ class MeetingsController < ApplicationController
 
   def new
     @masterclass = Masterclass.find_by(title: params[:masterclass_title])
-    @meeting = Meeting.new
+    @meeting = Meeting.new(masterclass: @masterclass)
 
     return unless current_user != @masterclass.chef
 
