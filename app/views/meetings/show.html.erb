@@ -30,4 +30,8 @@
   <div>
     <%= link_to "Modifier cette session", edit_meeting_path(@meeting) %>
   </div>
+
+  <div>
+    <%= button_to "Supprimer cette session", meeting_path(@meeting), method: :delete %>
+  </div>
 <% end %>

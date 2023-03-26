@@ -61,7 +61,13 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @meeting = Meeting.find(params[:id])
+    @masterclass = @meeting.masterclass
+    @meeting.destroy
+    flash[:success] = 'Session supprimée'
+    redirect_to chef_masterclass_path(current_user, @masterclass)
+  end
 
   private
 
