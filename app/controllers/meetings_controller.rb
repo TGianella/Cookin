@@ -30,14 +30,36 @@ class MeetingsController < ApplicationController
   def show
     @meeting = Meeting.find(params[:id])
     @masterclass = @meeting.masterclass
-    @chef = @masterclass.chef
+    @chef = @meeting.chef
   end
 
   def edit
     @meeting = Meeting.find(params[:id])
+    @masterclass = @meeting.masterclass
+
+    return unless current_user != @meeting.chef
+
+    flash[:alert] = "Vous n'êtes pas autorisé à modifier cette session"
+    redirect_back fallback_location: root_path
   end
 
-  def update; end
+  def update
+    @meeting = Meeting.find(params[:id])
+
+    if @meeting.chef == current_user
+      @meeting.update(meeting_params)
+      if @meeting.save!
+        flash[:success] = 'Session mise à jour !'
+        redirect_to meeting_path(@meeting)
+      else
+        flash[:alert] = "La session n'a pas pu être modifiée !"
+        render :edit
+      end
+    else
+      flash[:alert] = "Vous n'êtes pas le propriétaire de cette session"
+      render :edit
+    end
+  end
 
   def destroy; end
 

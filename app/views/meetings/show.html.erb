@@ -7,6 +7,14 @@
 </div>
 
 <div>
+  <%= @meeting.capacity %> convives
+</div>
+
+<div>
+  Code postal : <%= @meeting.zip_code %>
+</div>
+
+<div>
   <button>Réserver</button>
 </div>
 
@@ -19,4 +27,7 @@
 </div>
 
 <% if current_user == @masterclass.chef %>
+  <div>
+    <%= link_to "Modifier cette session", edit_meeting_path(@meeting) %>
+  </div>
 <% end %>
