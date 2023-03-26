@@ -1,4 +1,6 @@
 ActionMailer::Base.perform_deliveries = false
+Faker::Config.locale = :fr
+
 User.destroy_all
 Masterclass.destroy_all
 Recipe.destroy_all
@@ -47,10 +49,10 @@ end
 User.chefs.each do |chef|
   2.times do |_|
     Recipe.create(title: Faker::Food.unique.dish,
-                   content: Faker::Lorem.paragraph(sentence_count: 50),
-                   duration: Faker::Number.within(range: 1..36) * 5,
-                   difficulty: %w[facile moyen difficile].sample,
-                   chef: chef)
+                  content: Faker::Lorem.paragraph(sentence_count: 50),
+                  duration: Faker::Number.within(range: 1..36) * 5,
+                  difficulty: %w[facile moyen difficile].sample,
+                  chef: chef)
   end
 
   3.times do |_|
@@ -61,6 +63,15 @@ User.chefs.each do |chef|
                                   chef: chef)
     masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
     masterclass.save
+  end
+end
+
+Masterclass.all.each do |masterclass|
+  rand(1..5).times do |_|
+    Meeting.create(masterclass: masterclass,
+                   start_date: Faker::Date.between(from: DateTime.now, to: 1.year.from_now),
+                   zip_code: Faker::Address.zip_code,
+                   capacity: Faker::Number.within(range: 1..10))
   end
 end
 
