@@ -17,3 +17,6 @@
 <div>
   <%= link_to "Voir la masterclass", chef_masterclass_path(@chef, @masterclass) %>
 </div>
+
+<% if current_user == @masterclass.chef %>
+<% end %>

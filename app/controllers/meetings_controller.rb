@@ -33,7 +33,9 @@ class MeetingsController < ApplicationController
     @chef = @masterclass.chef
   end
 
-  def edit; end
+  def edit
+    @meeting = Meeting.find(params[:id])
+  end
 
   def update; end
 
