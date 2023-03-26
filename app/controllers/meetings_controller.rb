@@ -7,6 +7,11 @@ class MeetingsController < ApplicationController
   def new
     @masterclass = Masterclass.find_by(title: params[:masterclass_title])
     @meeting = Meeting.new
+
+    return unless current_user != @masterclass.chef
+
+    flash[:alert] = "Vous n'êtes pas autorisé à créer une nouvelle session pour cette masterclass"
+    redirect_back fallback_location: root_path
   end
 
   def create
@@ -24,6 +29,8 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
+    @masterclass = @meeting.masterclass
+    @chef = @masterclass.chef
   end
 
   def edit; end
