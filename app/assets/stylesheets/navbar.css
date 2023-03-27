@@ -36,6 +36,15 @@
   margin-left: 0.5em;
 }
 
+.searchbar{
+  position: relative;
+}
+.search--button{
+  position: absolute;
+  right: 1.1em;
+  bottom: .9em;
+  color: #6b7280;;
+}
 .search__wrapper {
   display: flex;
   justify-content: center;
