@@ -17,6 +17,7 @@ class MasterclassesController < ApplicationController
   def create
     @masterclass = Masterclass.new(masterclass_params)
     @masterclass.chef = current_user
+    @recipes = current_user.taught_recipes
 
     if @masterclass.save
       flash[:success] = 'Masterclass créée !'
