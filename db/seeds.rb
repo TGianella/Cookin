@@ -68,12 +68,13 @@ end
 
 Masterclass.all.each do |masterclass|
   rand(1..5).times do |_|
-    Meeting.create(masterclass: masterclass,
-                   start_date: Faker::Date.between(from: DateTime.now, to: 1.year.from_now),
-                   zip_code: Faker::Address.zip_code,
-                   capacity: Faker::Number.within(range: 1..10))
+    meeting = Meeting.new(masterclass: masterclass,
+                          start_date: Faker::Date.between(from: DateTime.now, to: 1.year.from_now),
+                          zip_code: Faker::Address.zip_code,
+                          capacity: Faker::Number.within(range: 1..10))
+    puts "Start date : #{meeting.start_date}, end_date : #{meeting.end_date}"
+    meeting.save
   end
 end
 
-Meeting.create(masterclass: Masterclass.first)
 Reservation.create(meeting: Meeting.first, guest: User.last)
