@@ -1,0 +1,22 @@
+<main class="container">
+  <h2 class="text-4xl">Renvoyer les instructions de déverrouillage</h2>
+
+  <div class="form__wrapper">
+    <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Renvoyer les instructions de déverrouillage" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="shared__wrapper">
+    <%= render "devise/shared/links" %>
+  </div>
+</main>

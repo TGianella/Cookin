@@ -1,12 +1,14 @@
 ActionMailer::Base.perform_deliveries = false
 Faker::Config.locale = :fr
 
-User.destroy_all
-Masterclass.destroy_all
-Recipe.destroy_all
-Meeting.destroy_all
-Reservation.destroy_all
-MasterclassesRecipe.destroy_all
+unless Rails.env.production?
+  User.destroy_all
+  Masterclass.destroy_all
+  Recipe.destroy_all
+  Meeting.destroy_all
+  Reservation.destroy_all
+  MasterclassesRecipe.destroy_all
+end
 
 User.create(first_name: 'Didier',
             last_name: 'Guest',

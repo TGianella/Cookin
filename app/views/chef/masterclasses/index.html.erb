@@ -1,9 +1,7 @@
-<div>
-  <h1 class="font-bold text-4xl">Les masterclasses de <%= @chef.full_name %> </h1>
-</div>
+<main class="container">
+  <h1 class="font-bold text-4xl">Cours de <%= @chef.full_name %> </h1>
+  <% @masterclasses.each do |masterclass| %>
+    <%= render partial:'chef-masterclasses', locals:{masterclass: masterclass} %>
+  <% end %>
+</main>
 
-<% @masterclasses.each do |masterclass| %>
-  <div>
-    <%= link_to masterclass.title, chef_masterclass_path(masterclass.chef, masterclass) %>
-  </div>
-<% end %>
