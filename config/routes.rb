@@ -26,6 +26,6 @@ Rails.application.routes.draw do
     resources :recipes, param: 'title', only: %i[show index]
     resources :masterclasses, param: 'title', only: %i[show index]
     resources :reservations
-    resources :profiles, param: 'name', only: %i[show]
+    resources :profiles, param: 'name', only: %i[show update edit]
   end
 end
