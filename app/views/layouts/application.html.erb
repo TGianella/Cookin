@@ -10,14 +10,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+
   <body>
     <div data-turbo="false">
       <%= render 'layouts/navbar' %>
-      <turbo-frame id="flash">
-        <%= render 'layouts/flash' %>
-      </turbo-frame>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
     </div>
+    <turbo-frame id="flash">
+      <%= render 'layouts/flash' %>
+    </turbo-frame>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
