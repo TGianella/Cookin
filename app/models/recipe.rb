@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
   include PgSearch::Model
+  
   belongs_to :chef, class_name: 'User'
 
   # Associations to find guests

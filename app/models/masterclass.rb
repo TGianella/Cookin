@@ -1,5 +1,6 @@
 class Masterclass < ApplicationRecord
   include PgSearch::Model
+  
   belongs_to :chef, class_name: 'User'
   has_many :masterclasses_recipes
   has_many :recipes, through: :masterclasses_recipes
