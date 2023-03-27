@@ -2,7 +2,7 @@
   text-align: center;
   margin: 1em auto;
 }
-.flex-column form {
+.flex-column form, .new_user form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,26 +10,32 @@
   width: 50dvh;
   min-width: 50dvh;
 }
-.flex-column{
+.flex-column {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.flex-column form div{
+.flex-column form div {
   display: flex;
   flex-direction: column;
 }
 .flex-column input[type="text"],
 .flex-column input[type="number"],
 .flex-column input[type="email"],
-.flex-column input[type="password"] {
+.flex-column input[type="password"],
+.field input[type="password"],
+.field input[type="text"],
+.field input[type="tel"],
+.field input[type="date"],
+.field input[type="email"]
+ {
   height: 30px;
   border: 1px solid blue;
   border-radius: 5em;
   width: 35dvh;
-
+  margin-bottom: 0.5em;
 }
- input[type="submit"]{
+ input[type="submit"], .actions input {
   background-color: var(--success);
   padding: .5em 1em;
   border-radius: .5em;
@@ -48,4 +54,32 @@ textarea {
 .flex-column div:nth-last-child(2){
   display: flex;
   margin: .5em 0;
+}
+
+.shared-links {
+  width: fit-content;
+  margin: 0.5em 0
+}
+
+.form__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__wrapper .actions {
+  display: flex;
+  justify-content: center;
+}
+
+.shared__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em 0;
+}
+
+.shared__wrapper p {
+  margin: 1em 0;
 }

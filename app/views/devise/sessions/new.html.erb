@@ -1,0 +1,30 @@
+<main class="container">
+  <h2 class="text-4xl">Se connecter</h2>
+
+  <div class="form__wrapper">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+      <div class="field">
+        <%= f.label 'Mot de passe' %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label 'Se souvenir de moi' %>
+        </div>
+      <% end %>
+      <div class="actions">
+        <%= f.submit "Se connecter" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="shared__wrapper">
+    <p>Pas encore de compte ?</p>
+    <%= render "devise/shared/links" %>
+  </div>
+</main>
