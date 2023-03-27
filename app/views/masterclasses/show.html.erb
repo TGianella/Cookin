@@ -48,7 +48,7 @@
       </div>
       <div class="masterclass_section--3">
         <div class="masterclass_section--3__wrapper">
-          <%= render partial:'layouts/profilebadge', locals:{masterclass: @masterclass} %>
+          <%= render partial:'layouts/profilebadge--masterclass', locals:{masterclass: @masterclass} %>
           <div class="buttons--row">
             <% if @is_owner %>
               <%= link_to "Editer le cours", edit_chef_masterclass_path(@masterclass), class:'button--s button--secondary' %>

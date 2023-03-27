@@ -30,6 +30,16 @@
   display: flex;
   justify-content: space-between;
   margin: 1em 0;
+
+}
+.chef_profile__header--options li{
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .options--link a {
   display: flex;
@@ -38,9 +48,12 @@
   align-items: center;
   margin: 0 0.8em;
   opacity: .8;
+
 }
-.options--link a:hover{
-  opacity: 1;
+.chef_profile__header--options li:hover{
+  background-color: lightgrey;
+  border-radius: 50%;
+  transition: ease .5s;
 }
 .options--link img {
   width: 35px;

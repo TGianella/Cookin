@@ -62,7 +62,7 @@
   max-width: 50%;
 }
 
-.masterclass_section--2, .masterclass_section--2--chef {
+.masterclass_section--2 {
   border-bottom: 1px lightgray solid;
   position: relative;
   overflow-y: scroll;
@@ -86,18 +86,18 @@
   padding-inline-start: 2.5em;
 }
 
-.masterclass_section--2 h2:nth-child(1) {
+.masterclass_section--2 h2:nth-child(1), .masterclass_section--2--chef h2:nth-child(1) {
   font-size: 2em;
   font-weight: 600;
   margin-bottom: 1em;
 }
 
-.masterclass_section--2 h2:nth-child(3) {
+.masterclass_section--2 h2:nth-child(3), .masterclass_section--2--chef h2:nth-child(3) {
   font-size: 1.3em;
   font-weight: 500;
   margin: 0.5em 0;
 }
-.masterclass_section--2 h3:nth-child(4) {
+.masterclass_section--2 h3:nth-child(4), .masterclass_section--2--chef h3:nth-child(4) {
   font-size: 1.2em;
   font-weight: 400;
   margin: 0.5em 0;
