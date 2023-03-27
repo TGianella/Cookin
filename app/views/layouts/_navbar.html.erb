@@ -13,7 +13,12 @@
     <div class="search">
       <div class="search__wrapper">
         <div class="searchbar">
-          <input type="text" placeholder="Rechercher ..." />
+          <%= form_with url: "/masterclasses", method: :get do |form| %>
+            <%= form.text_field :search, class:"", placeholder:"Recherche" %>
+            <%= button_tag( :class => "button_green") do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

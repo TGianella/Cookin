@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include PgSearch::Model
+  
   after_create :welcome_send
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -21,6 +23,10 @@ class User < ApplicationRecord
   validates :phone_number, format: { with: /(0|\\+33|0033)[1-9][0-9]{8}/ },
                            allow_blank: true
   validate :time_validate
+
+  pg_search_scope :search_by_name,
+  against: [ :first_name, :last_name ],
+  using: { tsearch: { prefix: true } }
 
   def to_param
     [first_name, last_name].join(' ')
