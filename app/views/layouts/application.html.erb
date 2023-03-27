@@ -11,11 +11,13 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-  <%= render 'layouts/navbar' %>
-  <turbo-frame id="flash">
-    <%= render 'layouts/flash' %>
+    <div data-turbo="false">
+      <%= render 'layouts/navbar' %>
+      <turbo-frame id="flash">
+        <%= render 'layouts/flash' %>
       </turbo-frame>
-  <%= yield %>
-  <%= render 'layouts/footer' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
