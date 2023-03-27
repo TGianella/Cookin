@@ -1,17 +1,16 @@
-
-  <div class="card">
-    <div class="card__header">
-      <button class="like card__like"></button>
-      <img src="https://picsum.photos/1000" alt="" />
-    </div>
-    <div class="card__body">
-      <h3><%= masterclass.title %></h3>
-      <div class="card__body__user">
-        <h4><%= masterclass.chef.full_name %></h4>
-      </div>
-    </div>
-    <div class="card__footer">
-      <%= link_to "Voir le cours", chef_masterclass_path(masterclass.chef, masterclass), class:"button--m button--secondary"%>
-      <button class="button--m button--primary">Participer</button>
+<div class="card">
+  <div class="card__header">
+    <button class="like card__like"></button>
+    <img src="https://picsum.photos/1000" alt="" />
+  </div>
+  <div class="card__body">
+    <h3><%= masterclass.title %></h3>
+    <div class="card__body__user">
+      <h4><%= masterclass.chef.full_name %></h4>
     </div>
   </div>
+  <div class="card__footer">
+    <%= link_to "Voir le cours", chef_masterclass_path(masterclass.chef, masterclass), class:"button--m button--secondary"%>
+    <button class="button--m button--primary">Participer</button>
+  </div>
+</div>
