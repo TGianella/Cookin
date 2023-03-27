@@ -36,14 +36,14 @@
   margin-left: 0.5em;
 }
 
-.searchbar{
+.searchbar {
   position: relative;
 }
-.search--button{
+.search--button {
   position: absolute;
   right: 1.1em;
-  bottom: .9em;
-  color: #6b7280;;
+  bottom: 0.9em;
+  color: #6b7280;
 }
 .search__wrapper {
   display: flex;
@@ -162,8 +162,6 @@
   background-color: rgba(211, 0, 0, 0.822);
 }
 
-
-
 @media screen and (max-width: 1280px) {
   .masterclass_options {
     display: none;
@@ -196,6 +194,7 @@
     position: fixed;
     top: 0px;
     visibility: visible;
+    animation: fromTopToBottom 0.1s ease;
   }
 
   .menu {
@@ -245,7 +244,7 @@
     width: 60px;
   }
 
-  .collapse_menu{
+  .collapse_menu {
     background-color: white;
     width: 100%;
     height: fit-content;
@@ -256,12 +255,54 @@
     bottom: 80px;
     display: none;
     box-shadow: 0px -5px 30px -5px rgba(204, 204, 204, 0.75);
-
+    
   }
-  .collapse_menu--active{
+  .collapse_menu--active {
     display: block;
+    animation: fromBottomToTop 0.1s ease ;
   }
-  .main--blur{
+  .main--blur {
     filter: blur(3px);
+    opacity: .8;
+    animation: fadeInBlur .5s ease ;
   }
+
+  .disconnect-button:hover {
+    border-radius: 0;
+    color: white;
+    background-color: rgba(211, 0, 0, 0.822);
+  }
+}
+
+@keyframes fromBottomToTop {
+  0% {
+    animation-timing-function: ease-in;
+    transform: translateY(100px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0px);
+  }
+}
+@keyframes fromTopToBottom {
+  0% {
+    animation-timing-function: ease-in;
+    transform: translateY(-80px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0px);
+  }
+
+}
+
+@keyframes fadeInBlur {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: .8;
+	}
 }
