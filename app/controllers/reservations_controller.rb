@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(guest: current_user,
-                                   meeting: Meeting.find(params[:id]))
+                                   meeting: Meeting.find(params[:meeting_id]))
 
     if @reservation.save
       flash[:success] = 'Inscription validée'
