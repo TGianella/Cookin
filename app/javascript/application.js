@@ -25,7 +25,7 @@ window.addEventListener("click", function (e) {
   ) {
     collapse_profile.classList.remove("collapse_profile--active");
   }
-  if (e.target.id !== "search_button") {
+  if (e.target.id !== "search_button" && e.target.id !=="search") {
     collapseNavbar.classList.remove("navbar--collapse");
     collapseSecondnav.classList.remove("secondnav--collapse");
   }
