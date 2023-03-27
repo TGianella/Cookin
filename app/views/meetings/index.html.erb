@@ -1,7 +1,9 @@
-<div>
-  <h1 class="font-bold text-4xl">Les sessions disponibles pour <%= @masterclass.title %></h1>
-</div>
-
-<% @meetings.each do |meeting| %>
-  <div><%= link_to meeting.start_date, meeting_path(meeting) %></div>
-<% end %>
+<main class="container">
+  <h1 class="font-bold text-4xl">Sessions disponibles pour <%= @masterclass.title %></h1>
+  <%= link_to "Retour à la masterclass", chef_masterclass_path(@masterclass.chef, @masterclass), class:"meeting--button button--l button--success"%>
+  <div class="meetings">
+    <% @meetings.each do |meeting| %>
+      <%= render partial:'meetings/meeting', locals:{meeting: meeting} %>
+    <% end %>
+  </div>
+</main>
