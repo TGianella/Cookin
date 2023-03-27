@@ -1,10 +1,14 @@
 ActionMailer::Base.perform_deliveries = false
-User.destroy_all
-Masterclass.destroy_all
-Recipe.destroy_all
-Meeting.destroy_all
-Reservation.destroy_all
-MasterclassesRecipe.destroy_all
+Faker::Config.locale = :fr
+
+unless Rails.env.production?
+  User.destroy_all
+  Masterclass.destroy_all
+  Recipe.destroy_all
+  Meeting.destroy_all
+  Reservation.destroy_all
+  MasterclassesRecipe.destroy_all
+end
 
 User.create(first_name: 'Didier',
             last_name: 'Guest',
@@ -47,10 +51,10 @@ end
 User.chefs.each do |chef|
   2.times do |_|
     Recipe.create(title: Faker::Food.unique.dish,
-                   content: Faker::Lorem.paragraph(sentence_count: 50),
-                   duration: Faker::Number.within(range: 1..36) * 5,
-                   difficulty: %w[facile moyen difficile].sample,
-                   chef: chef)
+                  content: Faker::Lorem.paragraph(sentence_count: 50),
+                  duration: Faker::Number.within(range: 1..36) * 5,
+                  difficulty: %w[facile moyen difficile].sample,
+                  chef: chef)
   end
 
   3.times do |_|
@@ -64,5 +68,13 @@ User.chefs.each do |chef|
   end
 end
 
-Meeting.create(masterclass: Masterclass.first)
+Masterclass.all.each do |masterclass|
+  rand(1..5).times do |_|
+    Meeting.create(masterclass: masterclass,
+                   start_date: Faker::Date.between(from: DateTime.now, to: 1.year.from_now),
+                   zip_code: Faker::Address.zip_code,
+                   capacity: Faker::Number.within(range: 1..10))
+  end
+end
+
 Reservation.create(meeting: Meeting.first, guest: User.last)

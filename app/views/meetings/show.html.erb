@@ -1,4 +1,37 @@
 <div>
-  <h1 class="font-bold text-4xl">Meetings#show</h1>
-  <p>Find me in app/views/meetings/show.html.erb</p>
+  <h1 class="font-bold text-4xl"><%= @masterclass.title %></h1>
 </div>
+
+<div>
+  Le <%= @meeting.start_date %> jusqu'à <%= @meeting.end_date %>
+</div>
+
+<div>
+  <%= @meeting.capacity %> convives
+</div>
+
+<div>
+  Code postal : <%= @meeting.zip_code %>
+</div>
+
+<div>
+  <button>Réserver</button>
+</div>
+
+<div>
+  <%= link_to "Voir les autres sessions", masterclass_meetings_path(@masterclass) %>
+</div>
+
+<div>
+  <%= link_to "Voir la masterclass", chef_masterclass_path(@chef, @masterclass) %>
+</div>
+
+<% if current_user == @masterclass.chef %>
+  <div>
+    <%= link_to "Modifier cette session", edit_meeting_path(@meeting) %>
+  </div>
+
+  <div>
+    <%= button_to "Supprimer cette session", meeting_path(@meeting), method: :delete %>
+  </div>
+<% end %>
