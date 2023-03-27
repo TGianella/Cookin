@@ -1,0 +1,87 @@
+<main class="container">
+  <h2 class="text-4xl">Editer <%= resource_name.to_s.humanize %>
+  </h2>
+
+  <div class="form__wrapper">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages" , resource: resource %>
+        <div class="field">
+          <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>En attente de confirmation pour : <%= resource.unconfirmed_email %>
+          </div>
+          <% end %>
+            <div class="field">
+              <%= f.label 'Mot de passe' %> <i>(laisser vide si vous ne souhaitez pas le modifier)</i><br />
+                <%= f.password_field :password, autocomplete: "new-password" %>
+                  <% if @minimum_password_length %>
+                    <br />
+                    <em>
+                      <%= @minimum_password_length %> charactères minimum
+                    </em>
+                    <% end %>
+            </div>
+            <div class="field">
+              <%= f.label 'Confirmer le mot de passe' %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+            <div class="field">
+              <%= f.label 'Mot de passe actuel' %> <br />
+                <%= f.password_field :current_password, autocomplete: "current-password" %>
+            </div>
+
+
+
+            <div class="field">
+              <%= f.label 'Prénom' %><br />
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            </div>
+
+            <div class="field">
+              <%= f.label 'Nom' %><br />
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+            </div>
+
+            <div class="field">
+              <%= f.label 'Date de naissance' %><br />
+                <%= f.date_field :birth_date, autofocus: true, autocomplete: "city" %>
+            </div>
+            <div class="field">
+              <%= f.label 'Ville' %><br />
+                <%= f.text_field :city, autofocus: true, autocomplete: "city" %>
+            </div>
+
+            <div class="field">
+              <%= f.label 'Code postal' %><br />
+                <%= f.text_field :zip_code, autofocus: true, autocomplete: "zip_code" %>
+            </div>
+
+            <div class="field">
+              <%= f.label 'Téléphone' %><br />
+                <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Update" %>
+            </div>
+            <% end %>
+  </div>
+
+  <h3 class="text-4xl">Annuler mon compte</h3>
+
+  <div class="shared__wrapper">
+    <p>Insatisfait ? </p>
+    <div class="shared-links button--m button--secondary">
+      <%= button_to "Annuler mon compte" , registration_path(resource_name), data: { confirm: "Êtes-vous sûre ?" ,
+        turbo_confirm: "Êtes-vous sûre ?" }, method: :delete %>
+    </div>
+  </div>
+
+  <div class="shared__wrapper">
+    <div class="shared-links button--m button--secondary">
+      <%= link_to "Retour" , :back %>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,62 @@
+<main class="container">
+  <h2 class="text-4xl">S'inscrire</h2>
+
+  <div class="form__wrapper">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages" , resource: resource %>
+        <div class="field">
+          <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <div class="field">
+          <%= f.label 'Mot de passe' %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> charactères minimum)</em>
+              <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+        <div class="field">
+          <%= f.label 'Confirmez le mot de passe' %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label 'Prénom' %><br />
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        </div>
+
+        <div class="field">
+          <%= f.label 'Nom' %><br />
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+        </div>
+
+        <div class="field">
+          <%= f.label 'Date de naissance' %><br />
+            <%= f.date_field :birth_date, autofocus: true, autocomplete: "city" %>
+        </div>
+        <div class="field">
+          <%= f.label 'Ville' %><br />
+            <%= f.text_field :city, autofocus: true, autocomplete: "city" %>
+        </div>
+
+        <div class="field">
+          <%= f.label 'Code postal' %><br />
+            <%= f.text_field :zip_code, autofocus: true, autocomplete: "zip_code" %>
+        </div>
+
+        <div class="field">
+          <%= f.label 'Téléphone' %><br />
+            <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "S'inscrire" %>
+        </div>
+        <% end %>
+  </div>
+
+  <div class="shared__wrapper">
+    <p>Déjà un compte ? Connectez-vous </p>
+    <%= render "devise/shared/links" %>
+  </div>
+</main>
