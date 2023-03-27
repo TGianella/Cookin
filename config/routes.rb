@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'reservations/show'
+  get 'reservations/new'
+  get 'reservations/create'
+  get 'reservations/destroy'
   root 'masterclasses#index'
 
   devise_for :users
