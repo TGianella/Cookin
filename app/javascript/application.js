@@ -35,6 +35,10 @@ window.addEventListener("click", function (e) {
   }
   if (e.target.id !== "search_button" && e.target.id !=="search") {
     collapseNavbar.classList.remove("navbar--collapse");
-    collapseSecondnav.classList.remove("secondnav--collapse");
+  }
+  if (e.target.id !== "collapseButtonOnMenu" && e.target.className !=="collapse_menu") {
+    collapse_menu.classList.remove("collapse_menu--active")
+    main.classList.remove("main--blur");
+    console.log('ok')
   }
 });
