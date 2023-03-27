@@ -1,3 +1,6 @@
 {
-  "stack": "heroku-20"
+  "stack": "heroku-20",
+  "scripts": {
+    "postdeploy": "bundle exec rails db:create db:migrate db:seed"
+  }
 }
