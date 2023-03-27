@@ -1,1 +1,1 @@
-release: bundle exec rails db:create db:migrate
+release: bundle exec rails db:schema:load db:migrate
