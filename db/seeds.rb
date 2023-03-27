@@ -75,5 +75,4 @@ Masterclass.all.each do |masterclass|
   end
 end
 
-Meeting.create(masterclass: Masterclass.first)
 Reservation.create(meeting: Meeting.first, guest: User.last)
