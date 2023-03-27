@@ -1,4 +1,5 @@
 class Masterclass < ApplicationRecord
+  include PgSearch::Model
   belongs_to :chef, class_name: 'User'
   has_many :masterclasses_recipes
   has_many :recipes, through: :masterclasses_recipes
@@ -21,6 +22,10 @@ class Masterclass < ApplicationRecord
                     numericality: { in: 1..1000 }
   validate :recipes_belong_to_same_chef
   validates :recipes, presence: true
+
+  pg_search_scope :search_by_description_and_title,
+                  against: [ :description, :title ],
+                  using: { tsearch: { prefix: true } }
 
   def to_param
     title
