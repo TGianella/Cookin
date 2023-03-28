@@ -15,6 +15,10 @@ class Meeting < ApplicationRecord
     start_date + masterclass.duration * 60
   end
 
+  def free_spots
+    capacity - reservations.count
+  end
+
   private
 
   def start_date_should_be_in_the_future

@@ -19,7 +19,7 @@
   text-decoration: none;
   padding-right: 0.6em;
 }
-.footer__wrapper a:hover, button:hover{
+.footer__wrapper a:hover{
   text-decoration: underline;
 }
 

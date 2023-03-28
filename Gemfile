@@ -91,3 +91,5 @@ gem "table_print", "~> 1.5"
 
 gem "validates_timeliness", "~> 7.0.0.beta1"
 
+gem 'pg_search'
+

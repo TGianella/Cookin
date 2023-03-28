@@ -1,6 +1,30 @@
 class MasterclassesController < ApplicationController
   def index
-    @masterclasses = Masterclass.all
+    if params[:search].present?
+      @masterclasses_search = Masterclass.search_by_description_and_title(params[:search])
+      @recipes_search = Recipe.search_by_description_and_title(params[:search])
+      @chefs = User.search_by_name(params[:search])
+      @chefs_search = @chefs.where(is_chef: true)
+      p @chefs_search
+      p "$$"*400
+      @masterclasses = []
+      @chefs_search.each do |chef|
+        chef.given_masterclasses.each do |masterclass|
+          @masterclasses << masterclass
+        end
+      end
+      @recipes_search.each do |recipe|
+        recipe.masterclasses.each do |masterclass|
+          @masterclasses << masterclass
+        end
+      end
+      @masterclasses_search.each do |masterclass|
+        @masterclasses << masterclass
+      end
+      @masterclasses = @masterclasses.uniq
+    else
+      @masterclasses = Masterclass.all
+    end
   end
 
   def show
