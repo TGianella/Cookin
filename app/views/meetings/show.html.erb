@@ -39,10 +39,17 @@
 <% if current_user == @chef %>
   <div>
     <h2 class="font-bold text-3xl">Les demandes pour cette session</h2>
+    <br>
+    <h4 class="font-bold text-xl">Demandes en cours</h4>
     <% @meeting.pending_reservations.each do |pending_reservation| %>
       <p> <%= pending_reservation.guest.full_name %> </p>
       <%= button_to "Valider", reservation_path(pending_reservation), method: 'patch' %>
-      <button> Annuler </button>
+      <%= button_to "Annuler", reservation_path(pending_reservation), method: 'delete' %>
+    <% end %>
+    <h4 class="font-bold text-xl">Demandes validées</h4>
+    <% @meeting.confirmed_reservations.each do |confirmed_reservation| %>
+      <p> <%= confirmed_reservation.guest.full_name %> </p>
+      <%= button_to "Annuler", reservation_path(confirmed_reservation), method: 'delete' %>
     <% end %>
   </div>
 <% end %>

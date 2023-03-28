@@ -34,5 +34,21 @@ class ReservationsController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
-  def destroy; end
+  def destroy
+    @reservation = Reservation.find(params[:id])
+
+    if current_user == @reservation.meeting.chef || current_user == @reservation.guest
+
+      if @reservation.destroy
+        flash[:success] = 'Réservation annulée !'
+      else
+        flash[:alert] = "La réservation n'a pas pu être annulée"
+      end
+
+    else
+      flash[:error] = "Vous n'êtes pas autorisé à annuler cette réservation"
+    end
+
+    redirect_back fallback_location: root_path
+  end
 end
