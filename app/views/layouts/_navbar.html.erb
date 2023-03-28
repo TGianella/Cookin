@@ -56,7 +56,7 @@
             </div>
           <% else %>
             <div class="collapse__logged">
-              <a href="#">Profil</a>
+              <a href="<%= guest_profile_path(current_user) %>">Profil</a>
               <a href="#">Mes cours</a>
               <a href="#">Mes recettes</a>
               <a href="<%= guest_reservations_path %>">Mes réservations</a>
