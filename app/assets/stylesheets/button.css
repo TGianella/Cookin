@@ -53,6 +53,11 @@
 .button--secondary {
   border: solid 1px var(--secondary);
 }
+.button--secondary:hover {
+  background-color: var(--secondary);
+  opacity: .5;
+  color: var(--white);
+}
 /******** BUTTON SUCCESS *******/
 .button--success {
   background-color: var(--success);

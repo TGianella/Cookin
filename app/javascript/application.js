@@ -8,16 +8,24 @@ let collapseButton = document.querySelector(
 let collapseNavbar = document.querySelector(".navbar");
 let collapseSecondnav = document.querySelector(".secondnav");
 
+let collapse_menu = document.querySelector(".collapse_menu")
+let main = document.querySelector("main")
+
 collapseButton.addEventListener("click", function () {
   collapse_profile.classList.toggle("collapse_profile--active");
 });
+
+collapseButtonOnMenu.addEventListener("click", function(){
+  console.log(collapseButtonOnMenu)
+  collapse_menu.classList.toggle("collapse_menu--active")
+  main.classList.toggle("main--blur")
+})
 
 search_button.addEventListener("click", function () {
   collapseNavbar.classList.toggle("navbar--collapse");
   collapseSecondnav.classList.toggle("secondnav--collapse");
 });
 window.addEventListener("click", function (e) {
-  console.log(e.target.id);
   if (
     e.target.localName !== "img" &&
     e.target.localName !== "i" &&
@@ -25,8 +33,12 @@ window.addEventListener("click", function (e) {
   ) {
     collapse_profile.classList.remove("collapse_profile--active");
   }
-  if (e.target.id !== "search_button") {
+  if (e.target.id !== "search_button" && e.target.id !=="search") {
     collapseNavbar.classList.remove("navbar--collapse");
-    collapseSecondnav.classList.remove("secondnav--collapse");
+  }
+  if (e.target.id !== "collapseButtonOnMenu" && e.target.className !=="collapse_menu") {
+    collapse_menu.classList.remove("collapse_menu--active")
+    main.classList.remove("main--blur");
+    console.log('ok')
   }
 });

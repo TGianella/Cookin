@@ -12,6 +12,6 @@
     </div>
     <div class="card__footer">
       <%= link_to "Voir le cours", chef_masterclass_path(masterclass.chef, masterclass), class:"button--m button--secondary"%>
-      <button class="button--m button--primary">Participer</button>
+          <button class="button--m button--primary"><%= link_to "Participer", masterclass_meetings_path(masterclass) %></button>
     </div>
   </div>

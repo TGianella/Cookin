@@ -26,7 +26,6 @@
 .field input[type="password"],
 .field input[type="text"],
 .field input[type="tel"],
-.field input[type="date"],
 .field input[type="email"]
  {
   height: 30px;
@@ -35,7 +34,8 @@
   width: 35dvh;
   margin-bottom: 0.5em;
 }
-input[type="datetime-local"]{
+input[type="datetime-local"],
+.field input[type="date"]{
   height: 50px;
   border: 1px solid lightgrey;
   border-radius: 5em;
