@@ -44,9 +44,9 @@
           eaque ducimus perspiciatis soluta temporibus eligendi minima odit
           autem! Voluptas, velit. Nobis, necessitatibus quas.
         </p>
-
-        <%= render 'informations' %>
-
+        <% if current_user %>
+          <%= render 'informations' %>
+        <% end %>
       </div>
     </div>
   </div>

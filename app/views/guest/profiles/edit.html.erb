@@ -1,7 +1,7 @@
 <main class="container">
   <h2 class='text-4xl'>Éditer mes informations</h2>
   <div class="form__wrapper">
-    <%= form_with scope: @user, method: :put, multipart: true do |f| %>
+    <%= form_with model: @user, url: guest_profile_path(@user), method: 'patch' do |f| %>
       <div class="field">
         <%= f.label 'Email' %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
