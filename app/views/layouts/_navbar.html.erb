@@ -13,15 +13,17 @@
     <div class="search">
       <div class="search__wrapper">
         <div class="searchbar">
-          <input type="text" placeholder="Rechercher ..." />
+          <%= form_with url: "/masterclasses", method: :get do |form| %>
+            <%= form.text_field :search, class:"", placeholder:"Recherche" %>
+            <%= button_tag( :class => "button_green") do %>
+              <i class="fas fa-search search--button"></i>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
     <div class="profile">
       <div class="profile__wrapper">
-        <div class="masterclass_options">
-          <a href="#">Devenir chef</a>
-        </div>
         <div class="profile_menu">
           <button>
           <% if user_signed_in? %>
@@ -79,11 +81,51 @@
     </div>
   </div>
 </div>
-<div class="menu "data-turbo="false" >
+<div class="menu">
   <div class="menu__wrapper">
+    <div class="collapse_menu">
+      <div class="collapse_profile__wrapper">   
+        <% if user_signed_in? %>
+          <% if current_user.is_chef %>
+
+            <div class="collapse__logged">
+              <a href="<%= chef_path(current_user) %>">Profil</a>
+              <a href="<%= new_masterclass_path %>">Proposer un cours</a>
+              <a href="<%= new_recipe_path %>">Ajouter une recette</a>
+            </div>
+            <div class="collapse__static_pages">
+              <a href="#">À propos</a>
+              <a href="">Nous contacter</a>
+              <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
+            </div>
+          <% else %>
+            <div class="collapse__logged">
+              <a href="#">Profil</a>
+              <a href="#">Mes cours</a>
+              <a href="#">Mes recettes</a>
+            </div>
+            <div class="collapse__static_pages">
+              <a href="#">À propos</a>
+              <a href="">Nous contacter</a>
+              <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
+            </div>
+          <% end %> 
+        <% else %>
+            <div class="collapse__login">
+              <a href="<%=new_user_registration_path%>">S'inscrire</a>
+              <a href="<%=new_user_session_path%>">Se connecter</a>
+            </div>
+            <div class="collapse__static_pages">
+              <a href="#">Découvrir le concept</a>
+              <a href="#">À propos</a>
+              <a href="">Nous contacter</a>
+            </div> 
+        <% end %>
+      </div>
+    </div>
     <ul class="icon">
       <li class="icon__button__wrapper">
-        <a href="#" class="icon__button" ><i id="search_button" class="fas fa-search fa-2x"></i></a>
+        <button class="icon__button" ><i id="search_button" class="fas fa-search fa-2x"></i></button>
       </li>
       <li class="icon__button__wrapper ">
         <a href="<%=masterclasses_path%>" class="icon__button icon__button--logo"
@@ -91,8 +133,9 @@
         /></a>
       </li>
       <li class="icon__button__wrapper">
-        <a href="#" class="icon__button"><i class="fas fa-user fa-2x"></i></a>
+        <button class="icon__button"><i class="fas fa-user fa-2x" id="collapseButtonOnMenu"></i></button>
       </li>
     </ul>
+
   </div>
 </div>
