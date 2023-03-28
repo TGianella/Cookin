@@ -25,8 +25,8 @@ class User < ApplicationRecord
   validate :time_validate
 
   pg_search_scope :search_by_name,
-  against: [ :first_name, :last_name ],
-  using: { tsearch: { prefix: true } }
+                  against: [ :first_name, :last_name ],
+                  using: { tsearch: { prefix: true } }
 
   def to_param
     [first_name, last_name].join(' ')
