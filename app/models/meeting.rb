@@ -19,6 +19,14 @@ class Meeting < ApplicationRecord
     capacity - reservations.count
   end
 
+  def pending_reservations
+    reservations.where(status: false).to_a
+  end
+
+  def confirmed_reservations
+    reservations.where(status: true).to_a
+  end
+
   private
 
   def start_date_should_be_in_the_future

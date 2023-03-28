@@ -35,3 +35,14 @@
     <%= button_to "Supprimer cette session", meeting_path(@meeting), method: :delete %>
   </div>
 <% end %>
+
+<% if current_user == @chef %>
+  <div>
+    <h2 class="font-bold text-3xl">Les demandes pour cette session</h2>
+    <% @meeting.pending_reservations.each do |pending_reservation| %>
+      <p> <%= pending_reservation.guest.full_name %> </p>
+      <button> Valider </button>
+      <button> Annuler </button>
+    <% end %>
+  </div>
+<% end %>

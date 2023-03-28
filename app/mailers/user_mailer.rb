@@ -9,6 +9,7 @@ class UserMailer < ApplicationMailer
 
   def reservation_created_email(reservation)
     @reservation = reservation
+    @url = new_user_session_url
 
     mail(to: @reservation.guest.email, subject: "Votre demande d'inscription pour #{@reservation.masterclass.title}")
   end
