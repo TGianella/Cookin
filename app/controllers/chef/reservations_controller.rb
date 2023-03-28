@@ -1,5 +1,8 @@
 class Chef::ReservationsController < ApplicationController
   def index
+    @reservations = Reservation.all
+    @masterclasses = Masterclass.where(chef: current_user) 
+    @meetings = Meeting.where(reservations: @reservations) 
   end
 
   def show
@@ -19,4 +22,5 @@ class Chef::ReservationsController < ApplicationController
 
   def destroy
   end
+  
 end
