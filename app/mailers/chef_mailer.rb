@@ -21,6 +21,6 @@ class ChefMailer < ApplicationMailer
     @url = new_user_session_url
 
     mail(to: @reservation.chef.email,
-         subject: "Vous avez annulé la demande d'inscription de #{@reservation.guest.full_name} pour #{@reservation.masterclass.title}")
+         subject: "#{@reservation.guest.full_name} a annulé son inscription pour #{@reservation.masterclass.title}")
   end
 end

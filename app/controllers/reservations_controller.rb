@@ -38,11 +38,11 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
 
     if current_user == @reservation.meeting.chef
-      UserMailer.reservation_cancelled_by_chef_email(self).deliver_now
+      UserMailer.reservation_cancelled_by_chef_email(@reservation).deliver_now
       destroy_reservation
     elsif current_user == @reservation.guest
-      UserMailer.reservation_cancelled_by_guest_email(self).deliver_now
-      ChefMailer.reservation_cancelled_by_guest_email(self).deliver_now
+      UserMailer.reservation_cancelled_by_guest_email(@reservation).deliver_now
+      ChefMailer.reservation_cancelled_by_guest_email(@reservation).deliver_now
       destroy_reservation
     else
       flash[:error] = "Vous n'êtes pas autorisé à annuler cette réservation"
