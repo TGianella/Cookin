@@ -1,8 +1,0 @@
-<%= reservation.masterclass.title %>
-<%= reservation.meeting.start_date %>
-<% if reservation.status %>
-  <p> Confirmé </p>
-<% else %>
-  <p> En attente </p>
-<% end %>
-<%= button_to "Annuler", reservation_path(reservation), method: 'delete', form: {data: {turbo_confirm: "Êtes-vous sûr.e ?"}} %>

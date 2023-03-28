@@ -1,4 +1,28 @@
-<div>
-  <h1 class="font-bold text-4xl">Chef::Reservations#index</h1>
-  <p>Find me in app/views/chef/reservations/index.html.erb</p>
-</div>
+<main class="container">
+  <h1 class="font-bold text-4xl">Mes réservations</h1>
+  <% @masterclasses.each do |masterclass| %>
+    <div class="masterclass-reservations">
+      <div class="masterclass-reservations__wrapper">
+        <div class="masterclass-reservations__header">
+          <h2 class="font-bold text-2xl">Réservations pour <%=masterclass.title%></h2>
+          <button class="button--s button--outline--success">Voir plus</button>
+        </div>
+          <% masterclass.meetings.each do |meeting| %>
+            <div class="masterclass-reservations__body">
+              <div >
+                <h3 class="font-bold text-xl"><%= meeting.start_date.strftime("%A %d %B %Y") %></h3>
+                <div class="button--s button--outline--danger">
+                  <%= meeting.free_spots %> places disponibles
+                </div>
+              </div>
+              <div class="reservations">
+                <% meeting.reservations.each do |reservation| %>
+                  <%= render partial: "layouts/reservation_chef", locals: { reservation: reservation } %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</main>

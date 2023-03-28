@@ -1,55 +1,28 @@
-<div>
-  <h1 class="font-bold text-4xl"><%= @masterclass.title %></h1>
-</div>
-
-<div>
-  Le <%= @meeting.start_date %> jusqu'à <%= @meeting.end_date %>
-</div>
-
-<div>
-  <%= @meeting.capacity %> convives
-</div>
-
-<div>
-  Code postal : <%= @meeting.zip_code %>
-</div>
-
-<div>
-  <%= button_to "S'inscrire", meeting_reservations_path(@meeting) %>
-</div>
-
-<div>
-  <%= link_to "Voir les autres sessions", masterclass_meetings_path(@masterclass) %>
-</div>
-
-<div>
-  <%= link_to "Voir la masterclass", chef_masterclass_path(@chef, @masterclass) %>
-</div>
-
-<% if current_user == @masterclass.chef %>
-  <div>
-    <%= link_to "Modifier cette session", edit_meeting_path(@meeting) %>
+<main class="container">
+  <div class="show_meeting">
+    <div class="show_meeting__wrapper">
+      <div class="show_meeting__header">
+        <h1><%= @masterclass.title %></h1>
+        <h2>Le <%= @meeting.start_date.strftime("%A %d %B") %> </h2>
+          <h3>de <%= @meeting.start_date.strftime("%I:%M") %> à <%= @meeting.end_date.strftime("%I:%M") %></h3>
+      </div>
+      <div class="show_meeting__body">
+        <div class="show_meeting__body--section1">
+          <p>Nombre d'invités : <%= @meeting.capacity %></p>
+          <p>Code postal : <%= @meeting.zip_code %> </p>
+        </div>
+        <div class="show_meeting__body--section2 ">
+          <%= link_to "Voir les sessions", masterclass_meetings_path(@masterclass), class:"button--s button--outline--success" %>
+          <%= link_to "Voir le cours", chef_masterclass_path(@chef, @masterclass), class:"button--s button--secondary" %>
+        </div> 
+      </div>
+      <div class="show_meeting__footer">
+        <%= button_to "S'inscrire", meeting_reservations_path(@meeting), class:"button--l button--success" %>
+        <% if current_user == @masterclass.chef %>
+            <%= link_to "Modifier cette session", edit_meeting_path(@meeting), class:"button--s button--secondary"  %>
+            <%= button_to "Supprimer cette session", meeting_path(@meeting), method: :delete, class:"button--s button--danger"  %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= button_to "Supprimer cette session", meeting_path(@meeting), method: :delete %>
-  </div>
-<% end %>
-
-<% if current_user == @chef %>
-  <div>
-    <h2 class="font-bold text-3xl">Les demandes pour cette session</h2>
-    <br>
-    <h4 class="font-bold text-xl">Demandes en cours</h4>
-    <% @meeting.pending_reservations.each do |pending_reservation| %>
-      <p> <%= pending_reservation.guest.full_name %> </p>
-      <%= button_to "Valider", reservation_path(pending_reservation), method: 'patch' %>
-      <%= button_to "Annuler", reservation_path(pending_reservation), method: 'delete' %>
-    <% end %>
-    <h4 class="font-bold text-xl">Demandes validées</h4>
-    <% @meeting.confirmed_reservations.each do |confirmed_reservation| %>
-      <p> <%= confirmed_reservation.guest.full_name %> </p>
-      <%= button_to "Annuler", reservation_path(confirmed_reservation), method: 'delete' %>
-    <% end %>
-  </div>
-<% end %>
+</main>
