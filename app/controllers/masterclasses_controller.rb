@@ -52,20 +52,30 @@ class MasterclassesController < ApplicationController
     end
   end
 
+  def edit
+    find_masterclass
+    if current_user == @masterclass.chef
+      @recipes = current_user.taught_recipes
+    else
+      redirect_back fallback_location: root_path
+    end
+  end
+
   def update
+    @recipes = current_user.taught_recipes
     find_masterclass
     if @masterclass.chef == current_user
       @masterclass.update(masterclass_params)
-      if @masterclass.save!
-        flash[:success] = 'Mastrclass modifiée !'
+      if @masterclass.save
+        flash[:success] = 'Masterclass modifiée !'
         redirect_to chef_masterclass_path(current_user, @masterclass)
       else
-        flash[:alert] = "La masterclass n'a pas pu être modifiée !"
+        flash[:danger] = "La masterclass n'a pas pu être modifiée !"
         render :edit
       end
     else
       flash[:alert] = "Vous n'êtes pas le propriétaire de cette masterclass"
-      render :edit
+      redirect_to root_path
     end
   end
 

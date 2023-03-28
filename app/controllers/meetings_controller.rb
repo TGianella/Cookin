@@ -10,7 +10,7 @@ class MeetingsController < ApplicationController
 
     return unless current_user != @masterclass.chef
 
-    flash[:alert] = "Vous n'êtes pas autorisé à créer une nouvelle session pour cette masterclass"
+    flash[:danger] = "Vous n'êtes pas autorisé à créer une nouvelle session pour cette masterclass"
     redirect_back fallback_location: root_path
   end
 
@@ -22,7 +22,7 @@ class MeetingsController < ApplicationController
       flash[:success] = 'Session créée !'
       redirect_to meeting_path(@meeting)
     else
-      flash[:alert] = "La session n'a pas pu être créée"
+      flash[:danger] = "La session n'a pas pu être créée"
       render :new
     end
   end
@@ -39,7 +39,7 @@ class MeetingsController < ApplicationController
 
     return unless current_user != @meeting.chef
 
-    flash[:alert] = "Vous n'êtes pas autorisé à modifier cette session"
+    flash[:danger] = "Vous n'êtes pas autorisé à modifier cette session"
     redirect_back fallback_location: root_path
   end
 
@@ -52,11 +52,11 @@ class MeetingsController < ApplicationController
         flash[:success] = 'Session mise à jour !'
         redirect_to meeting_path(@meeting)
       else
-        flash[:alert] = "La session n'a pas pu être modifiée !"
+        flash[:danger] = "La session n'a pas pu être modifiée !"
         render :edit
       end
     else
-      flash[:alert] = "Vous n'êtes pas le propriétaire de cette session"
+      flash[:danger] = "Vous n'êtes pas le propriétaire de cette session"
       render :edit
     end
   end

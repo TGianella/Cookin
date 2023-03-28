@@ -7,12 +7,5 @@ class Chef::RecipesController < ApplicationController
 
   def show; end
 
-  def edit
-    @recipe = Recipe.find_by(title: params[:title])
-    return if current_user == @recipe.chef
-
-    redirect_back fallback_location: root_path
-  end
-
   def destroy; end
 end

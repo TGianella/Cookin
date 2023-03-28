@@ -1,6 +1,7 @@
   <div class="masterclass">
     <div class="masterclass__header">
       <h1><%= masterclass.title %> </h1>
+       <%= link_to "Editer le cours", edit_masterclass_path(masterclass), class:'button--s button--secondary' %>
       <div class="masterclass_informations">
         <div class="notice_commentaries">
           <p>
