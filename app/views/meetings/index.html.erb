@@ -3,7 +3,11 @@
   <%= link_to "Retour à la masterclass", chef_masterclass_path(@masterclass.chef, @masterclass), class:"meeting--button button--l button--success"%>
   <div class="meetings">
     <% @meetings.each do |meeting| %>
-      <%= render partial:'meetings/meeting', locals:{meeting: meeting} %>
+      <% if meeting.free_spots > 0 %>
+        <%= render partial:'meetings/meeting--available', locals:{meeting: meeting} %>
+      <% else %>
+        <%= render partial:'meetings/meeting--full', locals:{meeting: meeting} %>
+      <% end %>
     <% end %>
   </div>
 </main>

@@ -14,14 +14,13 @@
                 <div class="button--s button--outline--danger">
                   <%= meeting.free_spots %> places disponibles
                 </div>
-              
               </div>
-                <div class="reservations">
-                  <% masterclass.reservations.each do |reservation| %>
-                    <%= render partial: "layouts/reservation", locals: { reservation: reservation } %>
-                  <% end %>
-                </div>
+              <div class="reservations">
+                <% meeting.reservations.each do |reservation| %>
+                  <%= render partial: "layouts/reservation_chef", locals: { reservation: reservation } %>
+                <% end %>
               </div>
+            </div>
           <% end %>
       </div>
     </div>

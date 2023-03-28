@@ -11,7 +11,8 @@
 }
 .masterclass-reservations__header{
   display: flex;
-  margin:2em 0
+  margin:2em 0;
+  width: fit-content;
 }
 .masterclass-reservations__header button{
   margin-left: 1em;
@@ -33,8 +34,8 @@
 }
 .reservations {
   margin-left: 3em;
-  flex: 3;
   display: flex;
+  flex-wrap: wrap;
   
 }
 .reservation--button{
@@ -42,6 +43,7 @@
 }
 .reservation {
   min-width: 18%;
+  height: fit-content;
   margin: 0.5em 0.5em;
   cursor: default;
 }
