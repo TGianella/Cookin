@@ -7,4 +7,20 @@ class ChefMailer < ApplicationMailer
 
     mail(to: @reservation.chef.email, subject: "#{@reservation.guest.full_name} veut réserver pour une session")
   end
+
+  def reservation_validated_email(reservation)
+    @reservation = reservation
+    @url = new_user_session_url
+
+    mail(to: @reservation.chef.email,
+         subject: "Vous avez validé l'inscription de #{@reservation.guest.full_name} pour #{@reservation.masterclass.title} !")
+  end
+
+  def reservation_cancelled_by_guest_email(reservation)
+    @reservation = reservation
+    @url = new_user_session_url
+
+    mail(to: @reservation.chef.email,
+         subject: "Vous avez annulé la demande d'inscription de #{@reservation.guest.full_name} pour #{@reservation.masterclass.title}")
+  end
 end
