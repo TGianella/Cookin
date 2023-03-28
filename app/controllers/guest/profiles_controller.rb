@@ -9,11 +9,8 @@ class Guest::ProfilesController < ApplicationController
 
   def update
     @user = User.find_from_param(params[:name])
-    puts '*' * 60
     if @user == current_user
-      puts '$' * 60
-      if @user.update!(user_params)
-        puts '$' * 60
+      if @user.update(user_params)
         flash[:success] = 'Votre profil a bien été mis à jour'
         redirect_to guest_profile_path(@user)
       else
