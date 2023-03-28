@@ -1,4 +1,4 @@
-.alert{
+.alert {
   position: absolute;
   height: 30px;
   width: 20dvw;
@@ -11,6 +11,7 @@
   padding-top: 4px;
   font-weight: 500;
   color: var(--white);
+  background-color: red;
 }
 
 .alert--danger {
@@ -33,4 +34,8 @@
   0% { opacity: 1;}
   50% { opacity: 0.99;}
   100% { opacity: 0;}
+}
+
+.alert-devise {
+  background-color: red;
 }
