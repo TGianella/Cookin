@@ -41,7 +41,7 @@
     <h2 class="font-bold text-3xl">Les demandes pour cette session</h2>
     <% @meeting.pending_reservations.each do |pending_reservation| %>
       <p> <%= pending_reservation.guest.full_name %> </p>
-      <button> Valider </button>
+      <%= button_to "Valider", reservation_path(pending_reservation), method: 'patch' %>
       <button> Annuler </button>
     <% end %>
   </div>
