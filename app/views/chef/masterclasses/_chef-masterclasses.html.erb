@@ -35,12 +35,11 @@
         </div>    
         <div class="reservation-badge">
           <div class="reservation-badge__wrapper">
-            <% if @is_owner %>
-              <%= link_to "Modifier", chef_reservations_path, class: "button--s button--outline--danger"  %>
+            <% if @chef %>
+              <%= link_to "Modifier", edit_chef_masterclass_path(masterclass), class: "button--s button--outline--danger"  %>
               <%= link_to "Créer une session", new_masterclass_meeting_path(masterclass), class: "button--s button--success"  %>
             <%= link_to "Voir mes reservations", chef_reservations_path, class: "button--s button--danger"  %>
-            <% else %>
-              <div>
+            <% elsif !@chef %>
                 <%= masterclass.price %> € /personnes
               </div>
               <div class=" button--l button--primary">

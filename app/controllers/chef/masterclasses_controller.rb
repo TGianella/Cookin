@@ -4,6 +4,7 @@ class Chef::MasterclassesController < ApplicationController
   def index
     @chef = User.find_from_param(params[:chef_name])
     @masterclasses = @chef.given_masterclasses
+    @is_owner = user_signed_in? && current_user.is_chef && @chef
   end
 
   def show; end
