@@ -28,27 +28,28 @@
           <h2>Présentation du cours</h2>
           <p class="masterclass--description"><%= @masterclass.description %></p>
           <h2>Durée du cours : <%= @masterclass.duration %> minutes</h2> 
-          <h3>Recette prévu pendant le cours  <i class="fas fa-arrow-right"></i></h3>
-          <div class="recipe-badge buttons--row">
-            <% @recipes.each do |recipe| %> 
-              <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:"price--badge button--s button--outline--success" %> 
-            <% end %>
-          </div>
-          <div class="reservation-badge">
-            <div class="reservation-badge__wrapper">
-              <div>
-                <%= @masterclass.price %> € /personnes
-              </div>
-              <div class=" button--l button--primary">
-                Participer 
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
       <div class="masterclass_section--3">
         <div class="masterclass_section--3__wrapper">
           <%= render partial:'layouts/profilebadge--masterclass', locals:{masterclass: @masterclass} %>
+          <div class="masterclass_section--3__footer">
+            <h3>Recette prévu pendant le cours  <i class="fas fa-arrow-right"></i></h3>
+            <div class="recipe-badge buttons--row">
+              <% @recipes.each do |recipe| %> 
+                <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:" button--s button--outline--success" %> 
+              <% end %>
+            </div>
+            <div class="reservation-badge">
+              <div class="reservation-badge__wrapper">
+                <div>
+                  <%= @masterclass.price %> € /personnes
+                </div>
+                <%= link_to "Participer", masterclass_meetings_path(@masterclass), class:"button--m button--primary" %>
+              </div>
+            </div>
+          </div>
           <div class="buttons--row">
             <% if @is_owner %>
               <%= link_to "Editer le cours", edit_chef_masterclass_path(@masterclass), class:'button--s button--secondary' %>

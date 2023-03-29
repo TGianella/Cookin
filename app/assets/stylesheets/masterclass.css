@@ -113,12 +113,26 @@
 }
 
 .masterclass_section--3__wrapper {
-  align-items: flex-end;
+  min-height: 430px;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .masterclass_section--3__wrapper a {
   margin-right: 0.5em;
+}
+
+.masterclass_section--3__footer{
+  display: flex;
+  flex-direction: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: fit-content;
+  border: 1px solid lightgray;
+  padding: 1em 1em;
+  padding-right: 3em;
+  border-radius: .5em;
 }
 
 .price-badge {
@@ -128,8 +142,13 @@
 .price--badge {
   margin: 0 0.5em;
 }
+
+.price--badge button{
+  margin-left: .5em;
+}
 .recipe-badge {
   display: flow-root;
+  flex-wrap: wrap;
 }
 .recipe-badge a:nth-child(n) {
   margin: 5px;
@@ -138,16 +157,19 @@
 
 .reservation-badge {
   border: 1px lightgray solid;
-  padding: 0.5em 2em;
   border-radius: 0.5em;
   margin-top: 2em;
-  max-width: 80%;
+
+}
+.reservation-badge__wrapper a{
+  margin-left: .5em;
 }
 .reservation-badge__wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0.5em 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
 }
 
 .reservation-badge__wrapper div:nth-child(1) {
@@ -155,7 +177,6 @@
   font-style: italic;
   font-weight: 500;
   color: var(--black);
-  margin-right: 1em;
 }
 
 @media screen and (max-width: 1536px) {
