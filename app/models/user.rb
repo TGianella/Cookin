@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   include PgSearch::Model
-  
+
   after_create :welcome_send
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -25,7 +25,7 @@ class User < ApplicationRecord
   validate :time_validate
 
   pg_search_scope :search_by_name,
-                  against: [ :first_name, :last_name ],
+                  against: %i[first_name last_name],
                   using: { tsearch: { prefix: true } }
 
   def to_param
@@ -43,6 +43,10 @@ class User < ApplicationRecord
 
   def self.chefs
     where(is_chef: true).to_a
+  end
+
+  def self.guests
+    where(is_chef: false).to_a
   end
 
   def welcome_send

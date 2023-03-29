@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Tu as validé la réservation de <%= @reservation.guest.first_name %> pour le cours <%= @reservation.masterclass.title %> !</h1>
+
+    <p>
+      Il est inscrit pour la session de <%= @reservation.meeting.start_date %>.
+    </p>
+    <p>
+      Pour voir les réservations, connecte-toi via : <%= @url %>
+    </p>
+    <p>
+      A très vite sur Cookin !
+    </p>
+  </body>
+</html>

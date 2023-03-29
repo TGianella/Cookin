@@ -1,6 +1,6 @@
 class Meeting < ApplicationRecord
   belongs_to :masterclass
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   has_one :chef, through: :masterclass, class_name: 'User'
 
   validates :start_date, presence: true
@@ -17,6 +17,14 @@ class Meeting < ApplicationRecord
 
   def free_spots
     capacity - reservations.count
+  end
+
+  def pending_reservations
+    reservations.where(status: false).to_a
+  end
+
+  def confirmed_reservations
+    reservations.where(status: true).to_a
   end
 
   private

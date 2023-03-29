@@ -1,12 +1,12 @@
 class Masterclass < ApplicationRecord
   include PgSearch::Model
-  
+
   belongs_to :chef, class_name: 'User'
   has_many :masterclasses_recipes
   has_many :recipes, through: :masterclasses_recipes
 
   # Associations as attended masterclass
-  has_many :meetings
+  has_many :meetings, dependent: :destroy
   has_many :reservations, through: :meetings
   has_many :guests, through: :reservations, class_name: 'User'
 
@@ -15,7 +15,7 @@ class Masterclass < ApplicationRecord
                     format: { with: /\A[A-Za-z\-\s'()&]+\z/ },
                     length: { in: 3..50 }
   validates :description, presence: true,
-                          length: { in: 100..100000 }
+                          length: { in: 100..100_000 }
   validates :duration, presence: true,
                        numericality: { in: 60..300 }
   validate :duration_multiple_of_5
@@ -25,7 +25,7 @@ class Masterclass < ApplicationRecord
   validates :recipes, presence: true
 
   pg_search_scope :search_by_description_and_title,
-                  against: [ :description, :title ],
+                  against: %i[description title],
                   using: { tsearch: { prefix: true } }
 
   def to_param

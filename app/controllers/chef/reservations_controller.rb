@@ -1,5 +1,6 @@
 class Chef::ReservationsController < ApplicationController
   def index
+    @masterclasses = current_user.given_masterclasses
   end
 
   def show
@@ -19,4 +20,5 @@ class Chef::ReservationsController < ApplicationController
 
   def destroy
   end
+  
 end

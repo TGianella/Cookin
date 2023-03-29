@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Votre demande d'inscription pour <%= @reservation.masterclass.title %> !</h1>
+
+    <p>
+      Salut <%= @reservation.guest.first_name %>, ta demande d'inscription pour ce cours a bien été prise en compte.
+      Lorsque le chef aura répondu à la demande, tu recevras un autre mail pour t'indiquer si la demande a été validée ou non.
+    </p>
+    <p>
+      Pour voir ta demande de réservation, connecte-toi via : <%= @url %>
+    </p>
+    <p>
+      A très vite sur Cookin !
+    </p>
+  </body>
+</html>
