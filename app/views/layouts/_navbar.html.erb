@@ -1,14 +1,14 @@
 <nav class="navbar" data-turbo="false">
   <div class="navbar__wrapper container">
     <div class="logo">
-      <div class="logo__wrapper">
+      <a href="<%=root_path%>" class="logo__wrapper">
         <img
           src="<%= image_path('logo_cookin.svg')%>"
           width="60px"
           alt="Logo du site cookin"
         />
-        <a href="<%=root_path%>">Cookin</a>
-      </div>
+        <p href="<%=root_path%>">Cookin</p>
+      </a>
     </div>
     <div class="search">
       <div class="search__wrapper">
