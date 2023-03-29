@@ -34,6 +34,7 @@ class MasterclassesController < ApplicationController
   def new
     @masterclass = Masterclass.new
     @recipes = current_user.taught_recipes
+    @categories = Category.all
   end
 
   def create
@@ -77,7 +78,7 @@ class MasterclassesController < ApplicationController
   private
 
   def masterclass_params
-    params.require(:masterclass).permit(:title, :description, :duration, :price, recipe_ids: [])
+    params.require(:masterclass).permit(:title, :description, :duration, :price,  :category, category_ids: [], recipe_ids: [])
   end
 
   def find_masterclass

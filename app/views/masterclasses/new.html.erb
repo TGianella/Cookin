@@ -32,6 +32,11 @@
     </div>
 
     <div>
+      <%= form.label "Catégorie" %>
+      <%= form.select :category_ids, Category.pluck(:id), {}, { :multiple => true } %>
+    </div>
+
+    <div>
       <%= form.submit "Créer ma masterclass" %>
     </div>
   <% end %>
