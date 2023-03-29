@@ -15,6 +15,7 @@ User.create(first_name: 'Didier',
             email: 'cookin_guest@yopmail.com',
             password: 'foobar',
             is_chef: false,
+            description: Faker::Lorem.paragraph(sentence_count: 20),
             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
@@ -23,6 +24,7 @@ User.create(first_name: 'Alain',
             email: 'cookin_chef@yopmail.com',
             password: 'foobar',
             is_chef: true,
+            description: Faker::Lorem.paragraph(sentence_count: 20),
             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
@@ -31,6 +33,7 @@ User.create(first_name: 'Alain',
                   last_name: Faker::Name.unique.last_name,
                   password: 'foobar',
                   is_chef: false,
+                  description: Faker::Lorem.paragraph(sentence_count: 20),
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
   user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"
@@ -42,6 +45,7 @@ end
                   last_name: Faker::Name.unique.last_name,
                   password: 'foobar',
                   is_chef: true,
+                  description: Faker::Lorem.paragraph(sentence_count: 20),
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
   user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"

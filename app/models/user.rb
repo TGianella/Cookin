@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :phone_number, format: { with: /(0|\\+33|0033)[1-9][0-9]{8}/ },
                            allow_blank: true
   validate :time_validate
+  validates :description, length: { in: 10..10000 }
 
   pg_search_scope :search_by_name,
                   against: %i[first_name last_name],
