@@ -78,4 +78,8 @@ Masterclass.all.each do |masterclass|
   end
 end
 
-Reservation.create(meeting: Meeting.first, guest: User.last)
+User.guests.each do |guest|
+  Masterclass.all.sample(rand(1..3)).each do |masterclass|
+    Reservation.create(guest: guest, meeting: masterclass.meetings.sample, status: false)
+  end
+end

@@ -1,6 +1,6 @@
 class Meeting < ApplicationRecord
   belongs_to :masterclass
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   has_one :chef, through: :masterclass, class_name: 'User'
 
   validates :start_date, presence: true
