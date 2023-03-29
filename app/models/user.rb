@@ -19,15 +19,15 @@ class User < ApplicationRecord
 
   validates :first_name, presence: { message: 'Veuillez renseigner votre prénom'},
                          length: { in: 2..25, message: 'Votre prénom doit contenir entre 2 et 25 charactères' },
-                         format: { with: /\A[A-Za-z\-'éèêëôûüùïîâäç]+\z/, message: 'Votre prénom ne peut pas contenir de charactères spéciaux' }
+                         format: { with: /\A[A-Za-z\-'Ééèêëôûüùïîâäç]+\z/, message: 'Votre prénom ne peut pas contenir de charactères spéciaux' }
   validates :phone_number, format: { with: /(0|\\+33|0033)[1-9][0-9]{8}/, message: 'Merci de renseigner un numéro de téléphone valide' }
   validate :time_validate
   validates :last_name, presence: { message: 'Veuillez renseigner votre nom'},
                          length: { in: 2..25, message: 'Votre nom doit contenir entre 2 et 25 charactères' },
-                         format: { with: /\A[A-Za-z\-'éèêëôûüùïîâäç]+\z/, message: 'Votre nom ne peut pas contenir de charactères spéciaux' }
+                         format: { with: /\A[A-Za-z\-'Ééèêëôûüùïîâäç\s]+\z/, message: 'Votre nom ne peut pas contenir de charactères spéciaux' }
   validates :city, presence: { message: 'Veuillez renseigner votre ville '},
                          length: { in: 2..25, message: 'Votre ville doit contenir entre 2 et 25 charactères' },
-                         format: { with: /\A[A-Za-z\-'éèêëôûüùïîâäç]+\z/, message: 'Votre ville ne peut pas contenir de charactères spéciaux' }
+                         format: { with: /\A[A-Za-z\-'Ééèêëôûüùïîâäç\s]+\z/, message: 'Votre ville ne peut pas contenir de charactères spéciaux' }
   validates :zip_code, presence: { message: 'Veuillez renseigner votre code postal '},
                          length: { is: 5, message: 'Votre code postal doit contenir 5 chiffres' },
                          format: { with: /\A(0[1-9]|[1-9][0-9])[0-9][0-9][0-9]\z/, message: 'Votre code postale ne peut pas contenir de charactères spéciaux' }
