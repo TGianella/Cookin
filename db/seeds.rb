@@ -36,7 +36,7 @@ User.create(first_name: 'Alain',
                   description: Faker::Lorem.paragraph(sentence_count: 20),
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
-  user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"
+  user.email = "#{user.first_name.parameterize}.#{user.last_name.parameterize}@yopmail.com"
   user.save
 end
 
@@ -48,7 +48,7 @@ end
                   description: Faker::Lorem.paragraph(sentence_count: 20),
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
-  user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"
+  user.email = "#{user.first_name.parameterize}.#{user.last_name.parameterize}@yopmail.com"
   user.save
 end
 

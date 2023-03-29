@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :chef do
     resources :recipes, param: 'title', except: %i[show index new create]
     resources :masterclasses, param: 'title', except: %i[show index new create]
+    resources :masterclasses, param: 'title', only: %i[index], as: :my_masterclasses
     resources :meetings
     resources :reservations
   end
