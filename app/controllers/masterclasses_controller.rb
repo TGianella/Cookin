@@ -34,7 +34,6 @@ class MasterclassesController < ApplicationController
   def new
     @masterclass = Masterclass.new
     @recipes = current_user.taught_recipes
-    @categories = Category.all
   end
 
   def create

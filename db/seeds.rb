@@ -8,6 +8,7 @@ unless Rails.env.production?
   Meeting.destroy_all
   Reservation.destroy_all
   MasterclassesRecipe.destroy_all
+  Category.destroy_all
 end
 
 User.create(first_name: 'Didier',

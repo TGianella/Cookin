@@ -31,9 +31,9 @@
       <%= form.collection_check_boxes :recipe_ids, @recipes, :id, :title, {}, { :multiple => true } %>
     </div>
 
-    <div>
+    <div class="w-3/5">
       <%= form.label "Catégorie" %>
-      <%= form.select :category_ids, Category.pluck(:id), {}, { :multiple => true } %>
+      <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { :multiple => true, data: {controller: "slim"}} %>
     </div>
 
     <div>

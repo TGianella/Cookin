@@ -9,6 +9,7 @@ class Chef::MasterclassesController < ApplicationController
   def show; end
 
   def edit
+    @categories = Category.all
     @masterclass = Masterclass.find_by(title: params[:title])
     if current_user == @masterclass.chef
       @recipes = current_user.taught_recipes
