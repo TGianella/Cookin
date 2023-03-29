@@ -10,10 +10,12 @@
         <p>20 commentaires</p>
         <p>Tours, Centre-Val de Loire, France</p>
       </div>
-      <div class="buttons--row share_like_button">
-        <button><i class="far fa-heart"></i> Enregistrer</button>
-        <button class="button--s button--primary"><%= link_to "Participer", masterclass_meetings_path(masterclass) %></button>
-      </div>
+      <% if @chef != current_user %> 
+        <div class="buttons--row share_like_button">
+          <button><i class="far fa-heart"></i> Enregistrer</button>
+          <button class="button--s button--primary"><%= link_to "Participer", masterclass_meetings_path(masterclass) %></button>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="masterclass__body">
@@ -32,22 +34,12 @@
           <% masterclass.recipes.each do |recipe| %> 
             <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:"price--badge button--s button--outline--success" %> 
           <% end %>
-        </div>    
-        <div class="reservation-badge">
-          <div class="reservation-badge__wrapper">
-            <% if @chef %>
-              <%= link_to "Modifier", edit_chef_masterclass_path(masterclass), class: "button--s button--outline--danger"  %>
-              <%= link_to "Créer une session", new_masterclass_meeting_path(masterclass), class: "button--s button--success"  %>
-            <%= link_to "Voir mes reservations", chef_reservations_path, class: "button--s button--danger"  %>
-            <% elsif !@chef %>
-                <%= masterclass.price %> € /personnes
-              </div>
-              <div class=" button--l button--primary">
-                Participer 
-              </div>
-            <% end %>
-          </div>
         </div>
+        <% if @chef == current_user %>
+          <%= render partial: 'chef/masterclasses/chef-options', locals: { masterclass: masterclass} %>
+        <% else %>
+          <%= render partial: 'chef/masterclasses/guest-options', locals: { masterclass: masterclass} %>
+        <% end %>
       </div>
     </div>
   </div>

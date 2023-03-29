@@ -12,8 +12,10 @@
           <p>Tours, Centre-Val de Loire, France</p>
         </div>
         <div class="buttons--row share_like_button">
-          <button><i class="far fa-heart"></i> Enregistrer</button>
-          <button class="button--s button--primary"><%= link_to "Participer", masterclass_meetings_path(@masterclass) %></button>
+          <% if !@is_owner %>         
+            <button><i class="far fa-heart"></i> Enregistrer</button>
+            <button class="button--s button--primary"><%= link_to "Participer", masterclass_meetings_path(@masterclass) %></button>
+          <% end %>     
         </div>
       </div>
     </div>
@@ -28,7 +30,6 @@
           <h2>Présentation du cours</h2>
           <p class="masterclass--description"><%= @masterclass.description %></p>
           <h2>Durée du cours : <%= @masterclass.duration %> minutes</h2> 
-
         </div>
       </div>
       <div class="masterclass_section--3">
@@ -41,14 +42,16 @@
                 <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:" button--s button--outline--success" %> 
               <% end %>
             </div>
-            <div class="reservation-badge">
-              <div class="reservation-badge__wrapper">
-                <div>
-                  <%= @masterclass.price %> € /personnes
+            <% if !@is_owner %> 
+              <div class="reservation-badge">
+                <div class="reservation-badge__wrapper">
+                  <div>
+                    <%= @masterclass.price %> € /personnes
+                  </div>
+                  <%= link_to "Participer", masterclass_meetings_path(@masterclass), class:"button--m button--primary" %>
                 </div>
-                <%= link_to "Participer", masterclass_meetings_path(@masterclass), class:"button--m button--primary" %>
               </div>
-            </div>
+            <% end %>
           </div>
           <div class="buttons--row is_owner--options">
             <% if @is_owner %>
