@@ -2,9 +2,7 @@
   <h1 class="font-bold text-4xl">Mes réservations</h1>
   <div class="reservations">
     <% @reservations.each do |reservation| %>
-    <%puts "&"*60 %>
     <%puts  reservation %>
-    <% puts  "&"*60 %>
       <%= render partial: "layouts/reservation_guest", locals: { reservation: reservation } %>
     <% end %>
   </div>
