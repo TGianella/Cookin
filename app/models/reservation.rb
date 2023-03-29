@@ -10,7 +10,7 @@ class Reservation < ApplicationRecord
   validates :guest,
             uniqueness: { scope: :meeting,
                           message: "un utilisateur ne peut pas s'inscrire deux fois à la même session" }
-  validate :only_one_reservation_per_masterclass_per_user
+  validate :only_one_reservation_per_masterclass_per_user, on: :create
   validate :meeting_has_free_spots
   validate :chef_cannot_book_his_own_meeting
 
@@ -27,6 +27,10 @@ class Reservation < ApplicationRecord
   private
 
   def only_one_reservation_per_masterclass_per_user
+    puts '$' * 60
+    puts meeting.masterclass.title
+    guest.attended_masterclasses.each { |a| puts a.title }
+    puts '$' * 60
     return unless guest.attended_masterclasses.include?(meeting.masterclass)
 
     errors.add(:meeting, "un utilisateur ne peut pas s'inscrire deux fois pour la même masterclass")
