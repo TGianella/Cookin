@@ -33,7 +33,7 @@ User.create(first_name: 'Alain',
                   is_chef: false,
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
-  user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"
+  user.email = "#{user.first_name.parameterize}.#{user.last_name.parameterize}@yopmail.com"
   user.save
 end
 
@@ -44,7 +44,7 @@ end
                   is_chef: true,
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
-  user.email = "#{user.first_name}.#{user.last_name}@yopmail.com"
+  user.email = "#{user.first_name.parameterize}.#{user.last_name.parameterize}@yopmail.com"
   user.save
 end
 

@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
 }
-.logo__wrapper a {
+.logo__wrapper p {
   font-size: 1.7em;
   line-height: 1em;
   letter-spacing: 1px;
@@ -169,7 +169,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .logo__wrapper a {
+  .logo__wrapper p {
     display: none;
   }
 }
