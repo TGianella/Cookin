@@ -5,7 +5,7 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label 'Email' %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           <% resource.errors.full_messages_for(:email).each do |message| %>
             <div class="text-red-400"><%= message %></div>
