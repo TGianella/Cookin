@@ -28,6 +28,10 @@
   background-color: var(--danger);
   border: 1px solid var(--danger);
 }
+.alert--notice {
+  background-color: var(--success);
+  border: 1px solid var(--success);
+}
 
 .fade {
   display: block;
