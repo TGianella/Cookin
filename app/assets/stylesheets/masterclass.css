@@ -77,9 +77,8 @@
 
 .masterclass_section--1 img,
 .masterclass_section--1--chef img {
-  aspect-ratio: 1/1;
-  max-width: 430px;
-  max-height: 430px;
+  object-fit: cover;
+  height: 100%;
   border-radius: 0.5em;
 }
 

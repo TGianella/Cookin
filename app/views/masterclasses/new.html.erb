@@ -7,6 +7,11 @@
   <%= form_with model: @masterclass do |form| %>
 
     <div>
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
+
+    <div>
       <%= form.label "Titre" %>
       <%= form.text_field :title %>
     </div>

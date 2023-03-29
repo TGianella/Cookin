@@ -57,29 +57,29 @@ User.chefs.each do |chef|
                   chef: chef)
   end
 
-  3.times do |_|
-    masterclass = Masterclass.new(title: Faker::Restaurant.unique.type,
-                                  description: Faker::Lorem.paragraph(sentence_count: 20),
-                                  duration: Faker::Number.within(range: 12..60) * 5,
-                                  price: Faker::Number.within(range: 1..100),
-                                  chef: chef)
-    masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
-    masterclass.save
-  end
-end
+#   3.times do |_|
+#     masterclass = Masterclass.new(title: Faker::Restaurant.unique.type,
+#                                   description: Faker::Lorem.paragraph(sentence_count: 20),
+#                                   duration: Faker::Number.within(range: 12..60) * 5,
+#                                   price: Faker::Number.within(range: 1..100),
+#                                   chef: chef)
+#     masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
+#     masterclass.save
+#   end
+# end
 
-Masterclass.all.each do |masterclass|
-  rand(1..5).times do |_|
-    meeting = Meeting.new(masterclass: masterclass,
-                          start_date: Faker::Date.between(from: DateTime.now, to: 1.year.from_now),
-                          zip_code: Faker::Address.zip_code,
-                          capacity: Faker::Number.within(range: 1..10))
-    meeting.save
-  end
-end
+# Masterclass.all.each do |masterclass|
+#   rand(1..5).times do |_|
+#     meeting = Meeting.new(masterclass: masterclass,
+#                           start_date: Faker::Date.between(from: DateTime.now, to: 1.year.from_now),
+#                           zip_code: Faker::Address.zip_code,
+#                           capacity: Faker::Number.within(range: 1..10))
+#     meeting.save
+#   end
+# end
 
-User.guests.each do |guest|
-  Masterclass.all.sample(rand(1..3)).each do |masterclass|
-    Reservation.create(guest: guest, meeting: masterclass.meetings.sample, status: false)
-  end
+# User.guests.each do |guest|
+#   Masterclass.all.sample(rand(1..3)).each do |masterclass|
+#     Reservation.create(guest: guest, meeting: masterclass.meetings.sample, status: false)
+#   end
 end
