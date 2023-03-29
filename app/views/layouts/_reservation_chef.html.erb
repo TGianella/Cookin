@@ -1,0 +1,18 @@
+<div class="reservation">
+  <div class="reservation__wrapper reservation__wrapper--<%=reservation.status%>">
+    <div class="reservation__header"> 
+    </div>
+    <div class="reservation__body">
+      <p><%= reservation.guest.full_name %></p>
+      <div class="buttons--row">
+        <%= button_to "Valider", reservation_path(reservation), method: 'patch', class:"button--s button--success" %>
+        <%= button_to "Annuler", reservation_path(reservation), method: 'delete', class:"button--s button--danger" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

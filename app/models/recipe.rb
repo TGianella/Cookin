@@ -23,8 +23,8 @@ class Recipe < ApplicationRecord
                          inclusion: { in: %w[facile moyen difficile], message: "%<value>s n'est pas une difficulté valide" }
 
   pg_search_scope :search_by_description_and_title,
-  against: [ :content, :title ],
-  using: { tsearch: { prefix: true } }
+                  against: [ :content, :title ],
+                  using: { tsearch: { prefix: true } }
   def to_param
     title
   end

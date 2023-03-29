@@ -1,4 +1,9 @@
-<div>
-  <h1 class="font-bold text-4xl">Guest::Reservations#index</h1>
-  <p>Find me in app/views/guest/reservations/index.html.erb</p>
-</div>
+<main class="container">
+  <h1 class="font-bold text-4xl">Mes réservations</h1>
+  <div class="reservations">
+    <% @reservations.each do |reservation| %>
+    <%= reservation %>
+      <%= render partial: "layouts/reservation_guest", locals: { reservation: reservation } %>
+    <% end %>
+  </div>
+</main>

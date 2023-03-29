@@ -5,8 +5,6 @@ class MasterclassesController < ApplicationController
       @recipes_search = Recipe.search_by_description_and_title(params[:search])
       @chefs = User.search_by_name(params[:search])
       @chefs_search = @chefs.where(is_chef: true)
-      p @chefs_search
-      p "$$"*400
       @masterclasses = []
       @chefs_search.each do |chef|
         chef.given_masterclasses.each do |masterclass|
