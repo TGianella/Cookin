@@ -15,7 +15,9 @@ User.create(first_name: 'Didier',
             email: 'cookin_guest@yopmail.com',
             password: 'foobar',
             is_chef: false,
-            description: Faker::Lorem.paragraph(sentence_count: 20),
+            city: Faker::Address.city,
+            zip_code: 75012,
+            # description: Faker::Lorem.paragraph(sentence_count: 20),
             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
@@ -24,6 +26,8 @@ User.create(first_name: 'Alain',
             email: 'cookin_chef@yopmail.com',
             password: 'foobar',
             is_chef: true,
+            city: Faker::Address.city,
+            zip_code: 75012,
             description: Faker::Lorem.paragraph(sentence_count: 20),
             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
@@ -33,11 +37,14 @@ User.create(first_name: 'Alain',
                   last_name: Faker::Name.unique.last_name,
                   password: 'foobar',
                   is_chef: false,
+                  city: Faker::Address.city,
+                  zip_code: 75012,
                   description: Faker::Lorem.paragraph(sentence_count: 20),
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
   user.email = "#{user.first_name.parameterize}.#{user.last_name.parameterize}@yopmail.com"
-  user.save
+  puts user.first_name
+  user.save!
 end
 
 10.times do |_|
@@ -45,11 +52,13 @@ end
                   last_name: Faker::Name.unique.last_name,
                   password: 'foobar',
                   is_chef: true,
+                  city: Faker::Address.city,
+                  zip_code: 75012,
                   description: Faker::Lorem.paragraph(sentence_count: 20),
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
   user.email = "#{user.first_name.parameterize}.#{user.last_name.parameterize}@yopmail.com"
-  user.save
+  user.save!
 end
 
 User.chefs.each do |chef|

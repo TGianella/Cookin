@@ -27,6 +27,9 @@
       </div>
       <div class="chef_profile__body">
         <h3>À propos</h3>
+        <% if @user.description.blank? && @user == current_user %>
+          <p>Pensez à compléter votre descritpion</p>
+        <% end %>
         <p><%= @user.description %></p>
         <% if current_user %>
           <%= render 'informations' %>

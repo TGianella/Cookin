@@ -3,6 +3,11 @@
   <div class="form__wrapper">
     <%= form_with model: @user, url: guest_profile_path(@user), method: 'patch' do |f| %>
       <div class="field">
+        <%= f.label 'Descritpion' %><br />
+        <%= f.text_area :description, autofocus: true, autocomplete: "description" %>
+      </div>
+
+      <div class="field">
         <%= f.label 'Email' %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
