@@ -10,25 +10,25 @@ unless Rails.env.production?
   MasterclassesRecipe.destroy_all
 end
 
-User.create!(first_name: 'Didier',
-            last_name: 'Guest',
-            email: 'cookin_guest@yopmail.com',
-            password: 'foobar',
-            is_chef: false,
-            city: Faker::Address.city,
-            zip_code: 75012,
-            birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
-            phone_number: '0' + Faker::Number.number(digits: 9).to_s)
+# User.create!(first_name: 'Didier',
+#             last_name: 'Guest',
+#             email: 'cookin_guest@yopmail.com',
+#             password: 'foobar',
+#             is_chef: false,
+#             city: Faker::Address.city,
+#             zip_code: 75012,
+#             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
+#             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
-User.create!(first_name: 'Alain',
-            last_name: 'Chef',
-            email: 'cookin_chef@yopmail.com',
-            password: 'foobar',
-            is_chef: true,
-            zip_code: 75012,
-            city: Faker::Address.city,
-            birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
-            phone_number: '0' + Faker::Number.number(digits: 9).to_s)
+# User.create!(first_name: 'Alain',
+#             last_name: 'Chef',
+#             email: 'cookin_chef@yopmail.com',
+#             password: 'foobar',
+#             is_chef: true,
+#             zip_code: 75012,
+#             city: Faker::Address.city,
+#             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
+#             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
 20.times do |_|
   user = User.new(first_name: Faker::Name.unique.first_name,
