@@ -5,11 +5,12 @@
       <div class="masterclass-reservations__wrapper">
         <div class="masterclass-reservations__header">
           <h2 class="font-bold text-2xl">Réservations pour <%=masterclass.title%></h2>
-          <button class="button--s button--outline--success">Voir plus</button>
+          <button class="button--s button--outline--success showMore">Voir plus</button>
         </div>
+        <div class="masterclass_reservation--hidden">
           <% masterclass.meetings.each do |meeting| %>
             <div class="masterclass-reservations__body">
-              <div >
+              <div class="masterclass-reservations--wrapper" >
                 <h3 class="font-bold text-xl"><%= meeting.start_date.strftime("%A %d %B %Y") %></h3>
                 <div class="button--s button--outline--danger">
                   <%= meeting.free_spots %> places disponibles
@@ -17,11 +18,12 @@
               </div>
               <div class="reservations">
                 <% meeting.reservations.each do |reservation| %>
-                  <%= render partial: "layouts/reservation_chef", locals: { reservation: reservation } %>
+                <%= render partial: "layouts/reservation_chef", locals: { reservation: reservation } %>
                 <% end %>
               </div>
             </div>
           <% end %>
+        </div>
       </div>
     </div>
   <% end %>
