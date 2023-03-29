@@ -1,15 +1,8 @@
 <main class="container" data-turbo-cache='false'>
-  <h2 class="text-4xl">Editer mon profil</h2>
+  <h2 class="text-4xl">Changer mon mot de passe</h2>
 
   <div class="form__wrapper">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <div class="field">
-        <%= f.label 'Email' %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        <% resource.errors.full_messages_for(:email).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>En attente de confirmation pour : <%= resource.unconfirmed_email %>
@@ -17,7 +10,7 @@
       <% end %>
 
       <div class="field">
-        <%= f.label 'Mot de passe' %> <i>(laisser vide si vous ne souhaitez pas le modifier)</i><br />
+        <%= f.label 'Mot de passe' %><br />
         <%= f.password_field :password, autocomplete: "new-password", placeholder:'6 charactères minimum' %>
         <% resource.errors.full_messages_for(:password).each do |message| %>
           <div class="text-red-400"><%= message %></div>
@@ -36,54 +29,6 @@
         <%= f.label 'Mot de passe actuel' %> <br />
         <%= f.password_field :current_password, autocomplete: "current-password" %>
         <% resource.errors.full_messages_for(:current_password).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <%= f.label 'Prénom' %><br />
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-        <% resource.errors.full_messages_for(:first_name).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <%= f.label 'Nom' %><br />
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-        <% resource.errors.full_messages_for(:last_name).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <%= f.label 'Date de naissance' %><br />
-        <%= f.date_field :birth_date, autofocus: true, autocomplete: "city" %>
-        <% resource.errors.full_messages_for(:birth_date).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <%= f.label 'Ville' %><br />
-        <%= f.text_field :city, autofocus: true, autocomplete: "city" %>
-        <% resource.errors.full_messages_for(:city).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <%= f.label 'Code postal' %><br />
-        <%= f.text_field :zip_code, autofocus: true, autocomplete: "zip_code" %>
-        <% resource.errors.full_messages_for(:zip_code).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <%= f.label 'Téléphone' %><br />
-        <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-        <% resource.errors.full_messages_for(:phone_number).each do |message| %>
           <div class="text-red-400"><%= message %></div>
         <% end %>
       </div>
