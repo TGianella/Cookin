@@ -5,7 +5,9 @@
     <div class="reservation__body">
       <p><%= reservation.guest.full_name %></p>
       <div class="buttons--row">
-        <%= button_to "Valider", reservation_path(reservation), method: 'patch', class:"button--s button--success" %>
+        <% if !reservation.status %>
+          <%= button_to "Valider", reservation_path(reservation), method: 'patch', class:"button--s button--success" %>
+        <% end %>
         <%= button_to "Annuler", reservation_path(reservation), method: 'delete', class:"button--s button--danger" %>
       </div>
     </div>

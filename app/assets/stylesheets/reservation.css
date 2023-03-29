@@ -1,26 +1,25 @@
-.masterclass-reservation{
+.masterclass-reservation {
   margin: 3em 0;
   height: max-content;
   display: flex;
   flex-direction: column;
 }
-.masterclass-reservations__wrapper{
+.masterclass-reservations__wrapper {
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid grey;
   justify-content: space-between;
-
 }
-.masterclass-reservations__header{
+.masterclass-reservations__header {
   display: flex;
-  margin:2em 0;
+  margin: 2em 0;
   width: fit-content;
 }
-.masterclass-reservations__header button{
+.masterclass-reservations__header button {
   margin-left: 1em;
 }
 
-.masterclass-reservations__body{
+.masterclass-reservations__body {
   border-bottom: 1px solid lightgray;
   margin-bottom: 1em;
   padding: 1em 0;
@@ -28,20 +27,19 @@
   flex-wrap: wrap;
 }
 
-.masterclass-reservations__body:last-child{
+.masterclass-reservations__body:last-child {
   border: none;
 }
-.masterclass-reservations__body h3{
+.masterclass-reservations__body h3 {
   flex: 1;
 }
 .reservations {
   margin-left: 3em;
   display: flex;
   flex-wrap: wrap;
-  
 }
-.reservation--button{
-  margin: .5em .5em;
+.reservation--button {
+  margin: 0.5em 0.5em;
 }
 .reservation {
   min-width: 18%;
@@ -58,14 +56,15 @@
   justify-content: space-between;
   font-size: 0.9em;
   min-width: 100%;
-  
 }
 
-.reservation__wrapper--true{
+.reservation__wrapper--true {
   border: 1px solid var(--success);
+
 }
-.reservation__wrapper--false{
+.reservation__wrapper--false {
   border: 1px solid var(--danger);
+
 }
 
 .reservation__header {
@@ -77,10 +76,10 @@
   margin-top: 0.5em;
 }
 
-.masterclass_reservation--hidden{
+.masterclass_reservation--hidden {
   display: none;
 }
-.masterclass_reservation--visible{
+.masterclass_reservation--visible {
   display: flex;
   flex-direction: column;
 }
@@ -90,7 +89,7 @@
     justify-content: center;
     align-items: center;
   }
-  .reservation--button{
+  .reservation--button {
     margin: 1em auto;
   }
   .reservation {
