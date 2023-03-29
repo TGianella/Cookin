@@ -50,7 +50,7 @@
               </div>
             </div>
           </div>
-          <div class="buttons--row">
+          <div class="buttons--row is_owner--options">
             <% if @is_owner %>
               <%= link_to "Editer le cours", edit_chef_masterclass_path(@masterclass), class:'button--s button--secondary' %>
               <%= link_to "Créer une session", new_masterclass_meeting_path(@masterclass), class: "button--s button--success"  %>

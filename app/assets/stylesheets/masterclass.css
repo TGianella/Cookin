@@ -189,7 +189,9 @@
     max-height: 100%;
     border-radius: 0.5em;
     object-fit: cover;
+    
   }
+
 }
 
 @media screen and (max-width: 1280px) {
@@ -210,6 +212,13 @@
     max-width: 100%;
     max-height: fit-content;
     overflow-y: initial;
+  }
+  
+  .masterclass_section--3__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
   .masterclass_section--1,
   .masterclass_section--1--chef {
@@ -241,11 +250,6 @@
   }
   .masterclass_section--3 {
     width: 100%;
-  }
-  .masterclass_section--3__wrapper {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   }
 }
 
@@ -296,5 +300,16 @@
   .notice_commentaries p:nth-child(3) {
     margin: 0 0;
     flex: 3;
+  }
+}
+@media screen and (max-width: 480px){
+  .is_owner--options{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .masterclass_section--3__footer{
+    margin-top: 1em;
   }
 }
