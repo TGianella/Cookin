@@ -38,8 +38,8 @@
           eaque ducimus perspiciatis soluta temporibus eligendi minima odit
           autem! Voluptas, velit. Nobis, necessitatibus quas.
         </p>
-        <% if current_user %>
-          <%= render 'layouts/informations' %>
+        <% if @user == current_user %>
+          <%= render 'informations' %>
         <% end %>
       </div>
     </div>

@@ -1,4 +1,4 @@
-<main class="container">
+<main class="container" data-turbo='false'>
   <h2 class='text-4xl'>Éditer mes informations</h2>
   <div class="form__wrapper">
     <%= form_with model: @chef, url: chef_path(@chef), method: 'patch' do |f| %>
