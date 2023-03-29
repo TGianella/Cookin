@@ -27,6 +27,12 @@
         <%= form.select :difficulty, ['facile', 'moyen', 'difficile'] %>
       </div>
 
+      <div class="image-input">
+        <%= form.label :image %>
+        <button class="btn-upload">Choisir le fichier</button>
+        <%= form.file_field :image %>
+      </div>
+
       <div>
         <%= form.submit "Créer ma recette" %>
       </div>

@@ -48,14 +48,14 @@ end
   user.save
 end
 
-User.chefs.each do |chef|
-  2.times do |_|
-    Recipe.create(title: Faker::Food.unique.dish,
-                  content: Faker::Lorem.paragraph(sentence_count: 50),
-                  duration: Faker::Number.within(range: 1..36) * 5,
-                  difficulty: %w[facile moyen difficile].sample,
-                  chef: chef)
-  end
+# User.chefs.each do |chef|
+#   2.times do |_|
+#     Recipe.create(title: Faker::Food.unique.dish,
+#                   content: Faker::Lorem.paragraph(sentence_count: 50),
+#                   duration: Faker::Number.within(range: 1..36) * 5,
+#                   difficulty: %w[facile moyen difficile].sample,
+#                   chef: chef)
+#   end
 
 #   3.times do |_|
 #     masterclass = Masterclass.new(title: Faker::Restaurant.unique.type,
@@ -82,4 +82,4 @@ User.chefs.each do |chef|
 #   Masterclass.all.sample(rand(1..3)).each do |masterclass|
 #     Reservation.create(guest: guest, meeting: masterclass.meetings.sample, status: false)
 #   end
-end
+# end

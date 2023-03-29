@@ -74,12 +74,17 @@
   display: flex;
   flex-direction: column;
 }
-
+.masterclass_section--1,
+.masterclass_section--1__wrapper{
+  max-width: 400px;
+}
 .masterclass_section--1 img,
-.masterclass_section--1--chef img {
-  object-fit: cover;
+.masterclass_section--1__wrapper img {
+  border-radius: .5em;
+  aspect-ratio: 1/1;
   height: 100%;
-  border-radius: 0.5em;
+  object-fit: cover;
+  object-position: center;
 }
 
 .masterclass_section--2__wrapper {

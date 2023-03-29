@@ -10,6 +10,8 @@ class Recipe < ApplicationRecord
   has_many :reservations, through: :meetings
   has_many :guests, through: :reservations, class_name: 'User'
 
+  has_one_attached :image
+
   validate :owner_is_chef
   validates :title, presence: true,
                     format: { with: /\A[A-Za-z\-\s'()&]+\z/ },

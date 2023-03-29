@@ -7,11 +7,6 @@
   <%= form_with model: @masterclass do |form| %>
 
     <div>
-      <%= form.label :image %>
-      <%= form.file_field :image %>
-    </div>
-
-    <div>
       <%= form.label "Titre" %>
       <%= form.text_field :title %>
     </div>
@@ -31,10 +26,18 @@
       <%= form.number_field :price %>
     </div>
 
-    <div>
+    <div class="checkbox-recipe__wrapper">
       <%= form.label "Recettes" %>
-      <%= form.collection_check_boxes :recipe_ids, @recipes, :id, :title, {}, { :multiple => true } %>
+      <%= form.collection_check_boxes :recipe_ids, @recipes, :id, :title, {}, { :multiple => true } do |recipe| %>  
+        <%= recipe.label(class:"label-checkbox") { recipe.check_box + recipe.text } %>
+      <% end %>        
     </div>
+
+          <div class="image-input">
+        <%= form.label :image %>
+        <button class="btn-upload">Choisir le fichier</button>
+        <%= form.file_field :image %>
+      </div>
 
     <div>
       <%= form.submit "Créer ma masterclass" %>
