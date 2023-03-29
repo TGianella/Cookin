@@ -30,7 +30,7 @@ User.create!(first_name: 'Alain',
             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
-20.times do |_|
+1000.times do |_|
   user = User.new(first_name: Faker::Name.unique.first_name,
                   last_name: Faker::Name.unique.last_name,
                   password: 'foobar',
