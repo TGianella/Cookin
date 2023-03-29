@@ -27,7 +27,6 @@ class Reservation < ApplicationRecord
   private
 
   def only_one_reservation_per_masterclass_per_user
-    guest.attended_masterclasses.each { |a| puts a.title }
     return unless guest.attended_masterclasses.include?(meeting.masterclass)
 
     errors.add(:meeting, "un utilisateur ne peut pas s'inscrire deux fois pour la même masterclass")

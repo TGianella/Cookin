@@ -1,50 +1,46 @@
-  <div class="masterclass">
-    <div class="masterclass__header">
-      <h1><%= masterclass.title %> </h1>
-       <%= link_to "Editer le cours", edit_masterclass_path(masterclass), class:'button--s button--secondary' %>
-      <div class="masterclass_informations">
-        <div class="notice_commentaries">
-          <p>
-            <i class="fas fa-star"></i>
-            4,5
-          </p>
-          <p>20 commentaires</p>
-          <p>Tours, Centre-Val de Loire, France</p>
-        </div>
+<div class="masterclass">
+  <div class="masterclass__header">
+    <h1><%= masterclass.title %> </h1>
+    <div class="masterclass_informations">
+      <div class="notice_commentaries">
+        <p>
+          <i class="fas fa-star"></i>
+          4,5
+        </p>
+        <p>20 commentaires</p>
+        <p>Tours, Centre-Val de Loire, France</p>
+      </div>
+      <% if @chef != current_user %> 
         <div class="buttons--row share_like_button">
           <button><i class="far fa-heart"></i> Enregistrer</button>
           <button class="button--s button--primary"><%= link_to "Participer", masterclass_meetings_path(masterclass) %></button>
         </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="masterclass__body">
+    <div class="masterclass_section--1--chef">
+      <div class="masterclass_section--1__wrapper">
+        <img src="https://picsum.photos/1000" alt="" />   
       </div>
     </div>
-    <div class="masterclass__body">
-      <div class="masterclass_section--1--chef">
-        <div class="masterclass_section--1__wrapper">
-          <img src="https://picsum.photos/1000" alt="" />   
+    <div class="masterclass_section--2--chef">
+      <div class="masterclass_section--2__wrapper">
+        <h2>Présentation du cours</h2>
+        <p class="masterclass--description"><%= masterclass.description %></p>
+        <h2>Durée du cours : <%= masterclass.duration %> minutes</h2> 
+        <h3>Recette prévu pendant le cours  <i class="fas fa-arrow-right"></i></h3>
+        <div class="recipe-badge buttons--row">
+          <% masterclass.recipes.each do |recipe| %> 
+            <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:"price--badge button--s button--outline--success" %> 
+          <% end %>
         </div>
-      </div>
-      <div class="masterclass_section--2--chef">
-        <div class="masterclass_section--2__wrapper">
-          <h2>Présentation du cours</h2>
-          <p class="masterclass--description"><%= masterclass.description %></p>
-          <h2>Durée du cours : <%= masterclass.duration %> minutes</h2> 
-          <h3>Recette prévu pendant le cours  <i class="fas fa-arrow-right"></i></h3>
-          <div class="recipe-badge buttons--row">
-            <% masterclass.recipes.each do |recipe| %> 
-              <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:"price--badge button--s button--outline--success" %> 
-            <% end %>
-          </div>
-          <div class="reservation-badge">
-            <div class="reservation-badge__wrapper">
-              <div>
-                <%= masterclass.price %> € /personnes
-              </div>
-              <div class=" button--l button--primary">
-                Participer 
-              </div>
-            </div>
-          </div>
-        </div>
+        <% if @chef == current_user %>
+          <%= render partial: 'chef/masterclasses/chef-options', locals: { masterclass: masterclass} %>
+        <% else %>
+          <%= render partial: 'chef/masterclasses/guest-options', locals: { masterclass: masterclass} %>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
