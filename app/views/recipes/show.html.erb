@@ -22,7 +22,7 @@
       <div class="recipe__wrapper__body">
       <%= render partial:'layouts/profilebadge--recipe', locals:{recipe: @recipe} %>
         <h3>Déroulé de la recette</h3>
-        <p><%= @recipe.content %></p>
+        <p><%= simple_format(@recipe.content) %></p>
       </div>
       <div class="recipe__wrapper__footer">
         <div class="recipe_masterclasses">

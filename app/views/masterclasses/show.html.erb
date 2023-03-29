@@ -28,7 +28,7 @@
       <div class="masterclass_section--2">
         <div class="masterclass_section--2__wrapper">
           <h2>Présentation du cours</h2>
-          <p class="masterclass--description"><%= @masterclass.description %></p>
+          <p class="masterclass--description"><%= simple_format(@masterclass.description) %></p>
           <h2>Durée du cours : <%= @masterclass.duration %> minutes</h2> 
         </div>
       </div>
