@@ -58,6 +58,7 @@ class MasterclassesController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
     find_masterclass
     if current_user == @masterclass.chef
       @recipes = current_user.taught_recipes
