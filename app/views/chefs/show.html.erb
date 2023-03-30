@@ -7,15 +7,15 @@
         <ul class="chef_profile__header--options">
           <li class="options--link">
             <%= link_to chef_masterclasses_path(@chef) do %>
-            <img src="<%=image_path('edit_calenda-icon.png')%>" alt="" />
-            <p>Cours</p>
-            <%end%>
+              <img src="<%=image_path('edit_calenda-icon.png')%>" alt="" />
+              <p>Cours</p>
+            <% end %>
           </li>
           <li class="options--link">
             <%= link_to chef_recipes_path(@chef) do %>
               <img src="<%=image_path('soup_kitchen-icon.png')%>" alt="" />
               <p>Recettes</p>
-            <%end%>
+            <% end %>
           </li>
           <li class="options--link">
             <a href="#">
@@ -23,12 +23,14 @@
               <p>Contacter</p>
             </a>
           </li>
-          <li class="options--link">
-            <a href="">
-              <img src="<%=image_path('manage_account-icon.png')%>" alt="" />
-              <p>Gérer</p>
-            </a>
-          </li>
+          <% if @chef == current_user %>
+            <li class="options--link">
+              <a href="<%= edit_chef_path(@chef) %>">
+                <img src="<%=image_path('manage_account-icon.png')%>" alt="" />
+                <p>Gérer</p>
+              </a>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="chef_profile__body">
@@ -44,6 +46,9 @@
           eaque ducimus perspiciatis soluta temporibus eligendi minima odit
           autem! Voluptas, velit. Nobis, necessitatibus quas.
         </p>
+        <% if @chef == current_user %>
+          <%= render 'informations' %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<main class="container">
+<main class="container" data-turbo-cache="false">
   <h2 class="text-4xl">Se connecter</h2>
 
   <div class="form__wrapper">
@@ -6,10 +6,16 @@
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <% resource.errors.full_messages_for(:email).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
       </div>
       <div class="field">
         <%= f.label 'Mot de passe' %><br />
         <%= f.password_field :password, autocomplete: "current-password" %>
+        <% resource.errors.full_messages_for(:password).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
       </div>
       <% if devise_mapping.rememberable? %>
         <div class="field">

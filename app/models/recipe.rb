@@ -11,15 +11,15 @@ class Recipe < ApplicationRecord
   has_many :guests, through: :reservations, class_name: 'User'
 
   validate :owner_is_chef
-  validates :title, presence: true,
-                    format: { with: /\A[A-Za-z\-\s'()&]+\z/ },
-                    length: { in: 3..50 }
-  validates :content, presence: true,
-                      length: { in: 100..100000 }
-  validates :duration, presence: true,
+  validates :title, presence: { message: 'Le titre est obligatoire' },
+                    format: { with: /\A[A-Za-z\-\s'()&]+\z/ ,message: 'Ne pas utiliser de caractères spéciaux' },
+                    length: { in: 3..50, message: 'La taille doit être entre 3 et 50 charactères' }
+  validates :content, presence: { message: 'Une description est obligatoire' },
+                      length: { in: 100..100000, message: 'Il faut 100 charactères minimum' }
+  validates :duration, presence: { message: 'Choisir une durée de 5 minutes minimum' },
                        numericality: { in: 5..300 }
   validate :duration_multiple_of_5
-  validates :difficulty, presence: true,
+  validates :difficulty, presence: { message: 'Vous devez choisir le niveau de difficulté' },
                          inclusion: { in: %w[facile moyen difficile], message: "%<value>s n'est pas une difficulté valide" }
 
   pg_search_scope :search_by_description_and_title,
