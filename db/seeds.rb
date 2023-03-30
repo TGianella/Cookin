@@ -64,7 +64,7 @@ User.chefs.each do |chef|
                   duration: Faker::Number.within(range: 1..36) * 5,
                   difficulty: %w[facile moyen difficile].sample,
                   chef: chef)
-    recipe.image.attach(io: File.open("#{Rails.root}/app/assets/images/tajine.png"), filename: 'tajine.png')
+    recipe.image.attach(io: File.open("#{Rails.root}/app/assets/images/empty-placeholder.png"), filename: 'empty-placeholder.png')
     recipe.save
   end
 
@@ -75,7 +75,7 @@ User.chefs.each do |chef|
                                   price: Faker::Number.within(range: 1..100),
                                   chef: chef)
 
-    masterclass.image.attach(io: File.open("#{Rails.root}/app/assets/images/tajine.png"), filename: 'tajine.png')
+    masterclass.image.attach(io: File.open("#{Rails.root}/app/assets/images/empty-placeholder.png"), filename: 'empty-placeholder.png')
     masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
     masterclass.save
   end
