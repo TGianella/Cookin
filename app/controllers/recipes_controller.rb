@@ -14,6 +14,9 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    unless @recipe.image.attached?
+      @recipe.image.attach(io: File.open("#{Rails.root}/app/assets/images/empty-placeholder.png"), filename: 'empty-placeholder.png')
+    end
     @recipe.chef = current_user
 
     if @recipe.save

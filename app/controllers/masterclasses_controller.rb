@@ -45,6 +45,9 @@ class MasterclassesController < ApplicationController
 
   def create
     @masterclass = Masterclass.new(masterclass_params)
+    unless @masterclass.image.attached?
+      @masterclass.image.attach(io: File.open("#{Rails.root}/app/assets/images/empty-placeholder.png"), filename: 'empty-placeholder.png')
+    end
     @masterclass.chef = current_user
     @recipes = current_user.taught_recipes
 
