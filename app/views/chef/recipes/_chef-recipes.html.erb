@@ -7,13 +7,13 @@
     <div class="recipe__wrapper__header">
       <div class="recipe_image__wrapper">
         <% if recipe.image.attached? %>
-          <%= image_tag(recipe.image) %>
+          <%= image_tag recipe.image, alt:'Photo de la recette' %>
         <% else %>
-          <img src="<%=recipe.slug%>" alt="">
+          <img src="<%= recipe.slug %>" alt='Photo de la recette'>
         <% end %>
         <div class="edit_destroy">
-          <% if @is_owner %> 
-            <%= link_to "Editer la recette", edit_chef_recipe_path(recipe), class: "button--s button--success" %> 
+          <% if @is_owner %>
+            <%= link_to "Éditer la recette", edit_chef_recipe_path(recipe), class: "button--s button--success" %> 
             <%= button_to "Supprimer", recipe_path(recipe), method: :delete, class: "button--s button--danger" %> 
         <% end %>
         </div>

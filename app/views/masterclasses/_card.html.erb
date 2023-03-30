@@ -3,9 +3,9 @@
     <div class="card__header">
       <button class="like card__like"></button>
         <% if masterclass.image.attached? %>
-          <%= image_tag(masterclass.image) %>
+          <%= image_tag masterclass.image, alt:"Photo de masterclass" %>
         <% else %>
-          <img src="<%=masterclass.slug%>" alt="">
+          <img src="<%= masterclass.slug %>" alt="Photo de masterclass">
         <% end %>
           
     </div>

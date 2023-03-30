@@ -22,9 +22,9 @@
     <div class="masterclass_section--1--chef">
       <div class="masterclass_section--1__wrapper">
         <% if masterclass.image.attached? %>
-          <%= image_tag(masterclass.image) %>
+          <%= image_tag masterclass.image, alt:'Photo de masterclass  %>
         <% else %>
-          <img src="<%=masterclass.slug%>" alt="">
+          <img src="<%=masterclass.slug%>" alt="photo de masterclass">
         <% end %>
       </div>
     </div>
@@ -32,8 +32,8 @@
       <div class="masterclass_section--2__wrapper">
         <h2>Présentation du cours</h2>
         <p class="masterclass--description"><%= masterclass.description %></p>
-        <h2>Durée du cours : <%= masterclass.duration %> minutes</h2> 
-        <h3>Recette prévu pendant le cours  <i class="fas fa-arrow-right"></i></h3>
+        <h2>Durée du cours : <%= masterclass.duration %> minutes</h2>
+        <h3>Recette prévue pendant le cours  <i class="fas fa-arrow-right"></i></h3>
         <div class="recipe-badge buttons--row">
           <% masterclass.recipes.each do |recipe| %> 
             <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:"price--badge button--s button--outline--success" %> 

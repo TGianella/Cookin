@@ -6,11 +6,15 @@
       </h1>
       <div class="recipe__wrapper__header">
         <div class="recipe_image__wrapper">
+<<<<<<< HEAD
           <% if @recipe.image.attached? %>
             <%= image_tag(@recipe.image) %>
           <% else %>
             <img src="<%=@recipe.slug%>" alt="">
           <% end %>
+=======
+          <img src="https://picsum.photos/1000" alt="photo de la recette"/>
+>>>>>>> development
           <div class="edit_destroy">
             <% if @is_owner %> 
               <%= link_to "Editer la recette", edit_recipe_path(@recipe), class: "button--s button--success" %>

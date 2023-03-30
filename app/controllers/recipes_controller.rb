@@ -38,8 +38,7 @@ class RecipesController < ApplicationController
   def update
     find_recipe
     if @recipe.chef == current_user
-      @recipe.update(recipe_params)
-      if @recipe.save
+      if @recipe.update(recipe_params)
         flash[:success] = 'Recette modifiée'
         redirect_to chef_recipe_path(current_user, @recipe)
       else
