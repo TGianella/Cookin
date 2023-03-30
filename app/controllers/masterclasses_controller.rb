@@ -52,25 +52,34 @@ class MasterclassesController < ApplicationController
       flash[:success] = 'Masterclass créée !'
       redirect_to chef_masterclass_path(current_user, @masterclass)
     else
-      flash[:alert] = "La masterclass n'a pas pu être créée"
+      flash[:danger] = "La masterclass n'a pas pu être créée"
       render :new
     end
   end
 
+  def edit
+    find_masterclass
+    if current_user == @masterclass.chef
+      @recipes = current_user.taught_recipes
+    else
+      redirect_back fallback_location: root_path
+    end
+  end
+
   def update
+    @recipes = current_user.taught_recipes
     find_masterclass
     if @masterclass.chef == current_user
-      @masterclass.update(masterclass_params)
-      if @masterclass.save!
-        flash[:success] = 'Mastrclass modifiée !'
+      if @masterclass.update(masterclass_params)
+        flash[:success] = 'Masterclass modifiée !'
         redirect_to chef_masterclass_path(current_user, @masterclass)
       else
-        flash[:alert] = "La masterclass n'a pas pu être modifiée !"
-        render :edit
+        flash[:danger] = "La masterclass n'a pas pu être modifiée !"
+        render :edit, status: :unprocessable_entity
       end
     else
-      flash[:alert] = "Vous n'êtes pas le propriétaire de cette masterclass"
-      render :edit
+      flash[:danger] = "Vous n'êtes pas le propriétaire de cette masterclass"
+      redirect_to chef_masterclass(@masterclass.chef, @masterclass)
     end
   end
 

@@ -3,13 +3,13 @@ class Meeting < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_one :chef, through: :masterclass, class_name: 'User'
 
-  validates :start_date, presence: true
+  validates :start_date, presence: { message: 'Une date est obligatoire' }
   validate :start_date_should_be_in_the_future,
            :meetings_should_not_overlap
-  validates :zip_code, presence: true,
-                       format: { with: /\A\d{5}\z/ }
-  validates :capacity, presence: true,
-                       numericality: { in: 1..10 }
+  validates :zip_code, presence: { message: 'Le code postal est obligatoire' },
+                       format: { with: /\A\d{5}\z/, message: 'Veuillez renseigner un code postal valide' }
+  validates :capacity, presence: { message: 'Veuillez renseigner un nombre de convives' },
+                       numericality: { in: 1..10, message: 'Veuillez rentrer un nombre' }
 
   def end_date
     start_date + masterclass.duration * 60
@@ -37,7 +37,7 @@ class Meeting < ApplicationRecord
 
   def meetings_should_not_overlap
     masterclass.meetings.each do |meeting|
-      unless start_date > meeting.end_date || end_date < meeting.start_date
+      unless start_date.present? && (start_date > meeting.end_date || end_date < meeting.start_date)
         errors.add(:start_date,
                    "La session ne peut pas avoir lieu en même temps qu'une autre session pour cette masterclass")
       end
