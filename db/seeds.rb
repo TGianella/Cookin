@@ -18,7 +18,7 @@ User.create!(first_name: 'Didier',
             is_chef: false,
             city: Faker::Address.city,
             zip_code: 75012,
-            # description: Faker::Lorem.paragraph(sentence_count: 20),
+            description: Faker::Lorem.paragraph(sentence_count: 20),
             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
