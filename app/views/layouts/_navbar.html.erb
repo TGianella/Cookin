@@ -24,7 +24,7 @@
     </div>
     <div class="profile">
       <div class="profile__wrapper">
-        <div class="profile_menu">
+        <div class="profile_menu" data-controller='navbar'>
           <button>
           <% if user_signed_in? %>
             <img
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="collapse_profile" id="collapse_profile">
-      <div class="collapse_profile__wrapper">   
+      <div class="collapse_profile__wrapper">
         <% if user_signed_in? %>
           <% if current_user.is_chef %>
 
