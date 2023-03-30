@@ -1,13 +1,13 @@
 <nav class="navbar" data-turbo="false">
   <div class="navbar__wrapper container">
     <div class="logo">
-      <a href="<%=root_path%>" class="logo__wrapper">
+      <a href="<%= root_path %>" class="logo__wrapper">
         <img
           src="<%= image_path('logo_cookin.svg')%>"
           width="60px"
           alt="Logo du site cookin"
         />
-        <p href="<%=root_path%>">Cookin</p>
+        <p href="<%= root_path %>">Cookin</p>
       </a>
     </div>
     <div class="search">
@@ -28,7 +28,7 @@
           <button>
           <% if user_signed_in? %>
             <img
-              src="<%=image_path('empty_avatar.png')%>"
+              src="<%= image_path('empty_avatar.png') %>"
               place
               alt="Photo de profil et accès au menu déroulant"
             />
@@ -54,7 +54,7 @@
             </div>
             <div class="collapse__static_pages">
               <a href="#">À propos</a>
-              <a href="">Nous contacter</a>
+              <a href="#">Nous contacter</a>
               <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
             </div>
           <% else %>
@@ -66,19 +66,19 @@
             </div>
             <div class="collapse__static_pages">
               <a href="#">À propos</a>
-              <a href="">Nous contacter</a>
+              <a href="#">Nous contacter</a>
               <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
             </div>
           <% end %> 
         <% else %>
             <div class="collapse__login">
-              <a href="<%=new_user_registration_path%>">S'inscrire</a>
-              <a href="<%=new_user_session_path%>">Se connecter</a>
+              <a href="<%= new_user_registration_path %>">S'inscrire</a>
+              <a href="<%= new_user_session_path %>">Se connecter</a>
             </div>
             <div class="collapse__static_pages">
               <a href="#">Découvrir le concept</a>
               <a href="#">À propos</a>
-              <a href="">Nous contacter</a>
+              <a href="#">Nous contacter</a>
             </div> 
         <% end %>
       </div>
@@ -102,7 +102,7 @@
             </div>
             <div class="collapse__static_pages">
               <a href="#">À propos</a>
-              <a href="">Nous contacter</a>
+              <a href="#">Nous contacter</a>
               <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
             </div>
           <% else %>
@@ -113,20 +113,20 @@
             </div>
             <div class="collapse__static_pages">
               <a href="#">À propos</a>
-              <a href="">Nous contacter</a>
+              <a href="#">Nous contacter</a>
               <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
             </div>
-          <% end %> 
+          <% end %>
         <% else %>
             <div class="collapse__login">
-              <a href="<%=new_user_registration_path%>">S'inscrire</a>
-              <a href="<%=new_user_session_path%>">Se connecter</a>
+              <a href="<%= new_user_registration_path %>">S'inscrire</a>
+              <a href="<%= new_user_session_path %>">Se connecter</a>
             </div>
             <div class="collapse__static_pages">
               <a href="#">Découvrir le concept</a>
               <a href="#">À propos</a>
-              <a href="">Nous contacter</a>
-            </div> 
+              <a href="#">Nous contacter</a>
+            </div>
         <% end %>
       </div>
     </div>
@@ -135,14 +135,13 @@
         <button class="icon__button" ><i id="search_button" class="fas fa-search fa-2x"></i></button>
       </li>
       <li class="icon__button__wrapper ">
-        <a href="<%=masterclasses_path%>" class="icon__button icon__button--logo"
-          ><img src="<%=image_path('logo_cookin.svg')%>" alt=""
+        <a href="<%= masterclasses_path %>" class="icon__button icon__button--logo"
+          ><img src="<%=image_path('logo_cookin.svg')%>" alt="logo cookin"
         /></a>
       </li>
       <li class="icon__button__wrapper">
         <button class="icon__button"><i class="fas fa-user fa-2x" id="collapseButtonOnMenu"></i></button>
       </li>
     </ul>
-
   </div>
 </nav>

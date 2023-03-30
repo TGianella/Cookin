@@ -1,9 +1,8 @@
 <div class="reservation">
-  <div class="reservation__wrapper reservation__wrapper--<%=reservation.status%>">
+  <div class="reservation__wrapper reservation__wrapper--<%= reservation.status %>">
     <div class="reservation__header">
       <%= reservation.id %>
       <%= reservation.masterclass.title %>
-      
       <h2 class="text-xl"><%= reservation.masterclass.title %> par <em><%= reservation.masterclass.chef.full_name %></em></h2>
       <p><%= reservation.meeting.start_date.strftime("%A %d %B %Y  ") %></p>
       <p><%= reservation.meeting.start_date.strftime("%I:%M") %></p>
@@ -20,7 +19,3 @@
     </div>
   </div>
 </div>
-
-
-
-
