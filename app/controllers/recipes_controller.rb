@@ -41,7 +41,7 @@ class RecipesController < ApplicationController
         redirect_to chef_recipe_path(current_user, @recipe)
       else
         flash[:danger] = "La recette n'a pas pu être modifiée !"
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     else
       flash[:danger] = "Vous n'êtes pas le propriétaire de cette recette"

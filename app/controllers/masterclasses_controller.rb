@@ -63,13 +63,12 @@ class MasterclassesController < ApplicationController
     @recipes = current_user.taught_recipes
     find_masterclass
     if @masterclass.chef == current_user
-      @masterclass.update(masterclass_params)
-      if @masterclass.save
+      if @masterclass.update(masterclass_params)
         flash[:success] = 'Masterclass modifiée !'
         redirect_to chef_masterclass_path(current_user, @masterclass)
       else
         flash[:danger] = "La masterclass n'a pas pu être modifiée !"
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     else
       flash[:danger] = "Vous n'êtes pas le propriétaire de cette masterclass"

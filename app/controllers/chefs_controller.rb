@@ -20,7 +20,7 @@ class ChefsController < ApplicationController
         flash[:success] = 'Votre profil a bien été mis à jour'
         redirect_to chef_path(@chef)
       else
-        flash[:alert] = "Votre profil n'a pas pu être mis à jour"
+        flash[:danger] = "Votre profil n'a pas pu être mis à jour"
         render :edit
       end
     end
