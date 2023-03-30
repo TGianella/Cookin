@@ -17,7 +17,7 @@ class Recipe < ApplicationRecord
   validates :content, presence: { message: 'Une description est obligatoire' },
                       length: { in: 100..100000, message: 'Il faut 100 charactères minimum' }
   validates :duration, presence: { message: 'Choisir une durée de 5 minutes minimum' },
-                       numericality: { in: 5..300, message: "Veuillez renseigner un nombre de minutes entre 5 et 300" }
+                       numericality: { in: 5..300 }
   validate :duration_multiple_of_5
   validates :difficulty, presence: { message: 'Vous devez choisir le niveau de difficulté' },
                          inclusion: { in: %w[facile moyen difficile], message: "%<value>s n'est pas une difficulté valide" }

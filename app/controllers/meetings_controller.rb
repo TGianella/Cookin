@@ -23,7 +23,7 @@ class MeetingsController < ApplicationController
       redirect_to meeting_path(@meeting)
     else
       flash[:danger] = "La session n'a pas pu être créée"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -35,7 +35,6 @@ class MeetingsController < ApplicationController
 
   def edit
     @meeting = Meeting.find(params[:id])
-    @masterclass = @meeting.masterclass
 
     return unless current_user != @meeting.chef
 
@@ -47,13 +46,12 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
 
     if @meeting.chef == current_user
-      @meeting.update(meeting_params)
-      if @meeting.save!
+      if @meeting.update(meeting_params)
         flash[:success] = 'Session mise à jour !'
         redirect_to meeting_path(@meeting)
       else
         flash[:danger] = "La session n'a pas pu être modifiée !"
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     else
       flash[:danger] = "Vous n'êtes pas le propriétaire de cette session"

@@ -1,18 +1,27 @@
-<main class="container">
+<main class="container" data-turbo-cache='false'>
   <h1 class="font-bold text-4xl">Créer une nouvelle session pour <%= @meeting.masterclass.title %></h1>
   <div class="flex-column">
     <%= form_with model: [:masterclass, @meeting] do |form| %>
       <div>
         <%= form.label "Début" %>
         <%= form.datetime_local_field :start_date %>
+        <% @meeting.errors.full_messages_for(:start_date).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
       </div>
       <div>
         <%= form.label "Code postal" %>
         <%= form.text_field :zip_code %>
+        <% @meeting.errors.full_messages_for(:zip_code).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
       </div>
       <div>
         <%= form.label "Nombre de convives" %>
         <%= form.number_field :capacity, in: 1..10 %>
+        <% @meeting.errors.full_messages_for(:capacity).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
       </div>
       <div>
         <%= form.submit "Créer la session" %>
