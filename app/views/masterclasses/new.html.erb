@@ -47,6 +47,11 @@
       <% end %>
     </div>
 
+    <div class="w-3/5">
+      <%= form.label "Catégorie" %>
+      <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { :multiple => true, data: {controller: "slim"}} %>
+    </div>
+
     <div>
       <%= form.submit "Créer ma masterclass" %>
     </div>

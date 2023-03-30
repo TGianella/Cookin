@@ -9,6 +9,7 @@ class Masterclass < ApplicationRecord
   has_many :meetings, dependent: :destroy
   has_many :reservations, through: :meetings
   has_many :guests, through: :reservations, class_name: 'User'
+  has_and_belongs_to_many :categories
 
   validate :owner_is_chef
   validates :title, presence: { message: 'Le titre est obligatoire' },
