@@ -45,7 +45,7 @@ class MasterclassesController < ApplicationController
       flash[:success] = 'Masterclass créée !'
       redirect_to chef_masterclass_path(current_user, @masterclass)
     else
-      flash[:alert] = "La masterclass n'a pas pu être créée"
+      flash[:danger] = "La masterclass n'a pas pu être créée"
       render :new
     end
   end
@@ -72,8 +72,8 @@ class MasterclassesController < ApplicationController
         render :edit
       end
     else
-      flash[:alert] = "Vous n'êtes pas le propriétaire de cette masterclass"
-      redirect_to root_path
+      flash[:danger] = "Vous n'êtes pas le propriétaire de cette masterclass"
+      redirect_to chef_masterclass(@masterclass.chef, @masterclass)
     end
   end
 

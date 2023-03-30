@@ -17,10 +17,10 @@ class Masterclass < ApplicationRecord
   validates :description, presence: { message: 'Une description est obligatoire' },
                           length: { in: 100..100000, message: 'Il faut 100 charactères minimum' }
   validates :duration, presence: { message: 'Choisir une durée de 60 minutes minimum' } ,
-                       numericality: { in: 60..300, message: "Veuillez renseigner un chiffre" }
+                       numericality: { in: 60..300, message: "Veuillez renseigner un nombre de minutes entre 60 et 300" }
   validate :duration_multiple_of_5
   validates :price, presence: { message: 'Vous devez renseigner un prix' },
-                    numericality: { in: 1..1000, message: "Veuillez renseigner un chiffre" }
+                    numericality: { in: 1..100, message: "Veuillez renseigner un prix entre 1 et 100" }
   validate :recipes_belong_to_same_chef
   validates :recipes, presence: true
 
