@@ -2,7 +2,12 @@
   <div class="card">
     <div class="card__header">
       <button class="like card__like"></button>
-        <%= image_tag(masterclass.image) %>
+        <% if masterclass.image.attached? %>
+          <%= image_tag(masterclass.image) %>
+        <% else %>
+          <img src="<%=masterclass.slug%>" alt="">
+        <% end %>
+          
     </div>
     <div class="card__body">
       <h3><%= masterclass.title %></h3>

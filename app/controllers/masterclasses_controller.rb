@@ -28,7 +28,7 @@ class MasterclassesController < ApplicationController
       end
       @masterclasses = @masterclasses.uniq
     else
-      @masterclasses = Masterclass.all
+      @masterclasses = Masterclass.active.order(created_at: :desc)
     end
   end
 

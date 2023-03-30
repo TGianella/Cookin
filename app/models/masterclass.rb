@@ -15,7 +15,7 @@ class Masterclass < ApplicationRecord
 
   validate :owner_is_chef
   validates :title, presence: { message: 'Le titre est obligatoire' },
-                    format: { with: /\A[A-Za-z\-\s'()&]+\z/ ,message: 'Ne pas utiliser de caractères spéciaux'},
+                    format: { with: /\A[A-Za-z\-\s()&:'ÉÈéèêëôûüùïîàâäç]+\z/ ,message: 'Ne pas utiliser de caractères spéciaux'},
                     length: { in: 3..50, message: 'La taille doit être entre 3 et 50 charactères' }
   validates :description, presence: { message: 'Une description est obligatoire' },
                           length: { in: 100..100000, message: 'Il faut 100 charactères minimum' }
@@ -33,6 +33,10 @@ class Masterclass < ApplicationRecord
 
   def to_param
     title
+  end
+
+  def self.active
+    where(id: Meeting.select(:masterclass_id))
   end
 
   private

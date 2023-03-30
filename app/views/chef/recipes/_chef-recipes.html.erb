@@ -6,7 +6,11 @@
     <%= link_to "Editer la recette", edit_recipe_path(recipe), class: "button--s button--success" %>
     <div class="recipe__wrapper__header">
       <div class="recipe_image__wrapper">
+        <% if recipe.image.attached? %>
           <%= image_tag(recipe.image) %>
+        <% else %>
+          <img src="<%=recipe.slug%>" alt="">
+        <% end %>
         <div class="edit_destroy">
           <% if @is_owner %> 
             <%= link_to "Editer la recette", edit_chef_recipe_path(recipe), class: "button--s button--success" %> 

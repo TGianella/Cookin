@@ -57,31 +57,42 @@ end
   user.save
 end
 
+categories = ["Végétarien", "Vegan", "Gluten free", "Français", "Mexicain", "Italien", "Chinois", "Japonais", "Espagnol", "Thai", "Indien", "Patisserie", "Cuisine Saine", "Recette de Grand-mère", "Fast-Food", "Autre", "Carnivor"]
+
+categories.each do |category|
+  Category.create(name: category)
+end
+
+slug = ["https://i.imgur.com/LmbCi1E.jpg","https://i.imgur.com/jeksWdb.jpg","https://i.imgur.com/ExAUFsD.jpg","https://i.imgur.com/1PvRQ46.jpg","https://i.imgur.com/nn136ar.jpg","https://i.imgur.com/vYDYXct.jpg","https://i.imgur.com/6qC1IUA.jpg","https://i.imgur.com/oJJeZim.jpg","https://i.imgur.com/xchpsQO.jpg","https://i.imgur.com/uWHNxUM.jpg","https://i.imgur.com/xCsZMet.jpg","https://i.imgur.com/rrrFuCa.jpg","https://i.imgur.com/vqA9pGs.jpg","https://i.imgur.com/je4iexz.jpg","https://i.imgur.com/0GA2yf8.jpg","https://i.imgur.com/ChiXx6w.jpg"]
+
+sentence = ["Aujourd'hui c'est ","Ce soir on mange ","Cuisiner les "]
+
 User.chefs.each do |chef|
   2.times do |_|
    recipe = Recipe.new(title: Faker::Food.unique.dish,
                   content: Faker::Lorem.paragraph(sentence_count: 50),
                   duration: Faker::Number.within(range: 1..36) * 5,
                   difficulty: %w[facile moyen difficile].sample,
-                  chef: chef)
-    recipe.image.attach(io: File.open(File.join(Rails.root,'app/assets/images/empty-placeholder.png')), filename: 'empty-placeholder')
-    recipe.save
+                  chef: chef,
+                  slug: slug.sample)
+    recipe.save!
   end
 
-  3.times do |_|
-    masterclass = Masterclass.new(title: Faker::Restaurant.unique.type,
+  2.times do |_|
+    masterclass = Masterclass.new(title:  sentence.sample + Faker::Food.unique.dish,
                                   description: Faker::Lorem.paragraph(sentence_count: 20),
                                   duration: Faker::Number.within(range: 12..60) * 5,
                                   price: Faker::Number.within(range: 1..100),
-                                  chef: chef)
-
-    masterclass.image.attach(io: File.open(File.join(Rails.root,'app/assets/images/empty-placeholder.png')), filename: 'empty-placeholder')
+                                  chef: chef,
+                                  slug: slug.sample)
     masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
-    masterclass.save
+    puts masterclass.title
+    masterclass.save!
   end
 end
 
 Masterclass.all.each do |masterclass|
+  masterclass.categories << Category.all.sample(rand(1..3))
   rand(1..5).times do |_|
     meeting = Meeting.new(masterclass: masterclass,
                           start_date: Faker::Date.between(from: DateTime.now, to: 1.year.from_now),
@@ -96,11 +107,7 @@ User.guests.each do |guest|
     Reservation.create(guest: guest, meeting: masterclass.meetings.sample, status: false)
   end
 end
-categories = ["Végétarien", "Vegan", "Gluten free", "Français", "Mexicain", "Italien", "Chinois", "Japonais", "Espagnol", "Thai", "Indien", "Patisserie", "Cuisine Saine", "Recette de Grand-mère", "Fast-Food", "Autre", "Carnivor"]
 
-categories.each do |category|
-  Category.create(name: category)
-end
 
 Masterclass.all.each do |masterclass|
   masterclass.categories << Category.all.sample

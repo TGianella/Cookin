@@ -21,7 +21,11 @@
   <div class="masterclass__body">
     <div class="masterclass_section--1--chef">
       <div class="masterclass_section--1__wrapper">
-        <%= image_tag(masterclass.image)%>
+        <% if masterclass.image.attached? %>
+          <%= image_tag(masterclass.image) %>
+        <% else %>
+          <img src="<%=masterclass.slug%>" alt="">
+        <% end %>
       </div>
     </div>
     <div class="masterclass_section--2--chef">
