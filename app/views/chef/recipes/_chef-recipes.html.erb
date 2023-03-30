@@ -6,10 +6,10 @@
     <%= link_to "Editer la recette", edit_recipe_path(recipe), class: "button--s button--success" %>
     <div class="recipe__wrapper__header">
       <div class="recipe_image__wrapper">
-        <img src="https://picsum.photos/1000" alt=""/>   
+        <img src="https://picsum.photos/1000" alt="photo de recette"/>
         <div class="edit_destroy">
-          <% if @is_owner %> 
-            <%= link_to "Editer la recette", edit_chef_recipe_path(recipe), class: "button--s button--success" %> 
+          <% if @is_owner %>
+            <%= link_to "Éditer la recette", edit_chef_recipe_path(recipe), class: "button--s button--success" %> 
             <%= button_to "Supprimer", recipe_path(recipe), method: :delete, class: "button--s button--danger" %> 
         <% end %>
         </div>

@@ -1,9 +1,10 @@
 <div class="reservation">
-  <div class="reservation__wrapper reservation__wrapper--<%=reservation.status%>">
-    <div class="reservation__header"> 
+  <div class="reservation__wrapper reservation__wrapper--<%= reservation.status %>">
+    <div class="reservation__header">
     </div>
     <div class="reservation__body">
       <p><%= reservation.guest.full_name %></p>
+      <p><%= link_to 'Voir le profil', guest_profile_path(reservation.guest), class:'button--s button--secondary' %></p><br>
       <div class="buttons--row">
         <% if !reservation.status %>
           <%= button_to "Valider", reservation_path(reservation), method: 'patch', class:"button--s button--success" %>

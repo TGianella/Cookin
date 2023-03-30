@@ -6,6 +6,9 @@
       <div class="field">
         <%= f.label 'Descritpion' %><br />
         <%= f.text_area :description, autofocus: true, autocomplete: "description" %>
+        <% @user.errors.full_messages_for(:description).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
       </div>
 
       <div class="field">

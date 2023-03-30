@@ -1,53 +1,53 @@
 <main class="container" data-turbo-cache='false'>
-<% if current_user%>
-  <%if current_user.is_chef%>
-  <div>
-    <h1 class="font-bold text-4xl">Créer une nouvelle recette</h1>
-  </div>
+  <% if current_user %>
+    <%if current_user.is_chef %>
+    <div>
+      <h1 class="font-bold text-4xl">Créer une nouvelle recette</h1>
+    </div>
 
-  <div class="flex-column">
-    <%= form_with model: @recipe do |form| %>
+    <div class="flex-column">
+      <%= form_with model: @recipe do |form| %>
 
-      <div>
-        <%= form.label "Titre" %>
-        <%= form.text_field :title %>
-        <% @recipe.errors.full_messages_for(:title).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-      <div>
-        <%= form.label "Description" %>
-        <%= form.text_area :content %>
-        <% @recipe.errors.full_messages_for(:content).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
+        <div>
+          <%= form.label "Titre" %>
+          <%= form.text_field :title %>
+          <% @recipe.errors.full_messages_for(:title).each do |message| %>
+            <div class="text-red-400"><%= message %></div>
+          <% end %>
+        </div>
+        <div>
+          <%= form.label "Description" %>
+          <%= form.text_area :content %>
+          <% @recipe.errors.full_messages_for(:content).each do |message| %>
+            <div class="text-red-400"><%= message %></div>
+          <% end %>
+        </div>
 
-      <div>
-        <%= form.label "Durée" %>
-        <%= form.number_field :duration, in: 5..180, step: 5 %>
-        <% @recipe.errors.full_messages_for(:duration).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
+        <div>
+          <%= form.label "Durée" %>
+          <%= form.number_field :duration, in: 5..180, step: 5 %>
+          <% @recipe.errors.full_messages_for(:duration).each do |message| %>
+            <div class="text-red-400"><%= message %></div>
+          <% end %>
+        </div>
 
-      <div>
-        <%= form.label "Difficulté" %>
-        <%= form.select :difficulty, ['facile', 'moyen', 'difficile'] %>
-        <% @recipe.errors.full_messages_for(:difficulty).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
+        <div>
+          <%= form.label "Difficulté" %>
+          <%= form.select :difficulty, ['facile', 'moyen', 'difficile'] %>
+          <% @recipe.errors.full_messages_for(:difficulty).each do |message| %>
+            <div class="text-red-400"><%= message %></div>
+          <% end %>
+        </div>
 
-      <div>
-        <%= form.submit "Créer ma recette" %>
-      </div>
+        <div>
+          <%= form.submit "Créer ma recette" %>
+        </div>
+      <% end %>
+    </div>
+    <% else %>
+    <h1>Vous devez être chef pour créer une recette</h1>
     <% end %>
-  </div>
   <% else %>
-  <h1>Vous devez être chef pour créer une recette</h1>
+    <h1>Veuillez vous connecter pour créer une recette</h1> 
   <% end %>
-<% else %>
-  <h1>Veuillez vous connecter pour créer une recette</h1> 
-<% end %>
 </main>
