@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :masterclasses, param: 'title', only: %i[index new create update destroy] do
+  resources :masterclasses, param: 'title', only: %i[index new edit create update destroy] do
     resources :meetings, shallow: true do
       resources :reservations, shallow: true
     end
   end
 
-  resources :recipes, param: 'title', only: %i[index new create update destroy]
+  resources :recipes, param: 'title', only: %i[index new create edit update destroy]
   resources :chefs, param: 'name' do
     resources :recipes, param: 'title', only: %i[index], controller: 'chef/recipes'
     resources :recipes, param: 'title', only: %i[show]

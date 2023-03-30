@@ -1,20 +1,9 @@
 <main class="container" data-turbo-cache='false'>
-<% if current_user%>
-  <%if current_user.is_chef%>
-  <div>
-    <h1 class="font-bold text-4xl">Créer une nouvelle recette</h1>
-  </div>
+    <h1 class="font-bold text-4xl">Editer la recette : <%= @recipe.title %></h1>
 
   <div class="flex-column">
     <%= form_with model: @recipe do |form| %>
 
-      <div>
-        <%= form.label "Titre" %>
-        <%= form.text_field :title %>
-        <% @recipe.errors.full_messages_for(:title).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
       <div>
         <%= form.label "Description" %>
         <%= form.text_area :content %>
@@ -38,22 +27,9 @@
           <div class="text-red-400"><%= message %></div>
         <% end %>
       </div>
-
-      <div class="image-input">
-        <%= form.label :image %>
-        <button class="btn-upload">Choisir le fichier</button>
-        <%= form.file_field :image %>
-      </div>
-
       <div>
-        <%= form.submit "Créer ma recette" %>
+        <%= form.submit "Modifier ma recette" %>
       </div>
     <% end %>
-  </div>
-  <% else %>
-  <h1>Vous devez être chef pour créer une recette</h1>
-  <% end %>
-<% else %>
-  <h1>Veuillez vous connecter pour créer une recette</h1> 
-<% end %>
+    </div>
 </main>
