@@ -19,7 +19,7 @@ class Recipe < ApplicationRecord
   validates :duration, presence: { message: 'Choisir une durée de 5 minutes minimum' },
                        numericality: { in: 5..300, message: "Veuillez renseigner un chiffre" }
   validate :duration_multiple_of_5
-  validates :difficulty, presence: { message: 'Vous choisir le niveau de difficulté' },
+  validates :difficulty, presence: { message: 'Vous devez choisir le niveau de difficulté' },
                          inclusion: { in: %w[facile moyen difficile], message: "%<value>s n'est pas une difficulté valide" }
 
   pg_search_scope :search_by_description_and_title,

@@ -15,7 +15,7 @@ class ChefsController < ApplicationController
   def update
     @chef = User.find_from_param(params[:name])
     if @chef == current_user
-      if @chef.update!(user_params)
+      if @chef.update(user_params)
         @errors = @chef.errors
         flash[:success] = 'Votre profil a bien été mis à jour'
         redirect_to chef_path(@chef)
