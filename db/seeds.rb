@@ -44,7 +44,6 @@ User.create!(first_name: 'Alain',
                   birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
                   phone_number: '0' + Faker::Number.number(digits: 9).to_s)
   user.email = "#{user.first_name.parameterize}.#{user.last_name.parameterize}@yopmail.com"
-  puts user.first_name
   user.save!
 end
 
