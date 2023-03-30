@@ -5,19 +5,19 @@
       <p>Autour de moi</p>
     </div>
     <div class="secondnav_icon">
-      <img src="<%=image_path('burger.png')%>" alt="">
-      <p>Americain</p>
+      <%= link_to image_tag("burger.png"), masterclasses_path(search: "Fast-Food") %>
+      <p>Fast Food</p>
     </div>
     <div class="secondnav_icon">
-      <img src="<%=image_path('des-legumes.png')%>" alt="">
+      <%= link_to image_tag("des-legumes.png"), masterclasses_path(search: "Végétarien") %>
       <p>Végétarien</p>
     </div>
     <div class="secondnav_icon">
-      <img src="<%=image_path('taco.png')%>" alt="">
+      <%= link_to image_tag("taco.png"), masterclasses_path(search: "Mexicain") %>
       <p>Mexicain</p>
     </div>
     <div class="secondnav_icon">
-      <img src="<%=image_path('viande.png')%>" alt="">
+      <%= link_to image_tag("viande.png"), masterclasses_path(search: "Mexicain") %>
       <p>Carnivor</p>
     </div>
   </div>

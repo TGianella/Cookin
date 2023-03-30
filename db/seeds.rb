@@ -84,13 +84,12 @@ User.guests.each do |guest|
     Reservation.create(guest: guest, meeting: masterclass.meetings.sample, status: false)
   end
 end
+categories = ["Végétarien", "Vegan", "Gluten free", "Français", "Mexicain", "Italien", "Chinois", "Japonais", "Espagnol", "Thai", "Indien", "Patisserie", "Cuisine Saine", "Recette de Grand-mère", "Fast-Food", "Autre", "Carnivor"]
 
-Category.create(name: "vegetarien")
-Category.create(name: "vegan")
-Category.create(name: "italien")
-Category.create(name: "asiatique")
-Category.create(name: "français")
-Category.create(name: "autre")
+categories.each do |category|
+  Category.create(name: category)
+end
 
-Masterclass.first.categories << Category.first
-Masterclass.first.categories << Category.third
+Masterclass.all.each do |masterclass|
+  masterclass.categories << Category.all.sample
+end

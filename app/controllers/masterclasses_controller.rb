@@ -1,6 +1,7 @@
 class MasterclassesController < ApplicationController
   def index
     if params[:search].present?
+      @categories_search = Category.search_by_name(params[:search])
       @masterclasses_search = Masterclass.search_by_description_and_title(params[:search])
       @recipes_search = Recipe.search_by_description_and_title(params[:search])
       @chefs = User.search_by_name(params[:search])
@@ -11,11 +12,17 @@ class MasterclassesController < ApplicationController
           @masterclasses << masterclass
         end
       end
+      @categories_search.each do |categorie|
+        categorie.masterclasses.each do |masterclass|
+          @masterclasses << masterclass
+        end
+      end
       @recipes_search.each do |recipe|
         recipe.masterclasses.each do |masterclass|
           @masterclasses << masterclass
         end
       end
+
       @masterclasses_search.each do |masterclass|
         @masterclasses << masterclass
       end
@@ -41,7 +48,7 @@ class MasterclassesController < ApplicationController
     @masterclass.chef = current_user
     @recipes = current_user.taught_recipes
 
-    if @masterclass.save
+    if @masterclass.save!
       flash[:success] = 'Masterclass créée !'
       redirect_to chef_masterclass_path(current_user, @masterclass)
     else
