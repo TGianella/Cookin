@@ -16,28 +16,35 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.chef = current_user
 
-    if @recipe.save!
+    if @recipe.save
       flash[:success] = 'Recette créée !'
       redirect_to chef_recipe_path(current_user, @recipe)
     else
-      flash[:alert] = "La recette n'a pas pu être créée !"
+      flash[:danger] = "La recette n'a pas pu être créée !"
       render :new
     end
+  end
+
+  def edit
+    @recipe = Recipe.find_by(title: params[:title])
+    return if current_user == @recipe.chef
+
+    redirect_back fallback_location: root_path
   end
 
   def update
     find_recipe
     if @recipe.chef == current_user
       @recipe.update(recipe_params)
-      if @recipe.save!
+      if @recipe.save
         flash[:success] = 'Recette modifiée'
         redirect_to chef_recipe_path(current_user, @recipe)
       else
-        flash[:alert] = "La recette n'a pas pu être modifiée !"
-        render :edit
+        flash[:danger] = "La recette n'a pas pu être modifiée !"
+        render :edit, status: :unprocessable_entity
       end
     else
-      flash[:alert] = "Vous n'êtes pas le propriétaire de cette recette"
+      flash[:danger] = "Vous n'êtes pas le propriétaire de cette recette"
       render :edit
     end
   end

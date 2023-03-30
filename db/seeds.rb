@@ -8,9 +8,10 @@ unless Rails.env.production?
   Meeting.destroy_all
   Reservation.destroy_all
   MasterclassesRecipe.destroy_all
+  Category.destroy_all
 end
 
-User.create(first_name: 'Didier',
+User.create!(first_name: 'Didier',
             last_name: 'Guest',
             email: 'cookin_guest@yopmail.com',
             password: 'foobar',
@@ -21,7 +22,7 @@ User.create(first_name: 'Didier',
             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
-User.create(first_name: 'Alain',
+User.create!(first_name: 'Alain',
             last_name: 'Chef',
             email: 'cookin_chef@yopmail.com',
             password: 'foobar',
@@ -95,4 +96,13 @@ User.guests.each do |guest|
   Masterclass.all.sample(rand(1..3)).each do |masterclass|
     Reservation.create(guest: guest, meeting: masterclass.meetings.sample, status: false)
   end
+end
+categories = ["Végétarien", "Vegan", "Gluten free", "Français", "Mexicain", "Italien", "Chinois", "Japonais", "Espagnol", "Thai", "Indien", "Patisserie", "Cuisine Saine", "Recette de Grand-mère", "Fast-Food", "Autre", "Carnivor"]
+
+categories.each do |category|
+  Category.create(name: category)
+end
+
+Masterclass.all.each do |masterclass|
+  masterclass.categories << Category.all.sample
 end

@@ -17,13 +17,20 @@ class User < ApplicationRecord
   has_many :attended_masterclasses, through: :meetings, source: :masterclass
   has_many :learned_recipes, through: :attended_masterclasses, source: :recipes
 
-  validates :first_name, length: { in: 2..25 },
-                         format: { with: /\A[A-Za-z\-'éèêëôûüùïîâäç]+\z/ },
-                         allow_blank: true
-  validates :phone_number, format: { with: /(0|\\+33|0033)[1-9][0-9]{8}/ },
-                           allow_blank: true
+  validates :first_name, presence: { message: 'Veuillez renseigner votre prénom' },
+                         length: { in: 2..25, message: 'Votre prénom doit contenir entre 2 et 25 charactères' },
+                         format: { with: /\A[A-Za-z\-'ÉÈéèêëôûüùïîâäç]+\z/, message: 'Votre prénom ne peut pas contenir de charactères spéciaux' }
+  validates :phone_number, format: { with: /(0|\\+33|0033)[1-9][0-9]{8}/, message: 'Merci de renseigner un numéro de téléphone valide' }
   validate :time_validate
-  # validates :description, length: { in: 10..10000 }
+  validates :last_name, presence: { message: 'Veuillez renseigner votre nom' },
+                         length: { in: 2..25, message: 'Votre nom doit contenir entre 2 et 25 charactères' },
+                         format: { with: /\A[A-Za-z\-'ÉÈéèêëôûüùïîâäç\s]+\z/, message: 'Votre nom ne peut pas contenir de charactères spéciaux' }
+  validates :city, presence: { message: 'Veuillez renseigner votre ville' },
+                         length: { in: 2..25, message: 'Le nom de votre ville doit contenir entre 2 et 25 charactères' },
+                         format: { with: /\A[A-Za-z\-'ÉÈéèêëôûüùïîâäçÿœ\s\d]+\z/, message: 'Le nom de votre ville ne peut pas contenir de charactères spéciaux' }
+  validates :zip_code, presence: { message: 'Veuillez renseigner votre code postal' },
+                         length: { is: 5, message: 'Votre code postal doit contenir 5 chiffres' },
+                         format: { with: /\A(0[1-9]|[1-9][0-9])[0-9][0-9][0-9]\z/, message: 'Votre code postal ne peut pas contenir de charactères spéciaux' }
 
   pg_search_scope :search_by_name,
                   against: %i[first_name last_name],
@@ -57,12 +64,13 @@ class User < ApplicationRecord
   private
 
   def time_validate
-    return unless birth_date.present?
 
-    if birth_date > 18.years.ago
-      errors.add(:birth_date, 'You should be over 18 years old.')
+    if birth_date.blank?
+      errors.add(:birth_date, 'Veuillez renseigner votre date de naissance')
+    elsif birth_date > 18.years.ago
+      errors.add(:birth_date, 'Vous devez être âgé de plus de 18 ans.')
     elsif birth_date < 120.years.ago
-      errors.add(:birth_date, 'You should be under 120 years old.')
+      errors.add(:birth_date, 'Vous devez être âgé de moins de 120 ans.')
     end
   end
 end

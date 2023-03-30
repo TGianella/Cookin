@@ -1,0 +1,8 @@
+.ss-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-direction: row;
+}

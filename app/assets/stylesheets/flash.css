@@ -1,4 +1,4 @@
-.alert{
+.alert {
   position: absolute;
   height: fit-content;
   width: 20dvw;
@@ -43,4 +43,8 @@
   0% { opacity: 1;}
   50% { opacity: 0.99;}
   100% { opacity: 0;}
+}
+
+.alert-devise {
+  background-color: red;
 }
