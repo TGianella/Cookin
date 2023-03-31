@@ -51,7 +51,7 @@ class MasterclassesController < ApplicationController
     @masterclass.chef = current_user
     @recipes = current_user.taught_recipes
 
-    if @masterclass.save!
+    if @masterclass.save
       flash[:success] = 'Masterclass créée !'
       redirect_to chef_masterclass_path(current_user, @masterclass)
     else
