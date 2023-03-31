@@ -90,12 +90,12 @@ User.chefs.each do |chef|
                                   chef: chef,
                                   slug: slug.sample)
     masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
+    masterclass.categories << Category.all.sample(rand(1..3))
     masterclass.save
   end
 end
 
 Masterclass.all.each do |masterclass|
-  masterclass.categories << Category.all.sample(rand(1..3))
   rand(1..5).times do |_|
     meeting = Meeting.new(masterclass: masterclass,
                           start_date: Faker::Time.between(from: DateTime.now, to: 1.year.from_now),
@@ -109,8 +109,4 @@ User.guests.each do |guest|
   Masterclass.all.sample(rand(1..3)).each do |masterclass|
     Reservation.create(guest: guest, meeting: masterclass.meetings.sample, status: false)
   end
-end
-
-Masterclass.all.each do |masterclass|
-  masterclass.categories << Category.all.sample
 end

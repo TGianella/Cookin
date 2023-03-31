@@ -20,12 +20,13 @@ class Masterclass < ApplicationRecord
   validates :description, presence: { message: 'Une description est obligatoire' },
                           length: { in: 100..100000, message: 'Il faut 100 charactères minimum' }
   validates :duration, presence: { message: 'Choisir une durée de 60 minutes minimum' } ,
-                       numericality: { in: 60..300, message: "Veuillez renseigner un nombre de minutes entre 60 et 300" }
+                       numericality: { in: 60..300, message: "Choisir une durée entre 60 et 300" }
   validate :duration_multiple_of_5
   validates :price, presence: { message: 'Vous devez renseigner un prix' },
                     numericality: { in: 1..100, message: "Veuillez renseigner un prix entre 1 et 100" }
   validate :recipes_belong_to_same_chef
-  validates :recipes, presence: true
+  validates :recipes, presence: { message: 'Il faut au moins une recette'}
+  validates :categories, length: { maximum: 3, message: 'Trois catégories maximum' }
 
   pg_search_scope :search_by_description_and_title,
                   against: %i[description title],
@@ -58,4 +59,5 @@ class Masterclass < ApplicationRecord
 
     errors.add(:recipes, 'Les recettes doivent être du même chef que la masterclass !')
   end
+
 end

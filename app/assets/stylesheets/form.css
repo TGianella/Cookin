@@ -71,6 +71,7 @@ input[type="datetime-local"],
   display: flex;
 }
 
+
  input[type="submit"], .actions input {
   background-color: var(--success);
   padding: .5em 1em;

@@ -9,7 +9,6 @@ export default class extends Controller {
       settings: {
       placeholderText: 'Catégorie',
       }
-      
     })
   }
 }
