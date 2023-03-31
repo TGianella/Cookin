@@ -1,48 +1,49 @@
 <main class="container" data-turbo='false'>
-  <% if current_user.is_chef %>
-    <h1 class="font-bold text-4xl">Créer une nouvelle recette</h1>
-    <div class="flex-column">
-      <%= form_with model: @recipe do |form| %>
+    <% if current_user.is_chef %>
+      <h1 class="font-bold text-4xl">Créer une nouvelle recette</h1>
+      <div class="flex-column">
+        <%= form_with model: @recipe do |form| %>
+
+        <div>
+          <%= form.label "Titre" %>
+          <%= form.text_field :title %>
+          <% @recipe.errors.full_messages_for(:title).each do |message| %>
+            <div class="text-red-400"><%= message %></div>
+          <% end %>
+        </div>
+        <div>
+          <%= form.label "Description" %>
+          <%= form.text_area :content %>
+          <% @recipe.errors.full_messages_for(:content).each do |message| %>
+            <div class="text-red-400"><%= message %></div>
+          <% end %>
+        </div>
+
+        <div>
+          <%= form.label "Durée" %>
+          <%= form.number_field :duration, in: 5..180, step: 5 %>
+          <% @recipe.errors.full_messages_for(:duration).each do |message| %>
+            <div class="text-red-400"><%= message %></div>
+          <% end %>
+        </div>
+
+        <div>
+          <%= form.label "Difficulté" %>
+          <%= form.select :difficulty, ['facile', 'moyen', 'difficile'] %>
+          <% @recipe.errors.full_messages_for(:difficulty).each do |message| %>
+            <div class="text-red-400"><%= message %></div>
+          <% end %>
+        </div>
+
+      <div class="image-input">
+        <%= form.label :image %>
+        <button class="btn-upload">Choisir le fichier</button>
+        <%= form.file_field :image %>
+      </div>
 
       <div>
-        <%= form.label "Titre" %>
-        <%= form.text_field :title %>
-        <% @recipe.errors.full_messages_for(:title).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
+        <%= form.submit "Créer ma recette" %>
       </div>
-      <div>
-        <%= form.label "Description" %>
-        <%= form.text_area :content %>
-        <% @recipe.errors.full_messages_for(:content).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div>
-        <%= form.label "Durée" %>
-        <%= form.number_field :duration, in: 5..180, step: 5 %>
-        <% @recipe.errors.full_messages_for(:duration).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div>
-        <%= form.label "Difficulté" %>
-        <%= form.select :difficulty, ['facile', 'moyen', 'difficile'] %>
-        <% @recipe.errors.full_messages_for(:difficulty).each do |message| %>
-          <div class="text-red-400"><%= message %></div>
-        <% end %>
-      </div>
-
-    <div class="image-input">
-      <%= form.label :image %>
-      <button class="btn-upload">Choisir le fichier</button>
-      <%= form.file_field :image %>
-    </div>
-
-    <div>
-      <%= form.submit "Créer ma recette" %>
-    </div>
+    <% end %>
   <% end %>
 </main>

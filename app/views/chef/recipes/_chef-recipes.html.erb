@@ -5,7 +5,9 @@
     </h1>
     <div class="recipe__wrapper__header">
       <div class="recipe_image__wrapper">
-        <%= link_to "Editer", edit_recipe_path(recipe), class: "button--s button--success button--edit" %>
+        <% if recipe.chef == current_user %>
+          <%= link_to "Editer", edit_recipe_path(recipe), class: "button--s button--success button--edit" %>
+        <% end %>
         <% if recipe.image.attached? %>
           <%= image_tag recipe.image, alt:'Photo de la recette' %>
         <% else %>
