@@ -6,7 +6,7 @@
 
     <div class="field">
       <%= f.label :password, "Nouveau mot de passe" %><br />
-      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder:'6 charactères minimum' %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder:'6 caractères minimum' %>
       <% resource.errors.full_messages_for(:password).each do |message| %>
         <div class="text-red-400"><%= message %></div>
       <% end %>
