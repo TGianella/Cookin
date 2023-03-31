@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       flash[:success] = 'Inscription validée'
     else
-      flash[:alert] = "Votre inscription n'a pas pu être validée"
+      flash[:alert] = "Votre inscription n'a pas pu être validée, n'êtes-vous pas déjà inscrit pour cette masterclass ?"
     end
 
     redirect_back fallback_location: root_path
