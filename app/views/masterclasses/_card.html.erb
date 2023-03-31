@@ -1,11 +1,7 @@
 
   <div class="card">
-      <div class="badge_category">
-        <% masterclass.categories.each do |category| %>
-          <%= category.name %>
-        <% end %>
-      </div>
     <div class="card__header">
+      <%= render partial:'layouts/category', locals: {masterclass: masterclass} %>
         <% if masterclass.image.attached? %>
           <%= image_tag masterclass.image, alt:"Photo de masterclass" %>
         <% else %>
