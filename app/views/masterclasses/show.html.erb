@@ -42,7 +42,7 @@
         <div class="masterclass_section--3__wrapper">
           <%= render partial:'layouts/profilebadge--masterclass', locals:{masterclass: @masterclass} %>
           <div class="masterclass_section--3__footer">
-            <h3>Recette(s) prévue(e) pendant le cours  <i class="fas fa-arrow-right"></i></h3>
+            <h3>Recette(s) prévue(s) pendant le cours  <i class="fas fa-arrow-right"></i></h3>
             <div class="recipe-badge buttons--row">
               <% @recipes.each do |recipe| %> 
                 <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe), class:" button--s button--outline--success" %> 
@@ -52,7 +52,7 @@
               <div class="reservation-badge">
                 <div class="reservation-badge__wrapper">
                   <div>
-                    <%= @masterclass.price %> € / personnes
+                    <%= @masterclass.price %> € / personne
                   </div>
                   <%= link_to "Participer", masterclass_meetings_path(@masterclass), class:"button--m button--primary" %>
                 </div>
