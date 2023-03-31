@@ -18,11 +18,10 @@ Rails.application.routes.draw do
   end
 
   namespace :chef do
-    resources :recipes, param: 'title', except: %i[show index new create]
-    resources :masterclasses, param: 'title', except: %i[show index new create]
-    resources :masterclasses, param: 'title', only: %i[index], as: :my_masterclasses
-    resources :meetings
-    resources :reservations, except: :show
+    resources :recipes, param: 'title', only: :index
+    resources :masterclasses, param: 'title', only: :index
+    # resources :masterclasses, param: 'title', only: %i[index], as: :my_masterclasses
+    resources :reservations, only: :index
   end
 
   namespace :guest do
