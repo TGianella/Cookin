@@ -97,6 +97,9 @@
   font-weight: 600;
   margin-bottom: 1em;
 }
+.masterclass_section--1__wrapper{
+  position: relative;
+}
 
 .masterclass_section--2 h2:nth-child(3),
 .masterclass_section--2--chef h2:nth-child(3) {
