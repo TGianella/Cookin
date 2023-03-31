@@ -41,8 +41,9 @@
           <p><%= simple_format(@chef.description) %></p>
         <% end %>
 
-        <%= render 'informations' %>
-
+        <% if @chef == current_user %>
+          <%= render 'informations' %>
+        <% end %>
       </div>
     </div>
   </div>

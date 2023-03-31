@@ -29,13 +29,13 @@
       </div>
       <div class="chef_profile__body">
         <h3>À propos</h3>
-        <% if current_user %>
-          <% if @user.description.blank? && @user == current_user %>
-            <p>Pensez à compléter votre descritpion</p>
-          <%else %>
-            <p><%= simple_format(@user.description) %></p>
-          <% end %>
+        <% if @user.description.blank? && @user == current_user %>
+          <p>Pensez à compléter votre descritpion</p>
+        <%else %>
+          <p><%= simple_format(@user.description) %></p>
+        <% end %>
 
+        <% if @user == current_user %>
           <%= render 'informations' %>
         <% end %>
       </div>
