@@ -15,9 +15,9 @@ class Recipe < ApplicationRecord
   validate :owner_is_chef
   validates :title, presence: { message: 'Le titre est obligatoire' },
                     format: { with: /\A[A-Za-z\-\s()&:'ÉÈéèêëôûüùïîàâäç]+\z/ ,message: 'Ne pas utiliser de caractères spéciaux' }, 
-                    length: { in: 3..50, message: 'La taille doit être entre 3 et 50 charactères' }
+                    length: { in: 3..50, message: 'La taille doit être entre 3 et 50 caractères' }
   validates :content, presence: { message: 'Une description est obligatoire' },
-                      length: { in: 100..100000, message: 'Il faut 100 charactères minimum' }
+                      length: { in: 100..100000, message: 'Il faut 100 caractères minimum' }
   validates :duration, presence: { message: 'Choisir une durée de 5 minutes minimum' },
                        numericality: { in: 5..300 }
   validate :duration_multiple_of_5
