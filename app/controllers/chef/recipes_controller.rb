@@ -4,3 +4,4 @@ class Chef::RecipesController < ApplicationController
     @chef = User.find_from_param(params[:chef_name])
     @recipes = @chef.taught_recipes
   end
+end
