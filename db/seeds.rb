@@ -1,17 +1,17 @@
 ActionMailer::Base.perform_deliveries = false
 Faker::Config.locale = :fr
 
-unless Rails.env.production?
-  User.destroy_all
-  Masterclass.destroy_all
-  Recipe.destroy_all
-  Meeting.destroy_all
-  Reservation.destroy_all
-  MasterclassesRecipe.destroy_all
-  Category.destroy_all
-end
 
-User.create!(first_name: 'Didier',
+User.destroy_all
+Masterclass.destroy_all
+Recipe.destroy_all
+Meeting.destroy_all
+Reservation.destroy_all
+MasterclassesRecipe.destroy_all
+Category.destroy_all
+
+
+User.create(first_name: 'Didier',
             last_name: 'Guest',
             email: 'cookin_guest@yopmail.com',
             password: 'foobar',
@@ -22,7 +22,7 @@ User.create!(first_name: 'Didier',
             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
-User.create!(first_name: 'Alain',
+User.create(first_name: 'Alain',
             last_name: 'Chef',
             email: 'cookin_chef@yopmail.com',
             password: 'foobar',
@@ -79,7 +79,7 @@ User.chefs.each do |chef|
                   difficulty: %w[facile moyen difficile].sample,
                   chef: chef,
                   slug: slug.sample)
-    recipe.save!
+    recipe.save
   end
 
   2.times do |_|
@@ -91,7 +91,7 @@ User.chefs.each do |chef|
                                   slug: slug.sample)
     masterclass.recipes << chef.taught_recipes.sample(rand(1..4))
     puts masterclass.title
-    masterclass.save!
+    masterclass.save
   end
 end
 
