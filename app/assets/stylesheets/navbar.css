@@ -162,10 +162,51 @@
   background-color: rgba(211, 0, 0, 0.822);
 }
 
+.become-chef{
+  padding: .2em .5em;
+  margin-right: 3em;
+  border: 1px solid var(--danger);
+  color : var(--danger);
+  border-radius: .5em;
+  font-size: 1.2em;
+  transition: .2s ease;
+}
+
+.become-chef:hover{
+  scale: 1.2;
+  rotate:calc(2deg);
+  background-color: var(--danger);
+  color: white;
+}
+
+.collapse__logged a:first-child{
+  background-color: #ff9e3c;
+  font-weight: 500;
+  color: white;
+  transition: .2s ease;
+}
+
+
+
+@media screen and (min-width: 1280px){
+  .collapse__logged a:first-child{
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1280px) {
   .masterclass_options {
     display: none;
   }
+
+  .collapse__logged a:first-child:hover{
+    scale: 1.1;
+    border-radius: .5em;
+  }
+  .become-chef{
+    display: none;
+  }
+
 }
 
 @media screen and (max-width: 1024px) {
@@ -178,6 +219,10 @@
   display: none;
 }
 @media screen and (max-width: 768px) {
+  .collapse__logged a:first-child:hover{
+    scale: none;
+    border-radius: 0px;
+  }
   .profile,
   .logo {
     display: none;
