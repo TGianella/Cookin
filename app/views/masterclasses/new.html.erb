@@ -46,6 +46,9 @@
     <div class="checkbox-recipe__wrapper">
       <%= form.label "Catégorie", class:"test" %>
       <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { :multiple => true, data: {controller: "slim"}}%>
+      <% @masterclass.errors.full_messages_for(:categories).each do |message| %>
+        <div class="text-red-400"><%= message %></div>
+      <% end %>
     </div>
 
           <div class="image-input">
