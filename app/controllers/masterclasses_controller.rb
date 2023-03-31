@@ -56,7 +56,7 @@ class MasterclassesController < ApplicationController
       redirect_to chef_masterclass_path(current_user, @masterclass)
     else
       flash[:danger] = "La masterclass n'a pas pu être créée"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -97,7 +97,7 @@ class MasterclassesController < ApplicationController
   private
 
   def masterclass_params
-    params.require(:masterclass).permit(:title, :description, :duration, :price, :image, recipe_ids: [])
+    params.require(:masterclass).permit(:title, :description, :duration, :price, :image, category_ids: [], recipe_ids: [])
   end
 
   def find_masterclass

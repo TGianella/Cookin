@@ -1,6 +1,7 @@
 <main class="container">
   <div class="masterclass">
     <div class="masterclass__header">
+
       <h1><%= @masterclass.title %> </h1>
       <div class="masterclass_informations">
         <div class="notice_commentaries">
@@ -22,6 +23,7 @@
     <div class="masterclass__body">
       <div class="masterclass_section--1">
         <div class="masterclass_section--1__wrapper"> 
+          <%= render partial:'layouts/category', locals: {masterclass: @masterclass} %>
           <% if @masterclass.image.attached? %>
             <%= image_tag @masterclass.image, alt:"Photo de masterclass" %>
           <% else %>

@@ -1,7 +1,7 @@
 
   <div class="card">
     <div class="card__header">
-      <button class="like card__like"></button>
+      <%= render partial:'layouts/category', locals: {masterclass: masterclass} %>
         <% if masterclass.image.attached? %>
           <%= image_tag masterclass.image, alt:"Photo de masterclass" %>
         <% else %>

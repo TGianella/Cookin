@@ -17,23 +17,25 @@
               <p>Recettes</p>
             <% end %>
           </li>
-          <li class="options--link">
-            <a href="<%= edit_guest_profile_path(@user) %>">
-              <img src="<%=image_path('manage_account-icon.png')%>" alt="logo édition de profil" />
-              <p>Gérer</p>
-            </a>
-          </li>
+          <% if @user == current_user %>
+            <li class="options--link">
+              <a href="<%= edit_guest_profile_path(@user) %>">
+                <img src="<%=image_path('manage_account-icon.png')%>" alt="logo édition de profil" />
+                <p>Gérer</p>
+              </a>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="chef_profile__body">
         <h3>À propos</h3>
-        <% if current_user %>
-          <% if @user.description.blank? && @user == current_user %>
-            <p>Pensez à compléter votre descritpion</p>
-          <%else %>
-            <p><%= simple_format(@user.description) %></p>
-          <% end %>
+        <% if @user.description.blank? && @user == current_user %>
+          <p>Pensez à compléter votre descritpion</p>
+        <%else %>
+          <p><%= simple_format(@user.description) %></p>
+        <% end %>
 
+        <% if @user == current_user %>
           <%= render 'informations' %>
         <% end %>
       </div>

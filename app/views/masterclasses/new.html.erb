@@ -43,14 +43,17 @@
       <% end %>
     </div>
 
-    <div class="w-3/5">
-      <%= form.label "Catégorie" %>
-      <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { :multiple => true, data: {controller: "slim"}} %>
+    <div class="checkbox-recipe__wrapper">
+      <%= form.label "Catégorie", class:"test" %>
+      <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { :multiple => true, data: {controller: "slim"}}%>
+      <% @masterclass.errors.full_messages_for(:categories).each do |message| %>
+        <div class="text-red-400"><%= message %></div>
+      <% end %>
     </div>
 
           <div class="image-input">
         <%= form.label :image %>
-        <button class="btn-upload">Choisir le fichier</button>
+        <button class="btn-upload button--outline--success">Choisir le fichier</button>
         <%= form.file_field :image %>
       </div>
 
