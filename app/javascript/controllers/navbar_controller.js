@@ -9,6 +9,8 @@ export default class extends Controller {
 
     let collapse_menu = document.querySelector(".collapse_menu");
     let main = document.querySelector("main");
+    let collapseVideo = document.querySelector(".video_banner")
+    console.log(collapseVideo)
 
     collapseButton.addEventListener("click", function () {
       collapse_profile.classList.toggle("collapse_profile--active");
@@ -22,6 +24,7 @@ export default class extends Controller {
     search_button.addEventListener("click", function () {
       collapseNavbar.classList.toggle("navbar--collapse");
       collapseSecondnav.classList.toggle("secondnav--collapse");
+      collapseVideo.classList.toggle("video--collapse");
     });
     window.addEventListener("click", function (e) {
       if (

@@ -22,8 +22,13 @@
         </div>
       </div>
     </div>
-    <div class="profile">
+      <div class="profile">
       <div class="profile__wrapper">
+          <% if user_signed_in? && !current_user.is_chef %>
+            <div class="become-chef">
+              <%= button_to "Partager une recette", new_recipe_path, method: :get %>
+            </div>
+          <% end %>
         <div class="profile_menu" data-controller='navbar'>
           <button>
           <% if user_signed_in? %>
@@ -59,9 +64,10 @@
             </div>
           <% else %>
             <div class="collapse__logged">
+              <%= link_to "Partager une recette", new_recipe_path, method: :get, class:"become-chef--menu" %>
               <a href="<%= guest_profile_path(current_user) %>">Profil</a>
-              <a href="#">Mes cours</a>
-              <a href="#">Mes recettes</a>
+              <a href="<%= guest_masterclasses_path %>">Mes cours</a>
+              <a href="<%= guest_recipes_path %>">Mes recettes</a>
               <a href="<%= guest_reservations_path %>">Mes réservations</a>
             </div>
             <div class="collapse__static_pages">
@@ -107,6 +113,7 @@
             </div>
           <% else %>
             <div class="collapse__logged">
+              <%= link_to "Partager une recette", new_recipe_path, method: :get %>
               <a href="#">Profil</a>
               <a href="#">Mes cours</a>
               <a href="#">Mes recettes</a>
