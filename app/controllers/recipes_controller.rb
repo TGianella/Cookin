@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :authenticate_chef!, except: %i[index show new]
+  before_action :authenticate_chef!, except: %i[index show new create]
 
   def index
     @recipes = Recipe.all
