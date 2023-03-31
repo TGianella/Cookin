@@ -66,8 +66,8 @@
             <div class="collapse__logged">
               <%= link_to "Partager une recette", new_recipe_path, method: :get, class:"become-chef--menu" %>
               <a href="<%= guest_profile_path(current_user) %>">Profil</a>
-              <a href="#">Mes cours</a>
-              <a href="#">Mes recettes</a>
+              <a href="<%= guest_masterclasses_path %>">Mes cours</a>
+              <a href="<%= guest_recipes_path %>">Mes recettes</a>
               <a href="<%= guest_reservations_path %>">Mes réservations</a>
             </div>
             <div class="collapse__static_pages">
