@@ -59,5 +59,4 @@ class Masterclass < ApplicationRecord
 
     errors.add(:recipes, 'Les recettes doivent être du même chef que la masterclass !')
   end
-
 end

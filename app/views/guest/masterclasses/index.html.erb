@@ -1,0 +1,12 @@
+<main class="container">
+  <% if @meetings.empty? %>
+    <h1 class="text-4xl"> Vous n'avez pas encore participé à un cours </h1>
+  <% else %>
+    <% @meetings.each do |meeting| %>
+      <div class="text-2xl text-center my-5">
+        <a href="<%= chef_masterclass_path(meeting.masterclass.chef, meeting.masterclass.title)%>"><%= meeting.masterclass.title %></a>
+        <a href="<%= chef_masterclass_path(meeting.masterclass.chef, meeting.masterclass.title)%>">le <%= meeting.start_date.strftime("%A %d %B %Y") %></a>
+      </div>
+    <% end %>
+  <% end %>
+</main>
