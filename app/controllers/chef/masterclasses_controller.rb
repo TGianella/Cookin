@@ -5,6 +5,4 @@ class Chef::MasterclassesController < ApplicationController
     @chef = User.find_from_param(params[:chef_name])
     @masterclasses = @chef.given_masterclasses
   end
-
-  # def show; end
 end

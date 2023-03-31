@@ -1,8 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
 
-  # def show; end
-
   def create
     @reservation = Reservation.new(guest: current_user,
                                    meeting: Meeting.find(params[:meeting_id]))
