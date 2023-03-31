@@ -28,7 +28,7 @@ class MasterclassesController < ApplicationController
       end
       @masterclasses = @masterclasses.uniq
     else
-      @masterclasses = Masterclass.all
+      @masterclasses = Masterclass.active.order(created_at: :desc)
     end
   end
 
@@ -45,6 +45,9 @@ class MasterclassesController < ApplicationController
 
   def create
     @masterclass = Masterclass.new(masterclass_params)
+    unless @masterclass.image.attached?
+      @masterclass.image.attach(io: File.open("#{Rails.root}/app/assets/images/empty-placeholder.png"), filename: 'empty-placeholder.png')
+    end
     @masterclass.chef = current_user
     @recipes = current_user.taught_recipes
 
@@ -94,7 +97,7 @@ class MasterclassesController < ApplicationController
   private
 
   def masterclass_params
-    params.require(:masterclass).permit(:title, :description, :duration, :price,  :category, category_ids: [], recipe_ids: [])
+    params.require(:masterclass).permit(:title, :description, :duration, :price, :image, recipe_ids: [])
   end
 
   def find_masterclass

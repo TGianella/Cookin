@@ -21,14 +21,18 @@
     </div>
     <div class="masterclass__body">
       <div class="masterclass_section--1">
-        <div class="masterclass_section--1__wrapper">
-          <img src="https://picsum.photos/1000" alt="photo de la masterclass" />
+        <div class="masterclass_section--1__wrapper"> 
+          <% if @masterclass.image.attached? %>
+            <%= image_tag @masterclass.image, alt:"Photo de masterclass" %>
+          <% else %>
+            <img src="<%= @masterclass.slug %>" alt="Photo de masterclass">
+          <% end %>
         </div>
       </div>
       <div class="masterclass_section--2">
         <div class="masterclass_section--2__wrapper">
           <h2>Présentation du cours</h2>
-          <p class="masterclass--description"><%= @masterclass.description %></p>
+          <p class="masterclass--description"><%= simple_format(@masterclass.description) %></p>
           <h2>Durée du cours : <%= @masterclass.duration %> minutes</h2> 
         </div>
       </div>
