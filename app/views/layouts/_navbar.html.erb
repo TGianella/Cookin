@@ -22,7 +22,12 @@
         </div>
       </div>
     </div>
-    <div class="profile">
+    <% if user_signed_in? && !current_user.is_chef %>
+      <div class="#">
+        <%= button_to "Partager une recette", new_recipe_path, method: :get %>
+      </div>
+    <% end %>
+      <div class="profile">
       <div class="profile__wrapper">
         <div class="profile_menu" data-controller='navbar'>
           <button>
