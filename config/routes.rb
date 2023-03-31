@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+ 
   root 'masterclasses#index'
+
+  get 'pages/about'
+  get 'pages/contact'
 
   devise_for :users
 
