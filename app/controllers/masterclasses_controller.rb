@@ -51,7 +51,6 @@ class MasterclassesController < ApplicationController
     find_masterclass
     authenticate_owner_chef!(@masterclass)
     @recipes = current_user.taught_recipes
-    end
   end
 
   def update
