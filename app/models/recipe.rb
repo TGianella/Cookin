@@ -37,6 +37,7 @@ class Recipe < ApplicationRecord
 
     chef.is_chef = true
     chef.save!
+    ChefMailer.new_chef_email(self).deliver_now
   end
 
   private
