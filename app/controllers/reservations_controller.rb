@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       flash[:success] = 'Inscription validée'
     else
-      flash[:alert] = "Votre inscription n'a pas pu être validée"
+      flash[:alert] = "Votre inscription n'a pas pu être validée, n'êtes-vous pas déjà inscrit pour cette masterclass ?"
     end
 
     redirect_back fallback_location: root_path
@@ -16,8 +16,9 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
+    authenticate_owner_chef!(@reservation)
 
-    if current_user == @reservation.meeting.chef && @reservation.status == false
+    if @reservation.status == false
 
       if @reservation.update(status: true)
         flash[:success] = "Reservation validée pour #{@reservation.guest.full_name}"
@@ -26,7 +27,7 @@ class ReservationsController < ApplicationController
       end
 
     else
-      flash[:error] = "Il n'est pas possible de valider cette réservation"
+      flash[:error] = 'La réservation est déjà validée !'
     end
 
     redirect_back fallback_location: root_path
