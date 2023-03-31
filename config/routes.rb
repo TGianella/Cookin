@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   end
 
   namespace :guest do
-    resources :recipes, param: 'title', only: %i[show index]
-    resources :masterclasses, param: 'title', only: %i[show index]
+    resources :recipes, param: 'title', only: :index
+    resources :masterclasses, param: 'title', only: :index
     resources :reservations, only: :index
     resources :profiles, param: 'name', only: %i[show update edit]
   end
