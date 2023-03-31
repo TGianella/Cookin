@@ -29,5 +29,4 @@ class Guest::ProfilesController < ApplicationController
   def find_user 
     @user = User.find_from_param(params[:name])
   end
-
 end

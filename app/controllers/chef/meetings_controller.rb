@@ -1,18 +1,18 @@
 class Chef::MeetingsController < ApplicationController
-  def index; end
-
-  def show; end
-
   def new
     @masterclass = params[:title]
     @meeting = Meeting.new
   end
 
-  def create; end
+  # def index; end
 
-  def edit; end
+  # def show; end
 
-  def update; end
+  # def create; end
 
-  def destroy; end
+  # def edit; end
+
+  # def update; end
+
+  # def destroy; end
 end

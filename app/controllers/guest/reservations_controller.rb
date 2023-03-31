@@ -3,15 +3,15 @@ class Guest::ReservationsController < ApplicationController
     @reservations = current_user.reservations
   end
 
-  def show; end
+  # def show; end
 
-  def new; end
+  # def new; end
 
-  def create; end
+  # def create; end
 
-  def edit; end
+  # def edit; end
 
-  def update; end
+  # def update; end
 
-  def destroy; end
+  # def destroy; end
 end

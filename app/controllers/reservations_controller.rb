@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
 
-  def show; end
+  # def show; end
 
   def create
     @reservation = Reservation.new(guest: current_user,

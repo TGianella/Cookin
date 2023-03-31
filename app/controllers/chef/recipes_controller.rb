@@ -5,7 +5,7 @@ class Chef::RecipesController < ApplicationController
     @recipes = @chef.taught_recipes
   end
 
-  def show; end
+  # def show; end
 
-  def destroy; end
+  # def destroy; end
 end

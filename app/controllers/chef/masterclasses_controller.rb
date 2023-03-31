@@ -6,5 +6,5 @@ class Chef::MasterclassesController < ApplicationController
     @masterclasses = @chef.given_masterclasses
   end
 
-  def show; end
+  # def show; end
 end
