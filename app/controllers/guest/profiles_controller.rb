@@ -1,4 +1,5 @@
 class Guest::ProfilesController < ApplicationController
+  before_action :authenticate_user!
   def show
     @user = User.find_from_param(params[:name])
   end

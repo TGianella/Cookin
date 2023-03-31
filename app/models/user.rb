@@ -45,8 +45,8 @@ class User < ApplicationRecord
   end
 
   def self.find_from_param(param)
-    first_name, last_name = param.split(' ')
-    where(first_name: first_name, last_name: last_name).first
+    name_tokens = param.split(' ')
+    where(first_name: name_tokens.first, last_name: name_tokens[1..].join(' ')).first
   end
 
   def self.chefs
