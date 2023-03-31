@@ -174,22 +174,13 @@
 
 .become-chef:hover{
   scale: 1.2;
-  rotate:calc(2deg);
   background-color: var(--danger);
   color: white;
 }
 
-.collapse__logged a:first-child{
-  background-color: #ff9e3c;
-  font-weight: 500;
-  color: white;
-  transition: .2s ease;
-}
-
-
 
 @media screen and (min-width: 1280px){
-  .collapse__logged a:first-child{
+  .collapse__logged a:nth-child(1){
     display: none;
   }
 }
@@ -199,10 +190,6 @@
     display: none;
   }
 
-  .collapse__logged a:first-child:hover{
-    scale: 1.1;
-    border-radius: .5em;
-  }
   .become-chef{
     display: none;
   }
