@@ -23,4 +23,12 @@ class ChefMailer < ApplicationMailer
     mail(to: @reservation.chef.email,
          subject: "#{@reservation.guest.full_name} a annulé son inscription pour #{@reservation.masterclass.title}")
   end
+
+  def new_chef_email(recipe)
+    @recipe = recipe
+    @url = 'https://thecookinproject.herokuapp/users/sign_in'
+
+    mail(to: @recipe.chef.email,
+         subject: "Bienvenue dans la communauté des chefs, #{@recipe.chef.first_name} !")
+  end
 end
