@@ -25,7 +25,8 @@ class Masterclass < ApplicationRecord
   validates :price, presence: { message: 'Vous devez renseigner un prix' },
                     numericality: { in: 1..100, message: "Veuillez renseigner un prix entre 1 et 100" }
   validate :recipes_belong_to_same_chef
-  validates :recipes, presence: true
+  validates :recipes, presence: { message: 'Il faut au moins une recette'}
+  validates :categories, length: { maximum: 3, message: 'Trois catégories maximum' }
 
   pg_search_scope :search_by_description_and_title,
                   against: %i[description title],
@@ -58,4 +59,5 @@ class Masterclass < ApplicationRecord
 
     errors.add(:recipes, 'Les recettes doivent être du même chef que la masterclass !')
   end
+
 end

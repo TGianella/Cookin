@@ -1,9 +1,5 @@
 <div class="secondnav">
-  <div class="secondnav__wrapper container">
-    <div class="secondnav_icon">
-      <img src="<%= image_path('pin-icon.png' )%>" alt="logo de géolocalisation">
-      <p>Autour de moi</p>
-    </div>
+  <div class="secondnav__wrapper">
     <div class="secondnav_icon">
       <%= link_to image_tag("burger.png"), masterclasses_path(search: "Fast-Food") %>
       <p>Fast Food</p>
@@ -17,8 +13,44 @@
       <p>Mexicain</p>
     </div>
     <div class="secondnav_icon">
-      <%= link_to image_tag("viande.png"), masterclasses_path(search: "Mexicain") %>
-      <p>Carnivor</p>
+      <%= link_to image_tag("flag.png"), masterclasses_path(search: "France") %>
+      <p>Français</p>
+    </div>
+    <div class="secondnav_icon">
+      <%= link_to image_tag("vegetalien.png"), masterclasses_path(search: "Vegan") %>
+      <p>Vegan</p>
+    </div>
+    <div class="secondnav_icon">
+      <%= link_to image_tag("sans-gluten.png"), masterclasses_path(search: "Sans gluten") %>
+      <p>Sans gluten</p>
+    </div>
+    <div class="secondnav_icon">
+      <%= link_to image_tag("japon.png"), masterclasses_path(search: "Japon") %>
+      <p>Japonais</p>
+    </div>
+    <div class="secondnav_icon">
+      <%= link_to image_tag("spaguetti.png"), masterclasses_path(search: "Italien") %>
+      <p>Italien</p>
+    </div>
+    <div class="secondnav_icon">
+      <%= link_to image_tag("lanterns.png"), masterclasses_path(search: "Chinois") %>
+      <p>Chinois</p>
+    </div>
+    <div class="secondnav_icon">
+      <%= link_to image_tag("curry.png"), masterclasses_path(search: "Indien") %>
+      <p>Indien</p>
+    </div>
+    <div class="secondnav_icon">
+      <%= link_to image_tag("cake.png"), masterclasses_path(search: "Patisserie") %>
+      <p>Pâtisserie</p>
+    </div>
+    <div class="secondnav_icon">
+      <%= link_to image_tag("healthy-food.png"), masterclasses_path(search: "Cuisine saine") %>
+      <p>Healthy</p>
+    </div>
+    <div class="secondnav_icon">
+      <%= link_to image_tag("thai-food.png"), masterclasses_path(search: "Thai") %>
+      <p>Thai</p>
     </div>
   </div>
 </div>
