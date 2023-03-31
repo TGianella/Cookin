@@ -1,11 +1,11 @@
-<main class="container">
+<main class="container" data-controller="reservation-view">
   <h1 class="font-bold text-4xl">Mes réservations</h1>
   <% @masterclasses.each do |masterclass| %>
     <div class="masterclass-reservations">
       <div class="masterclass-reservations__wrapper">
         <div class="masterclass-reservations__header">
           <h2 class="font-bold text-2xl">Réservations pour <%=masterclass.title%></h2>
-          <button class="button--s button--outline--success showMore" data-controller='navbar'>Voir plus</button>
+          <button class="button--s button--outline--success showMore">Voir plus</button>
         </div>
         <div class="masterclass_reservation--hidden">
           <% masterclass.meetings.each do |meeting| %>
