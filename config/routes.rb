@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   # resources :masterclasses, param: 'title', only: %i[index new edit create update destroy] do
-  resources :masterclasses, param: 'title', execpt: :show do
+  resources :masterclasses, param: 'title', except: :show do
     resources :meetings, shallow: true do
       resources :reservations, shallow: true
     end
   end
 
   # resources :recipes, param: 'title', only: %i[index new create edit update destroy]
-  resources :recipes, param: 'title', execpt: :show
+  resources :recipes, param: 'title', except: :show
   # resources :chefs, param: 'name' do
   resources :chefs, param: 'name', except: %i[new create destroy] do
     resources :recipes, param: 'title', only: %i[index], controller: 'chef/recipes'
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :masterclasses, param: 'title', only: %i[index], as: :my_masterclasses
     resources :meetings
     # resources :reservations
-    resources :reservations, execpt: :show
+    resources :reservations, except: :show
   end
 
   namespace :guest do
