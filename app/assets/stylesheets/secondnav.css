@@ -4,26 +4,25 @@
   border-top: 1px solid rgb(235, 235, 235);
   background-color: white;
   display: flex;
-  justify-content: center;
   align-content: center;
 }
 .secondnav__wrapper {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 0 2em;
   position: relative;
   height: 100%;
-  margin-top: .2em;
+  padding: 0 3%;
 }
 .secondnav_icon{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   font-size: 0.8em;
+  width: 100px;
 }
 
 .secondnav_icon img{
@@ -45,4 +44,25 @@
 
 .secondnav--collapse{
   margin-top: 80px;
+}
+
+@media screen and (max-width:1280px){
+  .secondnav__wrapper{
+    overflow-y: scroll;
+    min-width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .secondnav_icon{
+    width: 150px;
+    height: 150px;
+  }
+
+  .secondnav_icon img{
+    height: auto;
+    margin-bottom: 0;
+    
+  }
+
 }
