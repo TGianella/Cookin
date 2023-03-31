@@ -2,10 +2,10 @@
   width: 100%;
   height: 80px;
   margin-top: 2%;
-  border-top: 1px solid rgb(235, 235, 235);
-  background-color: white;
   display: flex;
   align-content: center;
+  position: relative;
+  border-bottom: 1px solid lightgray;
 }
 .secondnav__wrapper {
   display: flex;
@@ -24,6 +24,7 @@
   align-items: center;
   font-size: 0.8em;
   width: 100px;
+  margin-bottom: 2%;
 }
 
 .secondnav_icon img{
@@ -47,6 +48,16 @@
   margin-top: 80px;
 }
 
+.secondnav__wrapper::-webkit-scrollbar {
+  display: none;
+}
+.secondnav__wrapper {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+
 @media screen and (max-width:1280px){
   .secondnav__wrapper{
     overflow-y: scroll;
@@ -63,7 +74,7 @@
   .secondnav_icon img{
     height: auto;
     margin-bottom: 0;
-    
   }
+
 
 }

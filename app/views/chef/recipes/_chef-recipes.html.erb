@@ -3,9 +3,9 @@
     <h1 class="font-bold text-4xl">
       <%= recipe.title %> par <%= recipe.chef.full_name %>
     </h1>
-    <%= link_to "Editer la recette", edit_recipe_path(recipe), class: "button--s button--success" %>
     <div class="recipe__wrapper__header">
       <div class="recipe_image__wrapper">
+        <%= link_to "Editer", edit_recipe_path(recipe), class: "button--s button--success button--edit" %>
         <% if recipe.image.attached? %>
           <%= image_tag recipe.image, alt:'Photo de la recette' %>
         <% else %>
