@@ -10,26 +10,26 @@ MasterclassesRecipe.destroy_all
 Category.destroy_all
 
 User.create(first_name: 'Didier',
-             last_name: 'Guest',
-             email: 'cookin_guest@yopmail.com',
-             password: 'foobar',
-             is_chef: false,
-             city: Faker::Address.city,
-             zip_code: 75_012,
-             description: Faker::Lorem.paragraph(sentence_count: 20),
-             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
-             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
+            last_name: 'Guest',
+            email: 'cookin_guest@yopmail.com',
+            password: 'foobar',
+            is_chef: false,
+            city: Faker::Address.city,
+            zip_code: 75_012,
+            description: Faker::Lorem.paragraph(sentence_count: 20),
+            birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
+            phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
 User.create(first_name: 'Alain',
-             last_name: 'Chef',
-             email: 'cookin_chef@yopmail.com',
-             password: 'foobar',
-             is_chef: true,
-             city: Faker::Address.city,
-             zip_code: 75_012,
-             description: Faker::Lorem.paragraph(sentence_count: 20),
-             birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
-             phone_number: '0' + Faker::Number.number(digits: 9).to_s)
+            last_name: 'Chef',
+            email: 'cookin_chef@yopmail.com',
+            password: 'foobar',
+            is_chef: true,
+            city: Faker::Address.city,
+            zip_code: 75_012,
+            description: Faker::Lorem.paragraph(sentence_count: 20),
+            birth_date: Faker::Date.birthday(min_age: 18, max_age: 100),
+            phone_number: '0' + Faker::Number.number(digits: 9).to_s)
 
 20.times do |_|
   user = User.new(first_name: Faker::Name.unique.first_name,
@@ -96,9 +96,9 @@ end
 
 Masterclass.all.each do |masterclass|
   masterclass.categories << Category.all.sample(rand(1..3))
-  rand(1..5).times do |_|
+  rand(3..10).times do |_|
     meeting = Meeting.new(masterclass: masterclass,
-                          start_date: Faker::Date.between(from: DateTime.now, to: 1.year.from_now),
+                          start_date: Faker::Time.between(from: DateTime.now, to: 1.year.from_now),
                           zip_code: Faker::Address.zip_code,
                           capacity: Faker::Number.within(range: 1..10))
     meeting.save
