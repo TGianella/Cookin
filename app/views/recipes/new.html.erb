@@ -1,10 +1,6 @@
 <main class="container" data-turbo-cache='false'>
-  <% if current_user %>
-    <%if current_user.is_chef %>
-    <div>
-      <h1 class="font-bold text-4xl">Créer une nouvelle recette</h1>
-    </div>
-
+  <% if current_user.is_chef %>
+    <h1 class="font-bold text-4xl">Créer une nouvelle recette</h1>
     <div class="flex-column">
       <%= form_with model: @recipe do |form| %>
 
@@ -39,15 +35,15 @@
           <% end %>
         </div>
 
-        <div>
-          <%= form.submit "Créer ma recette" %>
-        </div>
-      <% end %>
-    </div>
-    <% else %>
-    <h1>Vous devez être chef pour créer une recette</h1>
+      <div class="image-input">
+        <%= form.label :image %>
+        <button class="btn-upload">Choisir le fichier</button>
+        <%= form.file_field :image %>
+      </div>
+
+      <div>
+        <%= form.submit "Créer ma recette" %>
+      </div>
     <% end %>
-  <% else %>
-    <h1>Veuillez vous connecter pour créer une recette</h1> 
   <% end %>
 </main>

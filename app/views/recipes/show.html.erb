@@ -6,7 +6,11 @@
       </h1>
       <div class="recipe__wrapper__header">
         <div class="recipe_image__wrapper">
-          <img src="https://picsum.photos/1000" alt="photo de la recette"/>
+          <% if @recipe.image.attached? %>
+            <%= image_tag @recipe.image, alt:"photo de la recette" %>
+          <% else %>
+            <img src="<%= @recipe.slug %>" alt="photo de la recette">
+          <% end %>
           <div class="edit_destroy">
             <% if @is_owner %> 
               <%= link_to "Editer la recette", edit_recipe_path(@recipe), class: "button--s button--success" %>
@@ -22,7 +26,7 @@
       <div class="recipe__wrapper__body">
       <%= render partial:'layouts/profilebadge--recipe', locals:{recipe: @recipe} %>
         <h3>Déroulé de la recette</h3>
-        <p><%= @recipe.content %></p>
+        <p><%= simple_format(@recipe.content) %></p>
       </div>
       <div class="recipe__wrapper__footer">
         <div class="recipe_masterclasses">

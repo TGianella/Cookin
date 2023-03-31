@@ -20,12 +20,16 @@
   min-height: fit-content;
   border-radius: inherit;
   position: relative;
+  background-color: rgb(241, 241, 241);
+
+  
 }
 
 .card__header img {
   border-radius: inherit;
   height: 100%;
-  width: auto;
+  object-fit: cover;
+  object-position: center;
 }
 
 .card__body {

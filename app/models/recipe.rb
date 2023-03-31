@@ -10,9 +10,11 @@ class Recipe < ApplicationRecord
   has_many :reservations, through: :meetings
   has_many :guests, through: :reservations, class_name: 'User'
 
+  has_one_attached :image
+
   validate :owner_is_chef
   validates :title, presence: { message: 'Le titre est obligatoire' },
-                    format: { with: /\A[A-Za-z\-\s'()&]+\z/ ,message: 'Ne pas utiliser de caractères spéciaux' },
+                    format: { with: /\A[A-Za-z\-\s()&:'ÉÈéèêëôûüùïîàâäç]+\z/ ,message: 'Ne pas utiliser de caractères spéciaux' }, 
                     length: { in: 3..50, message: 'La taille doit être entre 3 et 50 charactères' }
   validates :content, presence: { message: 'Une description est obligatoire' },
                       length: { in: 100..100000, message: 'Il faut 100 charactères minimum' }
