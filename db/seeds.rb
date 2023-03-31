@@ -98,7 +98,7 @@ Masterclass.all.each do |masterclass|
   masterclass.categories << Category.all.sample(rand(1..3))
   rand(1..5).times do |_|
     meeting = Meeting.new(masterclass: masterclass,
-                          start_date: Faker::Date.between(from: DateTime.now, to: 1.year.from_now),
+                          start_date: Faker::Time.between(from: DateTime.now, to: 1.year.from_now),
                           zip_code: Faker::Address.zip_code,
                           capacity: Faker::Number.within(range: 1..10))
     meeting.save
