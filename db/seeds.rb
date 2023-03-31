@@ -101,7 +101,7 @@ Masterclass.all.each do |masterclass|
                           start_date: Faker::Time.between(from: DateTime.now, to: 1.year.from_now),
                           zip_code: Faker::Address.zip_code,
                           capacity: Faker::Number.within(range: 1..10))
-    meeting.save!
+    meeting.save
   end
 end
 
