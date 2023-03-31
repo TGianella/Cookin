@@ -2,55 +2,8 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 
-let collapseButton = document.querySelector(
-  ".profile_menu > button:nth-child(1)"
-);
-let collapseNavbar = document.querySelector(".navbar");
-let collapseSecondnav = document.querySelector(".secondnav");
-
-let collapse_menu = document.querySelector(".collapse_menu");
-let main = document.querySelector("main");
-
-let collapseReservation = document.querySelectorAll(
-  ".masterclass_reservation--hidden"
-);
+let collapseReservation = document.querySelectorAll(".masterclass_reservation--hidden");
 let showMore = document.querySelectorAll(".showMore");
-
-collapseButton.addEventListener("click", function () {
-  collapse_profile.classList.toggle("collapse_profile--active");
-});
-
-collapseButtonOnMenu.addEventListener("click", function () {
-  console.log(collapseButtonOnMenu);
-  collapse_menu.classList.toggle("collapse_menu--active");
-  main.classList.toggle("main--blur");
-});
-
-search_button.addEventListener("click", function () {
-  collapseNavbar.classList.toggle("navbar--collapse");
-  collapseSecondnav.classList.toggle("secondnav--collapse");
-});
-window.addEventListener("click", function (e) {
-  if (
-    e.target.localName !== "img" &&
-    e.target.localName !== "i" &&
-    e.target.id !== "collapse_profile"
-  ) {
-    collapse_profile.classList.remove("collapse_profile--active");
-  }
-  if (e.target.id !== "search_button" && e.target.id !== "search") {
-    collapseNavbar.classList.remove("navbar--collapse");
-  }
-  if (
-    e.target.id !== "collapseButtonOnMenu" &&
-    e.target.className !== "collapse_menu"
-  ) {
-    collapse_menu.classList.remove("collapse_menu--active");
-    main.classList.remove("main--blur");
-  }
-});
-
-
 
 for (let index = 0; index < collapseReservation.length; index++) {
   let button = showMore.item(index)
@@ -58,7 +11,5 @@ for (let index = 0; index < collapseReservation.length; index++) {
   button.addEventListener('click', function(){
     collapseReservation.item(index).classList.toggle('masterclass_reservation--visible')
     collapseReservation.item(index).classList.toggle('masterclass_reservation--hidden')
-    
   })
-  
 }
