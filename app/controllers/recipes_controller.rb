@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_chef!, except: %i[index show new create]
+
   def index
     @recipes = Recipe.all
   end
@@ -14,9 +17,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+
     unless @recipe.image.attached?
-      @recipe.image.attach(io: File.open("#{Rails.root}/app/assets/images/empty-placeholder.png"), filename: 'empty-placeholder.png')
+      @recipe.image.attach(io: File.open("#{Rails.root}/app/assets/images/empty-placeholder.png"),
+                           filename: 'empty-placeholder.png')
     end
+
     @recipe.chef = current_user
 
     if @recipe.save
@@ -30,29 +36,25 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find_by(title: params[:title])
-    return if current_user == @recipe.chef
-
-    redirect_back fallback_location: root_path
+    authenticate_owner_chef!(@recipe)
   end
 
   def update
     find_recipe
-    if @recipe.chef == current_user
-      if @recipe.update(recipe_params)
-        flash[:success] = 'Recette modifiée'
-        redirect_to chef_recipe_path(current_user, @recipe)
-      else
-        flash[:danger] = "La recette n'a pas pu être modifiée !"
-        render :edit, status: :unprocessable_entity
-      end
+    authenticate_owner_chef!(@recipe)
+
+    if @recipe.update(recipe_params)
+      flash[:success] = 'Recette modifiée'
+      redirect_to chef_recipe_path(current_user, @recipe)
     else
-      flash[:danger] = "Vous n'êtes pas le propriétaire de cette recette"
-      render :edit
+      flash[:danger] = "La recette n'a pas pu être modifiée !"
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     find_recipe
+    authenticate_owner_chef!(@recipe)
     @recipe.destroy
     flash[:success] = 'Recette supprimée !'
     redirect_to chef_path(current_user)
