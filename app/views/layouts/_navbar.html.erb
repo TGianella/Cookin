@@ -118,8 +118,8 @@
               <a href="#">Mes recettes</a>
             </div>
             <div class="collapse__static_pages">
-              <a href="#">À propos</a>
-              <a href="#">Nous contacter</a>
+              <%= link_to "À propos", pages_about_path %>
+              <%= link_to "Nous contacter", pages_contact_path %>
               <%= button_to "Se déconnecter", destroy_user_session_path, method: :get, class:'disconnect-button' %>
             </div>
           <% end %>
@@ -129,9 +129,8 @@
               <a href="<%= new_user_session_path %>">Se connecter</a>
             </div>
             <div class="collapse__static_pages">
-              <a href="#">Découvrir le concept</a>
-              <a href="#">À propos</a>
-              <a href="#">Nous contacter</a>
+              <%= link_to "À propos", pages_about_path %>
+              <%= link_to "Nous contacter", pages_contact_path %>
             </div>
         <% end %>
       </div>
