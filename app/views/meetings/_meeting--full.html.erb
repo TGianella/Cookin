@@ -2,9 +2,10 @@
   <div class="meeting__wrapper">
     <div class="meeting__header">
       <p><%= meeting.start_date.strftime("%A %d %B %Y ") %></p>
+      <p>de <%= meeting.start_date.strftime("%I:%M") %> à <%= meeting.end_date.strftime("%I:%M")%> </p>
     </div>
     <div class="meeting__body">
-      <div class="button--s meeting--full"><%= meeting.free_spots %> places disponibles</div>
+      <div class="button--s meeting--full"><%= meeting.free_spots %> place disponible</div>
       <p>Ajoutée le <%= meeting.created_at.strftime("%A %d %B")%></p>
     </div>
   </div>
