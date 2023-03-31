@@ -16,8 +16,9 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
+    authenticate_owner_chef!(@reservation)
 
-    if current_user == @reservation.meeting.chef && @reservation.status == false
+    if @reservation.status == false
 
       if @reservation.update(status: true)
         flash[:success] = "Reservation validée pour #{@reservation.guest.full_name}"
@@ -26,7 +27,7 @@ class ReservationsController < ApplicationController
       end
 
     else
-      flash[:error] = "Il n'est pas possible de valider cette réservation"
+      flash[:error] = 'La réservation est déjà validée !'
     end
 
     redirect_back fallback_location: root_path
