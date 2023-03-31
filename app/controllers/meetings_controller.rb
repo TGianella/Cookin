@@ -1,4 +1,7 @@
 class MeetingsController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_chef!, except: %i[index show]
+
   def index
     @masterclass = Masterclass.find_by(title: params[:masterclass_title])
     @meetings = @masterclass.meetings.order(:start_date)
@@ -7,11 +10,7 @@ class MeetingsController < ApplicationController
   def new
     @masterclass = Masterclass.find_by(title: params[:masterclass_title])
     @meeting = Meeting.new(masterclass: @masterclass)
-
-    return unless current_user != @masterclass.chef
-
-    flash[:danger] = "Vous n'êtes pas autorisé à créer une nouvelle session pour cette masterclass"
-    redirect_back fallback_location: root_path
+    authenticate_owner_chef!(@meeting)
   end
 
   def create
@@ -35,32 +34,25 @@ class MeetingsController < ApplicationController
 
   def edit
     @meeting = Meeting.find(params[:id])
-
-    return unless current_user != @meeting.chef
-
-    flash[:danger] = "Vous n'êtes pas autorisé à modifier cette session"
-    redirect_back fallback_location: root_path
+    authenticate_owner_chef!(@meeting)
   end
 
   def update
     @meeting = Meeting.find(params[:id])
+    authenticate_owner_chef!(@meeting)
 
-    if @meeting.chef == current_user
-      if @meeting.update(meeting_params)
-        flash[:success] = 'Session mise à jour !'
-        redirect_to meeting_path(@meeting)
-      else
-        flash[:danger] = "La session n'a pas pu être modifiée !"
-        render :edit, status: :unprocessable_entity
-      end
+    if @meeting.update(meeting_params)
+      flash[:success] = 'Session mise à jour !'
+      redirect_to meeting_path(@meeting)
     else
-      flash[:danger] = "Vous n'êtes pas le propriétaire de cette session"
-      render :edit
+      flash[:danger] = "La session n'a pas pu être modifiée !"
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @meeting = Meeting.find(params[:id])
+    authenticate_owner_chef!(@meeting)
     @masterclass = @meeting.masterclass
     @meeting.destroy
     flash[:success] = 'Session supprimée'
