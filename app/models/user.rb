@@ -10,6 +10,7 @@ class User < ApplicationRecord
   # Associations as chef
   has_many :given_masterclasses, class_name: 'Masterclass', foreign_key: :chef_id
   has_many :taught_recipes, class_name: 'Recipe', foreign_key: :chef_id
+  has_many :given_meetings, through: :given_masterclasses, source: :meetings
 
   # Associations as guest
   has_many :reservations, foreign_key: :guest_id
