@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Inscription annulée pour <%= @reservation.masterclass.title %> !</h1>
+
+    <p>
+      Salut <%= @reservation.guest.first_name %>, ta demande d'inscription pour ce cours n'a pas été validée par le chef.
+    </p>
+    <p>
+      Pour voir d'autres cours, connecte-toi via : <%= @url %>
+    </p>
+    <p>
+      A très vite sur Cookin !
+    </p>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<div class="profile_badge">
+
+  <div class="profile_badge__section">
+    <h2 class="text-2xl">
+      <%= recipe.chef.full_name %>
+    </h2>
+    <div class="profile_badge__notice">
+      <p>
+        <i class="fas fa-star"></i>
+        4,5
+      </p>
+      <p>20 commentaires</p>
+    </div>
+    <%= link_to "Voir le profil", chef_path(recipe.chef), class:"button--s button--secondary"%>
+  </div>
+  <div class="profile_badge__image">
+    <img src="https://picsum.photos/200" alt="photo miniature de masterclass">
+  </div>
+</div>

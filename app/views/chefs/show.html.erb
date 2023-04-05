@@ -1,6 +1,50 @@
-<div>
-  <h1 class="font-bold text-4xl"><%= @chef.full_name %></h1>
-</div>
+<main class="container">
+  <div class="chef_profile">
+    <div class="chef_profile__wrapper">
+      <div class="chef_profile__header">
+        <img src="https://i.pravatar.cc/300" alt="photo de profil utilisateur" />
+        <h2><%= @chef.full_name %></h2>
+        <ul class="chef_profile__header--options">
+          <li class="options--link">
+            <%= link_to chef_masterclasses_path(@chef) do %>
+              <img src="<%= image_path('edit_calenda-icon.png') %>" alt="logo agenda" />
+              <p>Cours</p>
+            <% end %>
+          </li>
+          <li class="options--link">
+            <%= link_to chef_recipes_path(@chef) do %>
+              <img src="<%= image_path('soup_kitchen-icon.png') %>" alt="logo recette" />
+              <p>Recettes</p>
+            <% end %>
+          </li>
+          <li class="options--link">
+            <a href="#">
+              <img src="<%= image_path('call-icon.png') %>" alt="logo téléphone" />
+              <p>Contacter</p>
+            </a>
+          </li>
+          <% if @chef == current_user %>
+            <li class="options--link">
+              <a href="<%= edit_chef_path(@chef) %>">
+                <img src="<%= image_path('manage_account-icon.png' )%>" alt="logo édition de profil" />
+                <p>Gérer</p>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="chef_profile__body">
+        <h3>À propos</h3>
+        <%if @chef.description.blank? %>
+          <p>Aucune description pour le moment...</p>
+        <%else %>
+          <p><%= simple_format(@chef.description) %></p>
+        <% end %>
 
-<div><%= link_to "Ses recettes", chef_recipes_path(@chef) %></div>
-<div><%= link_to "Ses masterclasses", chef_masterclasses_path(@chef) %></div>
+        <% if @chef == current_user %>
+          <%= render 'informations' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,37 +1,65 @@
-<div>
+<main class="container" data-turbo='false'>
   <h1 class="font-bold text-4xl">Créer une nouvelle masterclass</h1>
-</div>
+  <div class="flex-column">
+    <%= form_with model: @masterclass do |form| %>
 
-<div class="flex-column">
-  <%= form_with model: @masterclass do |form| %>
+      <div>
+        <%= form.label "Titre" %>
+        <%= form.text_field :title %>
+        <% @masterclass.errors.full_messages_for(:title).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
 
-    <div>
-      <%= form.label "Titre" %>
-      <%= form.text_field :title %>
-    </div>
+      <div>
+        <%= form.label "Description" %>
+        <%= form.text_area :description, placeholder:'100 caractères minimum' %>
+        <% @masterclass.errors.full_messages_for(:description).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
 
-    <div>
-      <%= form.label "Description" %>
-      <%= form.text_area :description %>
-    </div>
+      <div>
+        <%= form.label "Durée (en minutes)" %>
+        <%= form.number_field :duration, in: 60..300, step: 5, placeholder:'60 minutes minimum' %>
+        <% @masterclass.errors.full_messages_for(:duration).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
 
-    <div>
-      <%= form.label "Durée (en minutes)" %>
-      <%= form.number_field :duration, in: 60..300, step: 5 %>
-    </div>
+      <div>
+        <%= form.label "Prix par personne" %>
+        <%= form.number_field :price %>
+        <% @masterclass.errors.full_messages_for(:price).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
 
-    <div>
-      <%= form.label "Prix par personne" %>
-      <%= form.number_field :price %>
-    </div>
-
-    <div>
+    <div class="checkbox-recipe__wrapper">
       <%= form.label "Recettes" %>
       <%= form.collection_check_boxes :recipe_ids, @recipes, :id, :title, {}, { :multiple => true } %>
+      <% @masterclass.errors.full_messages_for(:recipes).each do |message| %>
+        <div class="text-red-400"><%= message %></div>
+      <% end %>
     </div>
 
-    <div>
-      <%= form.submit "Créer ma masterclass" %>
+    <div class="checkbox-recipe__wrapper">
+      <%= form.label "Catégorie", class:"test" %>
+      <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { :multiple => true, data: {controller: "slim"}}%>
+      <% @masterclass.errors.full_messages_for(:categories).each do |message| %>
+        <div class="text-red-400"><%= message %></div>
+      <% end %>
     </div>
-  <% end %>
-</div>
+
+          <div class="image-input">
+        <%= form.label :image %>
+        <button class="btn-upload button--outline--success">Choisir le fichier</button>
+        <%= form.file_field :image %>
+      </div>
+
+      <div>
+        <%= form.submit "Créer ma masterclass" %>
+      </div>
+    <% end %>
+  </div>
+</main>

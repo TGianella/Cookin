@@ -1,0 +1,78 @@
+<main class="container" data-turbo="false">
+  <h2 class='text-4xl'>Éditer mes informations</h2>
+  <div class="form__wrapper">
+    <%= form_with model: @user, url: guest_profile_path(@user), method: 'patch' do |f| %>
+
+      <div class="field">
+        <%= f.label 'Descritpion' %><br />
+        <%= f.text_area :description, autofocus: true, autocomplete: "description" %>
+        <% @user.errors.full_messages_for(:description).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Email' %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Prénom' %><br />
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        <% @user.errors.full_messages_for(:first_name).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Nom' %><br />
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+        <% @user.errors.full_messages_for(:last_name).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Ville' %><br />
+        <%= f.text_field :city, autofocus: true, autocomplete: "city" %>
+        <% @user.errors.full_messages_for(:city).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Code postal' %><br />
+        <%= f.text_field :zip_code, autofocus: true, autocomplete: "zip_code" %>
+        <% @user.errors.full_messages_for(:zip_code).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Date de naissance' %><br />
+        <%= f.date_field :birth_date, autofocus: true, autocomplete: "birth_date" %>
+        <% @user.errors.full_messages_for(:birth_date).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Téléphone' %><br />
+        <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+        <% @user.errors.full_messages_for(:phone_number).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Valider" %>
+      </div>
+      <div class="actions my-10">
+        <%= link_to 'Modifier mon mot de passe', edit_user_registration_path, class:'button--primary button--m' %>
+      </div>
+    <% end %>
+  </div>
+</main>

@@ -1,6 +1,6 @@
-.alert{
+.alert {
   position: absolute;
-  height: 30px;
+  height: fit-content;
   width: 20dvw;
   top: 80px;
   z-index: 1000;
@@ -9,6 +9,7 @@
   border-radius: 0.5em;
   text-align: center;
   padding-top: 4px;
+  padding-bottom: 4px;
   font-weight: 500;
   color: var(--white);
 }
@@ -23,6 +24,15 @@
   border: 1px solid var(--success);
 }
 
+.alert--alert {
+  background-color: var(--danger);
+  border: 1px solid var(--danger);
+}
+.alert--notice {
+  background-color: var(--success);
+  border: 1px solid var(--success);
+}
+
 .fade {
   display: block;
   -webkit-animation: fadeOut 3s;
@@ -33,4 +43,8 @@
   0% { opacity: 1;}
   50% { opacity: 0.99;}
   100% { opacity: 0;}
+}
+
+.alert-devise {
+  background-color: red;
 }

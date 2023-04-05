@@ -1,9 +1,8 @@
-<div>
-  <h1 class="font-bold text-4xl">Les recettes de <%= @chef.full_name %> </h1>
-</div>
-
-<% @recipes.each do |recipe| %>
-  <div>
-    <%= link_to recipe.title, chef_recipe_path(recipe.chef, recipe) %>
-  </div>
-<% end %>
+<main class="container">
+  <h1 class="font-bold text-4xl">Toutes les recettes de <%= @chef.full_name %> </h1>
+  <% @recipes.each do |recipe| %>
+    <div>
+      <%= render partial:'chef-recipes', locals:{recipe: recipe} %>
+    </div>
+  <% end %>
+</main>

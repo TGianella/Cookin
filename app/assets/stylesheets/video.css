@@ -1,0 +1,9 @@
+.video_banner {
+  margin: 0px 0;
+  height: 50vh;
+  background-color: rgb(245, 245, 245);
+}
+
+.video--collapse{
+  margin-top: 80px;
+}

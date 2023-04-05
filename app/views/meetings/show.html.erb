@@ -1,4 +1,28 @@
-<div>
-  <h1 class="font-bold text-4xl">Meetings#show</h1>
-  <p>Find me in app/views/meetings/show.html.erb</p>
-</div>
+<main class="container">
+  <div class="show_meeting">
+    <div class="show_meeting__wrapper">
+      <div class="show_meeting__header">
+        <h1><%= @masterclass.title %></h1>
+        <h2>Le <%= @meeting.start_date.strftime("%A %d %B") %> </h2>
+          <h3>de <%= @meeting.start_date.strftime("%I:%M") %> à <%= @meeting.end_date.strftime("%I:%M") %></h3>
+      </div>
+      <div class="show_meeting__body">
+        <div class="show_meeting__body--section1">
+          <p>Nombre d'invités : <%= @meeting.capacity %></p>
+          <p>Code postal : <%= @meeting.zip_code %> </p>
+        </div>
+        <div class="show_meeting__body--section2 ">
+          <%= link_to "Voir les sessions", masterclass_meetings_path(@masterclass), class:"button--s button--outline--success" %>
+          <%= link_to "Voir le cours", chef_masterclass_path(@chef, @masterclass), class:"button--s button--secondary" %>
+        </div>
+      </div>
+      <div class="show_meeting__footer">
+        <%= button_to "S'inscrire", meeting_reservations_path(@meeting), class:"button--l button--success" %>
+        <% if current_user == @masterclass.chef %>
+            <%= link_to "Modifier cette session", edit_meeting_path(@meeting), class:"button--s button--secondary"  %>
+            <%= button_to "Supprimer cette session", meeting_path(@meeting), method: :delete, class:"button--s button--danger"  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

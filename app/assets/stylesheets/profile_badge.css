@@ -3,7 +3,7 @@
   height: 125px;
   min-width: fit-content;
   max-width: fit-content;
-  border-radius: .5em 125px  125px .5em ;
+  border-radius: .5em ;
   border: 1px lightgray solid;
   align-items: center;
 }
@@ -38,7 +38,18 @@
 /* .profile_badge__notice p, .profile_badge__section button{
   margin-left: 1em ;
 } */
-.profile_badge__section button{
-  margin-top: 0.2em;
+.profile_badge__section a{
+  margin-top: 0.5em;
 }
 
+@media screen and (max-width:640px) {
+  .profile_badge{
+    height: fit-content;
+    max-height: fit-content;
+  }
+  .profile_badge__section a{
+    margin-bottom: 0.5em;
+  }
+
+  
+}

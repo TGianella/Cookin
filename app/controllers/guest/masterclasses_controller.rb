@@ -1,7 +1,15 @@
 class Guest::MasterclassesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
+    find_past_meetings
   end
 
-  def show
+  private
+
+  def find_past_meetings
+    @meetings = current_user.meetings.each_with_object([]) do |meeting, past_meetings|
+      past_meetings << meeting if meeting.start_date < DateTime.now
+    end
   end
 end

@@ -1,8 +1,17 @@
-<%= render 'layouts/secondnav' %>
+<% if !user_signed_in? %>
+  <video autoplay muted loop class="video_banner secondnav--collapse" data-turbo='false'>
+    <source src="<%= video_path "videobanner.mp4" %>" type="video/mp4">
+  </video>
+<% end %>
+  <%= render 'layouts/secondnav' %>
 <main class="container">
   <div class="cards">
+  <% if @masterclasses.empty? %>
+    <h2 class="text-4xl">Oups! Il semble qu'il n'y ait aucun résultat correspondant à votre recherche.</h2>
+  <% else %>
     <% @masterclasses.each do |masterclass| %>
-    <%= render partial:'masterclasses/card', locals:{masterclass: masterclass} %>
+      <%= render partial:'masterclasses/card', locals:{masterclass: masterclass} %>
     <% end %>
+  <% end %>
   </div>
 </main>

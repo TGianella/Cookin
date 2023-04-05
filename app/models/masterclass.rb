@@ -1,29 +1,43 @@
 class Masterclass < ApplicationRecord
+  include PgSearch::Model
+
   belongs_to :chef, class_name: 'User'
   has_many :masterclasses_recipes
   has_many :recipes, through: :masterclasses_recipes
 
   # Associations as attended masterclass
-  has_many :meetings
+  has_many :meetings, dependent: :destroy
   has_many :reservations, through: :meetings
   has_many :guests, through: :reservations, class_name: 'User'
+  has_and_belongs_to_many :categories
+
+  has_one_attached :image
 
   validate :owner_is_chef
-  validates :title, presence: true,
-                    format: { with: /\A[A-Za-z\-\s'()&]+\z/ },
-                    length: { in: 3..50 }
-  validates :description, presence: true,
-                          length: { in: 100..100000 }
-  validates :duration, presence: true,
-                       numericality: { in: 60..300 }
+  validates :title, presence: { message: 'Le titre est obligatoire' },
+                    format: { with: /\A[A-Za-z\-\s()&:'ÉÈéèêëôûüùïîàâäç]+\z/ ,message: 'Ne pas utiliser de caractères spéciaux'},
+                    length: { in: 3..50, message: 'La taille doit être entre 3 et 50 caractères' }
+  validates :description, presence: { message: 'Une description est obligatoire' },
+                          length: { in: 100..100000, message: 'Il faut 100 caractères minimum' }
+  validates :duration, presence: { message: 'Choisir une durée de 60 minutes minimum' } ,
+                       numericality: { in: 60..300, message: "Choisir une durée entre 60 et 300" }
   validate :duration_multiple_of_5
-  validates :price, presence: true,
-                    numericality: { in: 1..1000 }
+  validates :price, presence: { message: 'Vous devez renseigner un prix' },
+                    numericality: { in: 1..100, message: "Veuillez renseigner un prix entre 1 et 100" }
   validate :recipes_belong_to_same_chef
-  validates :recipes, presence: true
+  validates :recipes, presence: { message: 'Il faut au moins une recette'}
+  validates :categories, length: { maximum: 3, message: 'Trois catégories maximum' }
+
+  pg_search_scope :search_by_description_and_title,
+                  against: %i[description title],
+                  using: { tsearch: { prefix: true } }
 
   def to_param
     title
+  end
+
+  def self.active
+    where(id: Meeting.select(:masterclass_id))
   end
 
   private

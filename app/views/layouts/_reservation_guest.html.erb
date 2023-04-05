@@ -1,0 +1,20 @@
+<div class="reservation">
+  <div class="reservation__wrapper reservation__wrapper--<%= reservation.status %>">
+    <div class="reservation__header">
+      <%= reservation.masterclass.title %>
+      <h2 class="text-xl"><%= reservation.masterclass.title %> par <em><%= reservation.masterclass.chef.full_name %></em></h2>
+      <p><%= reservation.meeting.start_date.strftime("%A %d %B %Y  ") %></p>
+      <p>De <%= reservation.meeting.start_date.strftime("%I:%M") %> à <%= reservation.meeting.end_date.strftime("%I:%M") %></p>
+    </div>
+    <div class="reservation__body">
+      <div class="buttons--row">
+        <% if reservation.status %>
+        <p class="button--s button--outline--success"> Validé </p>
+      <% else %>
+          <p class="button--s button--outline--danger"> En attente </p>
+      <% end %>
+          <%= button_to "Annuler", reservation_path(reservation),class:"button--s button--danger ml-3", method: 'delete', form: {data: {turbo_confirm: "Êtes-vous sûr.e ?"}} %>
+        </div>
+    </div>
+  </div>
+</div>

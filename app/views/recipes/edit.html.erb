@@ -1,0 +1,35 @@
+<main class="container" data-turbo='false'>
+  <h1 class="font-bold text-4xl">Editer la recette : <%= @recipe.title %></h1>
+
+  <div class="flex-column">
+    <%= form_with model: @recipe do |form| %>
+
+      <div>
+        <%= form.label "Description" %>
+        <%= form.text_area :content %>
+        <% @recipe.errors.full_messages_for(:content).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.label "Durée" %>
+        <%= form.number_field :duration, in: 5..180, step: 5 %>
+        <% @recipe.errors.full_messages_for(:duration).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.label "Difficulté" %>
+        <%= form.select :difficulty, ['facile', 'moyen', 'difficile'] %>
+        <% @recipe.errors.full_messages_for(:difficulty).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+      <div>
+        <%= form.submit "Modifier ma recette" %>
+      </div>
+    <% end %>
+    </div>
+</main>

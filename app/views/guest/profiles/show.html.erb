@@ -1,0 +1,44 @@
+<main class="container">
+  <div class="chef_profile">
+    <div class="chef_profile__wrapper">
+      <div class="chef_profile__header">
+        <img src="https://i.pravatar.cc/300" alt="photo de profil utilisateur" />
+        <h2><%= @user.full_name %></h2>
+        <ul class="chef_profile__header--options">
+          <li class="options--link">
+            <%= link_to  do %>
+            <img src="<%=image_path('edit_calenda-icon.png')%>" alt="logo agenda" />
+            <p>Cours</p>
+            <% end %>
+          </li>
+          <li class="options--link">
+            <%= link_to  do %>
+              <img src="<%=image_path('soup_kitchen-icon.png')%>" alt="logo recette" />
+              <p>Recettes</p>
+            <% end %>
+          </li>
+          <% if @user == current_user %>
+            <li class="options--link">
+              <a href="<%= edit_guest_profile_path(@user) %>">
+                <img src="<%=image_path('manage_account-icon.png')%>" alt="logo édition de profil" />
+                <p>Gérer</p>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="chef_profile__body">
+        <h3>À propos</h3>
+        <% if @user.description.blank? && @user == current_user %>
+          <p>Pensez à compléter votre descritpion</p>
+        <%else %>
+          <p><%= simple_format(@user.description) %></p>
+        <% end %>
+
+        <% if @user == current_user %>
+          <%= render 'informations' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

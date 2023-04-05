@@ -1,0 +1,23 @@
+<main class="container">
+  <h2 class="text-4xl">Mot de passe oublié ?</h2>
+
+  <div class="form__wrapper">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <% resource.errors.full_messages_for(:email).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Envoyez-moi les instructions" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="shared__wrapper">
+    <%= render "devise/shared/links" %>
+  </div>
+</main>

@@ -1,0 +1,23 @@
+<main class="container" data-turbo='false'>
+  <h2 class="text-4xl">Renvoyer les instructions de confirmation</h2>
+
+  <div class="form_wrapper">
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+      <div class="field">
+        <%= f.label 'Email' %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        <% resource.errors.full_messages_for(:email).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Renvoyer les instructions de confirmation" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="shraed__wrapper">
+    <%= render "devise/shared/links" %>
+  </div>
+</main>

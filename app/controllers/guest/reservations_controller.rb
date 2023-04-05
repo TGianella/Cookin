@@ -1,22 +1,7 @@
 class Guest::ReservationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
+    @reservations = current_user.reservations
   end
 end

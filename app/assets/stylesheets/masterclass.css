@@ -56,6 +56,12 @@
   max-height: 430px;
 }
 
+.masterclass_section--1--chef,
+.masterclass_section--2--chef {
+  display: flex;
+  max-width: 50%;
+}
+
 .masterclass_section--2 {
   border-bottom: 1px lightgray solid;
   position: relative;
@@ -68,30 +74,41 @@
   display: flex;
   flex-direction: column;
 }
-
-.masterclass_section--1 img {
+.masterclass_section--1,
+.masterclass_section--1__wrapper{
+  max-width: 400px;
+}
+.masterclass_section--1 img,
+.masterclass_section--1__wrapper img {
+  border-radius: .5em;
   aspect-ratio: 1/1;
-  max-width: 430px;
-  max-height: 430px;
-  border-radius: 0.5em;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .masterclass_section--2__wrapper {
   padding-inline-start: 2.5em;
 }
 
-.masterclass_section--2 h2:nth-child(1) {
+.masterclass_section--2 h2:nth-child(1),
+.masterclass_section--2--chef h2:nth-child(1) {
   font-size: 2em;
   font-weight: 600;
   margin-bottom: 1em;
 }
+.masterclass_section--1__wrapper{
+  position: relative;
+}
 
-.masterclass_section--2 h2:nth-child(3) {
+.masterclass_section--2 h2:nth-child(3),
+.masterclass_section--2--chef h2:nth-child(3) {
   font-size: 1.3em;
   font-weight: 500;
   margin: 0.5em 0;
 }
-.masterclass_section--2 h3:nth-child(4) {
+.masterclass_section--2 h3:nth-child(4),
+.masterclass_section--2--chef h3:nth-child(4) {
   font-size: 1.2em;
   font-weight: 400;
   margin: 0.5em 0;
@@ -103,12 +120,26 @@
 }
 
 .masterclass_section--3__wrapper {
-  align-items: flex-end;
+  min-height: 430px;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .masterclass_section--3__wrapper a {
   margin-right: 0.5em;
+}
+
+.masterclass_section--3__footer{
+  display: flex;
+  flex-direction: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: fit-content;
+  border: 1px solid lightgray;
+  padding: 1em 1em;
+  padding-right: 3em;
+  border-radius: .5em;
 }
 
 .price-badge {
@@ -118,8 +149,13 @@
 .price--badge {
   margin: 0 0.5em;
 }
+
+.price--badge button{
+  margin-left: .5em;
+}
 .recipe-badge {
   display: flow-root;
+  flex-wrap: wrap;
 }
 .recipe-badge a:nth-child(n) {
   margin: 5px;
@@ -128,16 +164,19 @@
 
 .reservation-badge {
   border: 1px lightgray solid;
-  padding: 0.5em 2em;
   border-radius: 0.5em;
   margin-top: 2em;
-  max-width: 80%;
+
+}
+.reservation-badge__wrapper a{
+  margin-left: .5em;
 }
 .reservation-badge__wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0.5em 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
 }
 
 .reservation-badge__wrapper div:nth-child(1) {
@@ -145,19 +184,21 @@
   font-style: italic;
   font-weight: 500;
   color: var(--black);
-  margin-right: 1em;
 }
 
 @media screen and (max-width: 1536px) {
-  .masterclass_section--1 {
+  .masterclass_section--1.masterclass_section--1--chef {
     width: 60%;
   }
-  .masterclass_section--1 img {
+  .masterclass_section--1 img,
+  .masterclass_section--1--chef {
     max-width: 100%;
     max-height: 100%;
     border-radius: 0.5em;
     object-fit: cover;
+    
   }
+
 }
 
 @media screen and (max-width: 1280px) {
@@ -169,7 +210,9 @@
 
   .masterclass_section--1,
   .masterclass_section--2,
-  .masterclass_section--3 {
+  .masterclass_section--3,
+  .masterclass_section--1--chef,
+  .masterclass_section--2--chef {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,24 +220,35 @@
     max-height: fit-content;
     overflow-y: initial;
   }
-  .masterclass_section--1 {
+  
+  .masterclass_section--3__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .masterclass_section--1,
+  .masterclass_section--1--chef {
     margin-bottom: 1.2em;
     width: 100%;
     height: 80%;
   }
 
-  .masterclass_section--1 img {
+  .masterclass_section--1 img,
+  .masterclass_section--1--chef img {
     aspect-ratio: 16/9;
     max-width: 100%;
     max-height: 100%;
     border-radius: 0.5em;
     object-fit: cover;
   }
-  .masterclass_section--2 {
+  .masterclass_section--2,
+  .masterclass_section--2--chef {
     margin-bottom: 2em;
     padding-bottom: 1em;
   }
-  .masterclass_section--2__wrapper {
+  .masterclass_section--2__wrapper,
+  .masterclass_section--2--chef {
     padding: 0;
   }
   .reservation-badge {
@@ -203,11 +257,6 @@
   }
   .masterclass_section--3 {
     width: 100%;
-  }
-  .masterclass_section--3__wrapper {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   }
 }
 
@@ -258,5 +307,16 @@
   .notice_commentaries p:nth-child(3) {
     margin: 0 0;
     flex: 3;
+  }
+}
+@media screen and (max-width: 480px){
+  .is_owner--options{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .masterclass_section--3__footer{
+    margin-top: 1em;
   }
 }

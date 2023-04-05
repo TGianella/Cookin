@@ -1,0 +1,52 @@
+<main class="container" data-turbo='false'>
+  <h1 class="font-bold text-4xl">Éditer le cours :<%= @masterclass.title %></h1>
+
+  <div class="flex-column">
+    <%= form_with model: @masterclass do |form| %>
+
+      <div>
+        <%= form.label "Description" %>
+        <%= form.text_area :description %>
+        <% @masterclass.errors.full_messages_for(:description).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.label "Durée (en minutes)" %>
+        <%= form.number_field :duration, in: 60..300, step: 5 %>
+        <% @masterclass.errors.full_messages_for(:duration).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.label "Prix par personne" %>
+        <%= form.number_field :price, min: 1 %>
+        <% @masterclass.errors.full_messages_for(:price).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.label "Recettes" %>
+        <%= form.collection_check_boxes :recipe_ids, @recipes, :id, :title, {}, { :multiple => true } %>
+        <% @masterclass.errors.full_messages_for(:recipes).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div class="w-3/5">
+        <%= form.label "Catégorie" %>
+        <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { :multiple => true, data: {controller: "slim"}} %>
+        <% @masterclass.errors.full_messages_for(:categories).each do |message| %>
+          <div class="text-red-400"><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.submit "Modifier ma masterclass" %>
+      </div>
+    <% end %>
+  </div>
+</main>
